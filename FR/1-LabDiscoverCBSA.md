@@ -10,7 +10,7 @@
 ## 📋 Table des Matières
 
 1. [Introduction](#1-introduction)
-2. [Les Modes de Bob Premium for Z](#2-les-modes-de-bob-premium-for-z)
+2. [Les Modes de IBM Bob Premium Package for Z](#2-les-modes-de-ibm-bob-premium-package-for-z)
 3. [Préparation du Lab](#3-préparation-du-lab)
 4. [Contexte du Lab](#4-contexte-du-lab)
 5. [Objectifs Pédagogiques](#5-objectifs-pédagogiques)
@@ -32,9 +32,9 @@
 
 ## 1. Introduction
 [↩️](#-table-des-matières)
-### Qu'est-ce que Bob Premium for Z ?
+### Qu'est-ce que IBM Bob Premium Package for Z ?
 
-**Bob Premium for Z** est un assistant IA spécialisé dans l'analyse, la documentation et la modernisation des applications mainframe IBM Z. Il combine :
+**IBM Bob Premium Package for Z** est un assistant IA spécialisé dans l'analyse, la documentation et la modernisation des applications mainframe IBM Z. Il combine :
 
 - 🧠 **Intelligence Artificielle avancée** pour comprendre le code COBOL, PL/I, Assembler, JCL et REXX
 - 📊 **Analyse automatique** de la structure et des dépendances applicatives
@@ -45,7 +45,7 @@
 
 ### Pourquoi ce Lab ?
 
-Ce lab vous permettra de découvrir concrètement comment Bob Premium for Z peut :
+Ce lab vous permettra de découvrir concrètement comment IBM Bob Premium Package for Z peut :
 
 1. **Accélérer la compréhension** d'applications mainframe complexes
 2. **Automatiser la documentation** technique et fonctionnelle
@@ -55,9 +55,9 @@ Ce lab vous permettra de découvrir concrètement comment Bob Premium for Z peut
 
 ---
 
-## 2. Les Modes de Bob Premium for Z
+## 2. Les Modes de IBM Bob Premium Package for Z
 [↩️](#-table-des-matières)
-Bob Premium for Z propose plusieurs modes spécialisés pour différents types de tâches :
+IBM Bob Premium Package for Z propose plusieurs modes spécialisés pour différents types de tâches :
 
 ### 🧰 Z Code
 **Spécialité :** Analyse et documentation de code mainframe
@@ -212,7 +212,7 @@ Le répertoire "base" contient une application bancaire CICS complète avec des 
 Avant de commencer le lab, assurez-vous d'avoir :
 
 - **Bob** installé avec l'extension **IBM Z Open Editor**
-- **Bob Premium for Z** activé dans Bob
+- **IBM Bob Premium Package for Z** activé dans Bob
 - **Git** installé sur votre système
 - **Accès Internet** pour cloner le repository
 
@@ -261,14 +261,14 @@ Vous venez de rejoindre l'équipe de maintenance de cette application. Vous disp
 - ❌ Dépendances entre programmes inconnues
 - ❌ Impact des modifications difficile à évaluer
 
-**Votre mission :** Utiliser Bob Premium for Z pour analyser et documenter cette application en quelques heures au lieu de plusieurs semaines.
+**Votre mission :** Utiliser IBM Bob Premium Package for Z pour analyser et documenter cette application en quelques heures au lieu de plusieurs semaines.
 
 ### Remarques liminaires
 
 
 - <span style="color: red;">Bob s'appuie sur l'agentique IA, qui par définition n'est pas déterministe. Pour certains exercices, vous pourrez donc constater de lègères différences entre votre résulat et celui décrit dans ces lab. Et certaines fois, vous aurez à ajouter des instructions supplémentaires à Bob pour obtenir le résultat attendu. C'est, de manière générale, l'approche qui faut avoir avec Bob: il arrive toujours au résultat, mais il faut parfois prendre un chemin différent pour y arriver.</span>
 - **Les décomptes faits par IA peuvent s'avérer inexactes. Il faut donc privilégier les calculs pas l'inginiérie plutôt que par l'IA.**
-- IBM Bob premium for Z s'appuie sur des méta données déjà existantes ou qu'il construit dans une BDD locale. Dans la discussion avec Bob, il pourra éventuellement demander s'il faut utiliser un repo centralisé des méta données (ex: Souhaitez-vous utiliser le service Z Understand pour une analyse complète des dépendances, ou analyser uniquement l'espace de travail local ?). **Dans le cadre de ce lab, nous n'utilisons pas de service Z Understand.**
+- IBM IBM Bob Premium Package for Z s'appuie sur des méta données déjà existantes ou qu'il construit dans une BDD locale. Dans la discussion avec Bob, il pourra éventuellement demander s'il faut utiliser un repo centralisé des méta données (ex: Souhaitez-vous utiliser le service Z Understand pour une analyse complète des dépendances, ou analyser uniquement l'espace de travail local ?). **Dans le cadre de ce lab, nous n'utilisons pas de service Z Understand.**
 - Dans les différents exercices à suivre, Bob pourra proposer différentes options en réponse à un prompt. Il est important de choisir la bonne option pour obtenir le résultat souhaité. Quoiu'il en soit vous pourrez toujours revenir en arrière et tester une autre option.
 
 
@@ -278,7 +278,7 @@ Vous venez de rejoindre l'équipe de maintenance de cette application. Vous disp
 [↩️](#-table-des-matières)
 À la fin de ce lab, vous serez capable de :
 
-✅ **Initialiser** un workspace mainframe avec Bob Premium for Z  
+✅ **Initialiser** un workspace mainframe avec IBM Bob Premium Package for Z  
 ✅ **Générer automatiquement** un inventaire applicatif complet  
 ✅ **Créer** des diagrammes d'architecture visuels  
 ✅ **Analyser** les règles métier enfouies dans le code  
@@ -428,9 +428,9 @@ Bob met à jour le fichier **`AGENTS.md`** avec une nouvelle règle.
 - ❌ Oublier le préfixe (programme ou CBSA/GLOBAL)
 - **Patterns critiques :** Bob identifie les directives de compilation obligatoires et les patterns d'erreur
 
-### 💡 Valeur Ajoutée Bob Premium for Z
+### 💡 Valeur Ajoutée IBM Bob Premium Package for Z
 
-| Sans Bob | Avec Bob Premium for Z |
+| Sans Bob | Avec IBM Bob Premium Package for Z |
 |----------|------------------------|
 | 2-3 jours d'exploration manuelle | 2-3 minutes d'analyse automatique |
 | Documentation incomplète | Documentation exhaustive et structurée |
@@ -478,7 +478,7 @@ Rédigez votre propre prompt pour demander à Bob d'initialiser et d'analyser co
 /init
 ```
 
-**Note :** La commande `init` est une commande spéciale de Bob Premium for Z qui déclenche une analyse complète du workspace.
+**Note :** La commande `init` est une commande spéciale de IBM Bob Premium Package for Z qui déclenche une analyse complète du workspace.
 
 ### 🔀 Variantes de Prompt
 
@@ -652,9 +652,9 @@ Contient :
 - Inventaire des programmes COBOL et de leurs dépendances
 - ...
 
-### 💡 Valeur Ajoutée Bob Premium for Z
+### 💡 Valeur Ajoutée IBM Bob Premium Package for Z
 
-| Sans Bob | Avec Bob Premium for Z |
+| Sans Bob | Avec IBM Bob Premium Package for Z |
 |----------|------------------------|
 | 1-2 semaines d'analyse manuelle | 5-10 minutes de génération automatique |
 | Inventaire incomplet ou obsolète | Inventaire exhaustif et à jour |
@@ -734,9 +734,9 @@ change @docs/CBSA-archi-dependances.drawio pour que tous les textes soient écri
 génére un graphe d'appel des programmes
 ```
 
-### 💡 Valeur Ajoutée Bob Premium for Z
+### 💡 Valeur Ajoutée IBM Bob Premium Package for Z
 
-| Sans Bob | Avec Bob Premium for Z |
+| Sans Bob | Avec IBM Bob Premium Package for Z |
 |----------|------------------------|
 | 2-3 jours de création manuelle | 5 minutes de génération automatique |
 | Diagramme statique (PowerPoint) | Format éditable (Draw.io) |
@@ -772,7 +772,7 @@ Rédigez votre propre prompt pour demander une documentation technique complète
 **Attendu dans votre prompt :**
 - nommer explicitement le programme cible
 - demander d'expliquer ou documenter le pgm
-- vous n'êtes pas obligé de préciser les sections de l'explication, Bob Premium for Z fournissant une structure de document par défaut.
+- vous n'êtes pas obligé de préciser les sections de l'explication, IBM Bob Premium Package for Z fournissant une structure de document par défaut.
 
 ### ✅ Prompt Recommandé
 
@@ -792,7 +792,7 @@ Génére la documentation de BANKDATA.
 ````
 ### ✅ Résultat Attendu
 
-Bob Premium for Z utilise un skill specialisé pour générer des documents techniques détaillés à partir du code source COBOL (whole-file-explanation) et un outil spécifique (explnation_type)). Si vous n'avez pas précisé à qui s'adresse l'éxplication, Bob proposera de choisir entre 3 progils ARCHITECT, DEVELOPER, BUSINESS.
+IBM Bob Premium Package for Z utilise un skill specialisé pour générer des documents techniques détaillés à partir du code source COBOL (whole-file-explanation) et un outil spécifique (explnation_type)). Si vous n'avez pas précisé à qui s'adresse l'éxplication, Bob proposera de choisir entre 3 progils ARCHITECT, DEVELOPER, BUSINESS.
 
 Si vous demander une explication, Bob est susceptible de ne pas l'enregistrer dans un fichier. Il faut alors le demander explicitement.
 ```text
@@ -850,9 +850,9 @@ Créer un jeu de données de test cohérent pour l'application CBSA avec :
 - **Génération de données** : Techniques de création de jeux de test cohérents
 - **Gestion d'erreurs** : Patterns de gestion VSAM et DB2
 
-### 💡 Valeur Ajoutée Bob Premium for Z
+### 💡 Valeur Ajoutée IBM Bob Premium Package for Z
 
-| Aspect | Documentation Manuelle | Avec Bob Premium for Z |
+| Aspect | Documentation Manuelle | Avec IBM Bob Premium Package for Z |
 |--------|------------------------|------------------------|
 | **Temps** | 1-2 jours d'analyse et rédaction | 5 minutes de génération |
 | **Qualité** | Variable selon rédacteur | Standardisée et exhaustive |
@@ -1244,9 +1244,9 @@ Document de contenant :
 - Guide de dépannage
 - Cas d'usage réels
 
-### 💡 Valeur Ajoutée Bob Premium for Z
+### 💡 Valeur Ajoutée IBM Bob Premium Package for Z
 
-| Sans Bob | Avec Bob Premium for Z |
+| Sans Bob | Avec IBM Bob Premium Package for Z |
 |----------|------------------------|
 | 3-4 jours de rédaction | 10 minutes de génération |
 | Documentation technique | Documentation métier adaptée |
@@ -1844,7 +1844,7 @@ Documentation complète : bobshells/README-generate-cobol-docs.md
 - **Scalabilité** : Fonctionne pour 10 ou 1000 programmes
 - **Maintenance** : Documentation toujours à jour
 
-### 💡 Valeur Ajoutée Bob Premium for Z
+### 💡 Valeur Ajoutée IBM Bob Premium Package for Z
 
 | Aspect | Documentation Manuelle | Avec Bobshell |
 |--------|------------------------|---------------|
@@ -1907,10 +1907,10 @@ filter:
 | 8 | Documentation 28 programmes | 2-3 semaines | 3 minutes | 99.8% |
 | **TOTAL** | **8-10 semaines** | **~2 heures** | **99.5%** |
 
-### ROI Bob Premium for Z
+### ROI IBM Bob Premium Package for Z
 
 **Investissement** :
-- Licence Bob Premium for Z : $X/mois
+- Licence IBM Bob Premium Package for Z : $X/mois
 - Formation initiale : 1 jour (ce lab)
 
 **Gains mesurés** :
@@ -1925,7 +1925,7 @@ filter:
 
 Après ce lab, vous maîtrisez :
 
-1. ✅ **Analyse d'architecture** avec Bob Premium for Z
+1. ✅ **Analyse d'architecture** avec IBM Bob Premium Package for Z
 2. ✅ **Documentation automatique** de flux métier
 3. ✅ **Analyse d'impact** sur code legacy
 4. ✅ **Identification de patterns** dans le code
@@ -1941,7 +1941,7 @@ Après ce lab, vous maîtrisez :
 
 ### 🎉 Félicitations !
 
-Vous avez terminé le lab Bob Premium for Z. En quelques heures, vous avez :
+Vous avez terminé le lab IBM Bob Premium Package for Z. En quelques heures, vous avez :
 
 ✅ Initialisé et analysé un workspace mainframe complexe
 ✅ Généré un inventaire applicatif exhaustif
@@ -1988,7 +1988,7 @@ Durant ce lab, vous avez utilisé différents modes Bob selon les besoins :
 
 ### 🚀 Prochaines Étapes
 
-Maintenant que vous maîtrisez Bob Premium for Z, vous pouvez :
+Maintenant que vous maîtrisez IBM Bob Premium Package for Z, vous pouvez :
 
 1. **Appliquer ces techniques** à vos propres applications mainframe
 2. **Former votre équipe** avec ce lab
@@ -2028,7 +2028,7 @@ Voici d'autres Bobshells que vous pouvez créer pour votre équipe :
 
 ### 💼 Cas d'Usage en Entreprise
 
-Bob Premium for Z est particulièrement utile pour :
+IBM Bob Premium Package for Z est particulièrement utile pour :
 
 - **Onboarding** : Accélérer la prise en main des nouveaux développeurs
 - **Maintenance** : Comprendre rapidement le code legacy
@@ -2055,7 +2055,7 @@ Durant ce lab, vous avez généré :
 
 ### 🎯 Valeur Métier
 
-**ROI de Bob Premium for Z :**
+**ROI de IBM Bob Premium Package for Z :**
 
 - **Réduction du Time-to-Market** : 99.6% de temps gagné
 - **Amélioration de la Qualité** : Documentation exhaustive et précise
@@ -2070,7 +2070,7 @@ Durant ce lab, vous avez généré :
 
 ### 🌟 Témoignages
 
-> "Bob Premium for Z a transformé notre façon de travailler. Ce qui prenait des semaines prend maintenant quelques minutes."  
+> "IBM Bob Premium Package for Z a transformé notre façon de travailler. Ce qui prenait des semaines prend maintenant quelques minutes."  
 > — Architecte Mainframe, Grande Banque Européenne
 
 > "La documentation générée par Bob est plus complète et précise que ce que nous faisions manuellement."  
@@ -2081,7 +2081,7 @@ Durant ce lab, vous avez généré :
 
 ### 📞 Support et Ressources
 
-Pour aller plus loin avec Bob Premium for Z :
+Pour aller plus loin avec IBM Bob Premium Package for Z :
 
 - **Documentation** : Consultez les guides d'utilisation
 - **Support** : Contactez l'équipe Bob Premium
@@ -2094,10 +2094,10 @@ Pour aller plus loin avec Bob Premium for Z :
 
 **Version du Lab :** 1.0  
 **Date de création :** 2026-05-04  
-**Auteur :** Bob Premium for Z Team
+**Auteur :** IBM Bob Premium Package for Z Team
 ---
 
-## 🚀 Synthèse : La Valeur de Bob Premium for Z
+## 🚀 Synthèse : La Valeur de IBM Bob Premium Package for Z
 
 ### Gains Mesurables
 
@@ -2115,7 +2115,7 @@ Pour aller plus loin avec Bob Premium for Z :
 
 ---
 
-### 💡 Capacités Clés de Bob Premium for Z
+### 💡 Capacités Clés de IBM Bob Premium Package for Z
 
 #### 1. Analyse Intelligente
 - Interrogation automatique des métadonnées
@@ -2173,10 +2173,10 @@ Pour aller plus loin avec Bob Premium for Z :
 
 ---
 
-### 📈 ROI de Bob Premium for Z
+### 📈 ROI de IBM Bob Premium Package for Z
 
 **Investissement** :
-- Licence Bob Premium for Z
+- Licence IBM Bob Premium Package for Z
 - Formation initiale (1-2 jours)
 
 **Retours** :
@@ -2241,7 +2241,7 @@ Propose une stratégie de migration pour [SYSTÈME]
 
 1. **Pratiquez** : Utilisez Bob sur vos propres applications mainframe
 2. **Explorez** : Testez d'autres types de prompts et modes
-3. **Partagez** : Formez votre équipe à Bob Premium for Z
+3. **Partagez** : Formez votre équipe à IBM Bob Premium Package for Z
 4. **Optimisez** : Intégrez Bob dans vos processus de développement
 5. **Innovez** : Utilisez Bob pour moderniser vos systèmes legacy
 
@@ -2256,6 +2256,6 @@ Propose une stratégie de migration pour [SYSTÈME]
 
 **Version** : 1.0  
 **Date** : 5 mai 2026  
-**Auteur** : Bob Premium for Z
+**Auteur** : IBM Bob Premium Package for Z
 
 **Transformez votre façon de travailler avec le mainframe ! 🚀**

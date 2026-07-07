@@ -410,6 +410,6 @@ Also includes:
 
 **Version:** 1.0  
 **Date:** June 2, 2026  
-**Author:** Bob Premium for Z Team
+**Author:** IBM CE EMEA Team
 
 **Transform the way you work with the mainframe! 🚀**

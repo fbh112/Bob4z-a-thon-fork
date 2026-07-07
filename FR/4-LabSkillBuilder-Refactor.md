@@ -1,4 +1,4 @@
-# Exercices Avancés Bob Premium for Z
+# Exercices Avancés IBM Bob Premium Package for Z
 ## Exercice1 : Coding Standard Skill | Exercice 2 : Refactorisation VSAM vers DB2
 
 **Durée estimée :** 1-2 heures  
@@ -410,6 +410,6 @@ Inclut également :
 
 **Version** : 1.0  
 **Date** : 2 juin 2026  
-**Auteur** : Bob Premium for Z Team
+**Auteur** : IBM Bob Premium Package for Z Team
 
 **Transformez votre façon de travailler avec le mainframe ! 🚀**

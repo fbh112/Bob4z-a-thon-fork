@@ -2,7 +2,7 @@
 
 ## Lab Overview
 
-This lab guides you through a complete analysis of the **CICS Banking Sample Application (CBSA)** using **Bob for Z**,
+This lab guides you through a complete analysis of the **CICS Banking Sample Application (CBSA)** using **IBM Bob Premium Package for Z**,
 the AI assistant specialized for IBM Z mainframe systems. 
 As a complement to **LabDiscoverCBSA**, this lab additionally integrates the front-end part (Java, React, API,....).
 You will learn to use different Bob modes and formulate effective prompts to obtain detailed analyses, documentation, and architecture diagrams.
@@ -104,7 +104,7 @@ The following 5 directories have been retrieved from the GitHub repository and p
 Before starting the lab, make sure you have:
 
 - **Bob** installed with the **IBM Z Open Editor** extension
-- **Bob Premium for Z** activated in Bob
+- **IBM Bob Premium Package for Z** activated in Bob IDE
 - **Git** installed on your system
 - **Internet access** to clone the repository
 
@@ -682,8 +682,6 @@ At the end of this lab, you will know how to:
 ### Problem: The Draw.io diagram doesn't open
 **Solution:** Install the Draw.io Integration extension in VSCode
 
-### Problem: Bob generates content in English
-**Solution:** Remind Bob: "Please respond in French"
 
 ---
 
@@ -698,7 +696,7 @@ At the end of this lab, you will know how to:
 
 ## Conclusion
 
-This lab allowed you to discover the power of Bob for Z in analyzing and documenting complex mainframe applications. You learned to:
+This lab allowed you to discover the power of IBM Bob Premium Package for Z in analyzing and documenting complex mainframe applications. You learned to:
 
 - Use different types of prompts to obtain precise results
 - Automatically generate professional documentation
@@ -716,7 +714,7 @@ This lab allowed you to discover the power of Bob for Z in analyzing and documen
 
 **Lab Version:** 1.0  
 **Creation Date:** May 12, 2026  
-**Author:** Bob - AI Assistant for IBM Z  
+**Author:** IBM CE EMEA Team  
 **Total Duration:** 2-3 hours
 
 ---
