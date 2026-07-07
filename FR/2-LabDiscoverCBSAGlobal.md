@@ -49,7 +49,7 @@ Récupérer le code source de la partie front-end de l'application CBSA depuis G
 
 ### 🔧 Mode Bob à Utiliser
 
-**Mode : 💻 Code**
+**Mode : 💻 Agent**
 
 Le mode Code permet d'exécuter des commandes système et de manipuler des fichiers.
 

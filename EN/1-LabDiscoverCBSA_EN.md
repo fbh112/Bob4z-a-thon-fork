@@ -102,7 +102,7 @@ Bob Premium for Z offers several specialized modes for different types of tasks:
 - Simplified explanations
 - FAQ and support
 
-### 💻 Code
+### 💻 Agent
 **Specialty:** Code modification and generation
 - Code writing
 - Refactoring
@@ -147,7 +147,7 @@ Retrieve the CBSA application source code from GitHub and prepare the workspace 
 
 ### 🔧 Bob Mode to Use
 
-**Mode: 💻 Code**
+**Mode: 💻 Agent**
 
 Code mode allows executing system commands and manipulating files.
 

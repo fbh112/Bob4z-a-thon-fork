@@ -49,9 +49,9 @@ Retrieve the source code of the CBSA application's front-end part from GitHub an
 
 ### 🔧 Bob Mode to Use
 
-**Mode: 💻 Code**
+**Mode: 💻 Agent**
 
-Code mode allows executing system commands and manipulating files.
+Agent mode allows executing system commands and manipulating files.
 
 ### 📝 Context
 

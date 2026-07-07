@@ -103,7 +103,7 @@ IBM Bob Premium Package for Z propose plusieurs modes spécialisés pour différ
 - Explications simplifiées
 - FAQ et support
 
-### 💻 Code
+### 💻 Agent
 **Spécialité :** Modification et génération de code
 - Écriture de code
 - Refactoring
@@ -149,7 +149,7 @@ Récupérer le code source de l'application CBSA depuis GitHub et préparer le w
 
 ### 🔧 Mode Bob à Utiliser
 
-**Mode : 💻 Code**
+**Mode : 💻 Agent**
 
 Le mode Code permet d'exécuter des commandes système et de manipuler des fichiers.
 
