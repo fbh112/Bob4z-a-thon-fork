@@ -61,7 +61,7 @@ Le skill s'active automatiquement avec ces phrases :
 Génère un programme COBOL qui permette de trouver le compte d'un client à partir de son numéro de téléphone
 ```
 
-### Résultat Attendu
+### Exemple de résultat
 
 Bob va :
 
@@ -83,7 +83,7 @@ pour afficher et mettre à jour des informations de compte bancaire.
 Le programme doit s'appeler UPDTACCT et utiliser un pattern pseudo-conversationnel.
 ```
 
-### Résultat Attendu
+### Exemple de résultat
 
 Bob génère un programme complet avec :
 - Pattern pseudo-conversationnel (COMMAREA)

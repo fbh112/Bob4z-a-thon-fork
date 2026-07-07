@@ -46,7 +46,7 @@ Bob va :
    - `CBSA-example.md` : Exemples de code conforme
    - `skills.md` : Définition du skill
 
-#### ✅ Résultat Attendu
+#### ✅ Exemple de résultat
 
 Bob crée trois fichiers documentant :
 - Conventions de nommage (programmes, variables, paragraphes)
@@ -206,7 +206,7 @@ Bob va :
 4. Documenter les patterns d'accès
 5. Évaluer la complexité de migration pour chaque opération
 
-#### ✅ Résultat Attendu
+#### ✅ Exemple de résultat
 
 Bob génère un rapport d'analyse détaillé avec :
 - Fichiers VSAM utilisés (type, clés, longueur)
@@ -237,7 +237,7 @@ Bob va :
 4. Proposer les index appropriés
 5. Documenter les choix de conception
 
-#### ✅ Résultat Attendu
+#### ✅ Exemple de résultat
 
 Bob génère :
 - Scripts DDL complets pour la table CUSTOMER
@@ -282,7 +282,7 @@ Bob lance le **workflow interactif de refactorisation** en 4 phases :
 - Génère un rapport de comparaison AVANT/APRÈS
 - Documente tous les changements
 
-#### ✅ Résultat Attendu
+#### ✅ Exemple de résultat
 
 Programme COBOL refactorisé avec :
 - Toutes les opérations VSAM remplacées par SQL

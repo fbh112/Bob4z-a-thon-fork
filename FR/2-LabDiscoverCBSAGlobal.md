@@ -65,7 +65,7 @@ Ouvrir Bob, cliquer sur le menu **File>Open Folder** et choisissez le répertoir
 Récupère les répertoires nommés "src/bank-application-frontend",  "src/webui", "src/Z-OS-Connect-Customer-Services-Interface", "src/Z-OS-Connect-Payment-Interface", "src/Z-OS-Connect-Payment-Interface", et  "src/zosconnect_artefacts" du repository GitHub https://github.com/cicsdev/cics-banking-sample-application-cbsa.git et place les dans ce workspace.
 ```
 
-### ✅ Résultat Attendu 
+### ✅ Exemple de résultat 
 
 Bob exécute les commandes suivantes :
 
@@ -136,7 +136,7 @@ Créer un fichier AGENTS.md qui documente la structure du projet, les commandes 
 5. Mapper les programmes COBOL à leur documentation technique
 6. Créer le fichier AGENTS.md avec toutes ces informations
 
-### Résultat Attendu
+### Exemple de résultat
 **Fichier créé :** `AGENTS.md`
 
 **Contenu attendu :**
@@ -182,7 +182,7 @@ Crée un dictionnaire de données pour le programme BNKMENU
 5. Créer le fichier bobz/DD.json
 6. Mettre à jour AGENTS.md avec l'emplacement du dictionnaire
 
-### Résultat Attendu
+### Exemple de résultat
 **Fichier créé :** `bobz/DD.json`
 
 **Contenu attendu :**
@@ -239,7 +239,7 @@ Fais l'inventaire de tous les programmes COBOL
 5. Générer un arbre de dépendances
 6. Documenter chaque programme avec son rôle
 
-### Résultat Attendu
+### Exemple de résultat
 **Fichier créé :** `docs/COBOL_INVENTORY.md`
 
 **Contenu attendu :**
@@ -292,7 +292,7 @@ faire l'inventaire du front end
 5. Identifier les interfaces COBOL (8 classes)
 6. Créer une documentation structurée complète
 
-### Résultat Attendu
+### Exemple de résultat
 **Fichier créé :** `docs/FRONTEND_INVENTORY.md`
 
 **Contenu attendu :**
@@ -351,7 +351,7 @@ Créer des diagrammes Draw.io visualisant l'architecture globale et l'architectu
 générer un diagramme global (en draw.io) intégrant le front-end et le backend en distinguant les différentes couches de l'application
 ```
 
-#### Résultat Attendu
+#### Exemple de résultat
 **Fichier créé :** `docs/CBSA_Architecture_Diagram.drawio`
 
 **Contenu attendu :**
@@ -378,7 +378,7 @@ générer un diagramme global (en draw.io) intégrant le front-end et le backend
 fais une diagramme détaillé de la partie front end
 ```
 
-#### Résultat Attendu
+#### Exemple de résultat
 **Fichier créé :** `docs/CBSA_Frontend_Detailed_Diagram.drawio`
 
 **Contenu attendu :**
@@ -426,7 +426,7 @@ en quoi consiste la transaction Transfer local?
 5. Expliquer la stratégie anti-deadlock
 6. Détailler les mécanismes de sécurité (SYNCPOINT, ROLLBACK)
 
-### Résultat Attendu
+### Exemple de résultat
 **Réponse de Bob contenant :**
 
 **1. Composants Impliqués :**
@@ -488,7 +488,7 @@ Fais moi un guide utilisateur du transfert local.
 6. Fournir des exemples pratiques
 7. Ajouter une FAQ et des conseils de sécurité
 
-### Résultat Attendu
+### Exemple de résultat
 **Fichier créé :** `docs/GUIDE_UTILISATEUR_TRANSFERT_LOCAL.md`
 
 **Contenu attendu (500 lignes) :**
@@ -545,7 +545,7 @@ Comprendre le système de notation de crédit et son implémentation technique a
 que fait la fonction Credit Score?
 ```
 
-#### Résultat Attendu
+#### Exemple de résultat
 **Réponse de Bob contenant :**
 
 **1. Architecture :**
@@ -573,7 +573,7 @@ que fait la fonction Credit Score?
 Quelle est l'échelle de valeur des scores de crédit?
 ```
 
-#### Résultat Attendu
+#### Exemple de résultat
 **Réponse de Bob contenant :**
 
 **1. Plage de Valeurs :**

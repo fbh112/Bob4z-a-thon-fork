@@ -65,7 +65,7 @@ Open Bob, click on the **File>Open Folder** menu and choose the ~/CBSA directory
 Retrieve the directories named "src/bank-application-frontend", "src/webui", "src/Z-OS-Connect-Customer-Services-Interface", "src/Z-OS-Connect-Payment-Interface", "src/Z-OS-Connect-Payment-Interface", and "src/zosconnect_artefacts" from the GitHub repository https://github.com/cicsdev/cics-banking-sample-application-cbsa.git and place them in this workspace.
 ```
 
-### ✅ Expected Result 
+### ✅ Sample Result 
 
 Bob executes the following commands:
 
@@ -136,7 +136,7 @@ Create an AGENTS.md file that documents the project structure, build commands, c
 5. Map COBOL programs to their technical documentation
 6. Create the AGENTS.md file with all this information
 
-### Expected Result
+### Sample Result
 **File created:** `AGENTS.md`
 
 **Expected content:**
@@ -182,7 +182,7 @@ Create a data dictionary for the BNKMENU program
 5. Create the bobz/DD.json file
 6. Update AGENTS.md with the dictionary location
 
-### Expected Result
+### Sample Result
 **File created:** `bobz/DD.json`
 
 **Expected content:**
@@ -239,7 +239,7 @@ Make an inventory of all COBOL programs
 5. Generate a dependency tree
 6. Document each program with its role
 
-### Expected Result
+### Sample Result
 **File created:** `docs/COBOL_INVENTORY.md`
 
 **Expected content:**
@@ -292,7 +292,7 @@ make an inventory of the front end
 5. Identify COBOL interfaces (8 classes)
 6. Create complete structured documentation
 
-### Expected Result
+### Sample Result
 **File created:** `docs/FRONTEND_INVENTORY.md`
 
 **Expected content:**
@@ -351,7 +351,7 @@ Create Draw.io diagrams visualizing the global architecture and detailed fronten
 generate a global diagram (in draw.io) integrating the front-end and backend by distinguishing the different layers of the application
 ```
 
-#### Expected Result
+#### Sample Result
 **File created:** `docs/CBSA_Architecture_Diagram.drawio`
 
 **Expected content:**
@@ -378,7 +378,7 @@ generate a global diagram (in draw.io) integrating the front-end and backend by 
 make a detailed diagram of the front end part
 ```
 
-#### Expected Result
+#### Sample Result
 **File created:** `docs/CBSA_Frontend_Detailed_Diagram.drawio`
 
 **Expected content:**
@@ -426,7 +426,7 @@ what does the Transfer local transaction consist of?
 5. Explain the anti-deadlock strategy
 6. Detail security mechanisms (SYNCPOINT, ROLLBACK)
 
-### Expected Result
+### Sample Result
 **Bob's response containing:**
 
 **1. Components Involved:**
@@ -488,7 +488,7 @@ Make me a user guide for local transfer.
 6. Provide practical examples
 7. Add FAQ and security tips
 
-### Expected Result
+### Sample Result
 **File created:** `docs/USER_GUIDE_LOCAL_TRANSFER.md`
 
 **Expected content (500 lines):**
@@ -545,7 +545,7 @@ Understand the credit scoring system and its technical implementation with the J
 what does the Credit Score function do?
 ```
 
-#### Expected Result
+#### Sample Result
 **Bob's response containing:**
 
 **1. Architecture:**
@@ -573,7 +573,7 @@ what does the Credit Score function do?
 What is the credit score value scale?
 ```
 
-#### Expected Result
+#### Sample Result
 **Bob's response containing:**
 
 **1. Value Range:**

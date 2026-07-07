@@ -61,7 +61,7 @@ The skill activates automatically with these phrases:
 Generate a COBOL program that allows finding a customer's account from their phone number
 ```
 
-### Expected Result
+### Sample Result
 
 Bob will:
 
@@ -83,7 +83,7 @@ to display and update bank account information.
 The program should be called UPDTACCT and use a pseudo-conversational pattern.
 ```
 
-### Expected Result
+### Sample Result
 
 Bob generates a complete program with:
 - Pseudo-conversational pattern (COMMAREA)

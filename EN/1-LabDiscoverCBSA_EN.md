@@ -169,7 +169,7 @@ Retrieve the directory named "src/base" from the GitHub repository https://githu
 ```
 
 
-### ✅ Expected Result
+### ✅ Sample Result
 
 Bob executes the following commands:
 
@@ -264,7 +264,7 @@ You have just joined the maintenance team for this application. You have the sou
 ### Preliminary Remarks
 
 
-- <span style="color: red;">Bob relies on AI agentics, which by definition is not deterministic. For some exercises, you may therefore notice slight differences between your result and the one described in this lab. And sometimes, you will have to add additional instructions to Bob to get the expected result. This is, in general, the approach to have with Bob: it always gets to the result, but sometimes you have to take a different path to get there.</span>
+- <span style="color: red;">Bob relies on AI agentics, which by definition is not deterministic. For some exercises, you may therefore notice slight differences between your result and the one described in this lab. And sometimes, you will have to add additional instructions to Bob to get the result you expect. This is, in general, the approach to have with Bob: it always gets to the result, but sometimes you have to take a different path to get there.</span>
 - **Counts made by AI can be inaccurate. Therefore, calculations should be done by engineering rather than by AI.**
 - IBM Bob Premium Package for Z relies on existing metadata or metadata it builds in a local database. In the discussion with Bob, it may ask whether to use a centralized metadata repository (e.g., "Do you want to use the Z Understand service for a complete dependency analysis, or analyze only the local workspace?"). **In the context of this lab, we do not use the Z Understand service.**
 - In the various exercises to follow, Bob will be able to propose different options in response to a prompt. It is important to choose the right option to obtain the desired result. In any case, you can always go back and test another option.
@@ -326,7 +326,7 @@ Define a standard naming convention for all documents and tools generated in thi
 Add rules in AGENTS.md for organizing documentation and scripts, with a consistent naming format and examples.
 ```
 
-### ✅ Expected Result
+### ✅ Sample Result
 
 Bob updates the **`AGENTS.md`** file with a dedicated section for conventions and may create a specific document to detail naming conventions:
 
@@ -377,7 +377,7 @@ Define a Bob convention imposing English as the default language for documentati
 ```
 
 
-### ✅ Expected Result
+### ✅ Sample Result
 
 Bob updates the **`AGENTS.md`** file with a new rule.
 ```markdown
@@ -490,7 +490,7 @@ Bob will:
 ***Display detected configuration for confirmation***
 ***Update AGENTS.md with non-obvious information***
 
-### ✅ Expected Result
+### ✅ Sample Result
 
 
 **Modified files:**
@@ -552,7 +552,7 @@ Returns up to 200 of the top variables used in the BANKDATA program. These varia
 '''
 
 
-### ✅ Expected Result
+### ✅ Sample Result
 
 Data dictionary successfully created for the CBSA banking application.
 
@@ -630,7 +630,7 @@ Map CBSA components: COBOL programs, copybooks, BMS maps, Db2 tables, and main d
 
 Bob will scan, analyze, and document all application components by creating a structured inventory. It will use the Premium for Z tool ***execute_sql_query*** to access the metadata database to extract source information and generate a structured Markdown document.
 
-### ✅ Expected Result
+### ✅ Sample Result
 
 **Created file: `docs/CBSA-INV***.md`**
 
@@ -683,7 +683,7 @@ Produce a Draw.io diagram of the CBSA architecture with functional layers, compo
 Visually document the CBSA architecture in a Draw.io file representing programs, databases, and major dependencies.
 ```
 
-### ✅ Expected Result
+### ✅ Sample Result
 
 **File created: `docs/CBSA-ARCHITECTURE.drawio`**
 
@@ -762,7 +762,7 @@ Explain the BANKDATA program
 Generate BANKDATA documentation.
 ```
 
-### ✅ Expected Result
+### ✅ Sample Result
 
 IBM Bob Premium Package for Z uses a specialized skill to generate detailed technical documents from COBOL source code (whole-file-explanation) and a specific tool (explanation_type). If you haven't specified the target audience for the explanation, Bob will offer to choose between 3 profiles: ARCHITECT, DEVELOPER, BUSINESS.
 
@@ -1107,7 +1107,7 @@ Start by identifying a program's variables. Then, refine the description of one 
 What variables are used in INQACCCU?
 ```
 
-### ✅ Expected Result
+### ✅ Sample Result
 
 Analysis of INQACCCU program variables completed successfully.
 
@@ -1136,7 +1136,7 @@ The data dictionary now contains business definitions for BANKDATA and INQACCCU 
 How is the SORTCODE variable used in the application?
 ```
 
-### ✅ Expected Result
+### ✅ Sample Result
 
 Analysis of SORTCODE variable usage in the CBSA application.
 
@@ -1226,7 +1226,7 @@ Extract and save in a md file, the business rules from @cobol_src/BNK1CAC.cbl
 - scope the promp to the target module
 - request implicit business rules
 
-### ✅ Expected Result
+### ✅ Sample Result
 
 Creation of BNK1CAC-business-rules.md file.
 
@@ -1250,7 +1250,7 @@ add a test to verify a customer number should start with 99
 
 A bulb appears at the begining of the sentence. Click it and select "Add to IBM Bob"
 
-### ✅ Expected Result 
+### ✅ Sample Result 
 
 In the prompt area of IBM Bob appears:
 ```text
@@ -1262,7 +1262,7 @@ add a test to verify a customer number should start with 99
 
 Send the prompt to IBM Bob
 
-### ✅ Expected Result 
+### ✅ Sample Result 
 1 - BNK1CAC is updated with a new rule startting at line 459:
 ```text
            IF CUSTNOI(1:2) NOT = '99'
@@ -1330,7 +1330,7 @@ Provide:
 Perform a complete impact analysis to transform the fixed SORTCODE into multi-branch data, with risks, effort, and migration.
 ```
 
-### ✅ Expected Result
+### ✅ Sample Result
 
 **File created: `docs/CBSA-archi-impact***.md`**
 
@@ -1429,7 +1429,7 @@ Write a simple business guide explaining how a teller consults a customer's acco
 Document step-by-step the customer account consultation journey in CBSA, with a pedagogical tone and visual examples.
 ```
 
-### ✅ Expected Result
+### ✅ Sample Result
 
 **File created: `docs/CBSA-guide-Account consultation.md`**
 
@@ -1504,7 +1504,7 @@ what criteria can be used to search for a customer in CBSA?
 What is the plan to implement customer search by email?
 ```
 
-#### ✅ Expected Result
+#### ✅ Sample Result
 
 Bob creates **`docs/CBSA-plan-email-search.md`**:
 ```
@@ -1566,7 +1566,7 @@ Z Code mode excels at pattern analysis and extracting business rules embedded in
 According to the implementation plan, update the CUSTOMER data structures
 ```
 
-#### ✅ Expected Result
+#### ✅ Sample Result
 
 Bob creates/modifies files in the `baseupdated/cobol_copy/` directory:
 
@@ -1686,7 +1686,7 @@ Z Code mode excels at generating COBOL code for Z/OS.
 Create the INQEMAIL program according to the implementation plan
 ```
 
-#### ✅ Expected Result
+#### ✅ Sample Result
 
 Bob develops **`baseupdated/cobol_src/INQEMAIL.cbl`**:
 
@@ -1842,7 +1842,7 @@ Z Code mode excels at generating COBOL code for Z/OS.
 Verify the syntax of the INQEMAIL.cbl program
 ```
 
-#### ✅ Expected Result
+#### ✅ Sample Result
 
 Bob performs a **complete syntax verification** of the generated program:
 
@@ -1978,7 +1978,7 @@ Create a Bobshell that automatically generates technical documentation for each 
 Store each documentation in docs/ with naming format: [PROGRAM]-docu-technique.md
 ```
 
-### ✅ Expected Result
+### ✅ Sample Result
 
 Bob creates **`tools/generate-program-docs.bobshell`**:
 

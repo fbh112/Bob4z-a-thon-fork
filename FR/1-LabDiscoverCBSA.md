@@ -171,7 +171,7 @@ Récupère le répertoire nommé "src/base" du repository GitHub https://github.
 ```
 
 
-### ✅ Résultat Attendu 
+### ✅ Exemple de résultat 
 
 Bob exécute les commandes suivantes :
 
@@ -266,7 +266,7 @@ Vous venez de rejoindre l'équipe de maintenance de cette application. Vous disp
 ### Remarques liminaires
 
 
-- <span style="color: red;">Bob s'appuie sur l'agentique IA, qui par définition n'est pas déterministe. Pour certains exercices, vous pourrez donc constater de lègères différences entre votre résulat et celui décrit dans ces lab. Et certaines fois, vous aurez à ajouter des instructions supplémentaires à Bob pour obtenir le résultat attendu. C'est, de manière générale, l'approche qui faut avoir avec Bob: il arrive toujours au résultat, mais il faut parfois prendre un chemin différent pour y arriver.</span>
+- <span style="color: red;">Bob s'appuie sur l'agentique IA, qui par définition n'est pas déterministe. Pour certains exercices, vous pourrez donc constater de lègères différences entre votre résulat et celui décrit dans ces lab. Et certaines fois, vous aurez à ajouter des instructions supplémentaires à Bob pour obtenir le Exemple de résultat. C'est, de manière générale, l'approche qui faut avoir avec Bob: il arrive toujours au résultat, mais il faut parfois prendre un chemin différent pour y arriver.</span>
 - **Les décomptes faits par IA peuvent s'avérer inexactes. Il faut donc privilégier les calculs pas l'inginiérie plutôt que par l'IA.**
 - IBM IBM Bob Premium Package for Z s'appuie sur des méta données déjà existantes ou qu'il construit dans une BDD locale. Dans la discussion avec Bob, il pourra éventuellement demander s'il faut utiliser un repo centralisé des méta données (ex: Souhaitez-vous utiliser le service Z Understand pour une analyse complète des dépendances, ou analyser uniquement l'espace de travail local ?). **Dans le cadre de ce lab, nous n'utilisons pas de service Z Understand.**
 - Dans les différents exercices à suivre, Bob pourra proposer différentes options en réponse à un prompt. Il est important de choisir la bonne option pour obtenir le résultat souhaité. Quoiu'il en soit vous pourrez toujours revenir en arrière et tester une autre option.
@@ -333,7 +333,7 @@ Définis une convention de nommage standard pour tous les documents et outils g�
 Ajoute dans AGENTS.md des règles d'organisation pour la documentation et les scripts, avec un format de nommage homogène et des exemples.
 ```
 
-### ✅ Résultat Attendu
+### ✅ Exemple de résultat
 
 Bob créer un document (.md) pour stocker les règles. Il va soit mettre à jour le fichier **`AGENTS.md`**, soit mettre à jour un document dans le répertoire **.bob/rules/xxxx.md**. Il créera une section dédiée aux conventions et pourra créer un documents spécifique pour détailler les conventions de nommage :
 
@@ -390,7 +390,7 @@ Définis une convention Bob imposant le français comme langue par défaut pour 
 ```
 
 
-### ✅ Résultat Attendu
+### ✅ Exemple de résultat
 
 Bob met à jour le fichier **`AGENTS.md`** avec une nouvelle règle.
 ```markdown
@@ -503,7 +503,7 @@ Bob va :
 ***Afficher la configuration détectée pour confirmation***
 ***Mettre à jour AGENTS.md avec les informations non-évidentes***
 
-### ✅ Résultat Attendu
+### ✅ Exemple de résultat
 
 
 **Fichiers modifiés :**
@@ -565,7 +565,7 @@ Returns up to 200 of the top variables used in the BANKDATA program. These varia
 '''
 
 
-### ✅ Résultat Attendu
+### ✅ Exemple de résultat
 
 Dictionnaire de données créé avec succès pour l'application bancaire CBSA.
 
@@ -643,7 +643,7 @@ Dresse la cartographie des composants de CBSA : programmes COBOL, copybooks, map
 
 Bob va scanner, analyser et documenter tous les composants de l'application en créant un inventaire structuré. Il va utiliser l'outil Premium for z ***execute_sql_query*** pour accèder à la base des méta-données pour extraire les informations des sources et génère un document Markdown structuré.
 
-### ✅ Résultat Attendu
+### ✅ Exemple de résultat
 
 **Fichier créé : `docs/CBSA-INV***.md`**
 
@@ -707,7 +707,7 @@ Produis un diagramme Draw.io de l'architecture CBSA avec les couches fonctionnel
 Documente visuellement l'architecture de CBSA dans un fichier Draw.io en représentant programmes, bases de données et dépendances majeures.
 ```
 
-### ✅ Résultat Attendu
+### ✅ Exemple de résultat
 
 **Fichier créé : `docs/CBSA-ARCHITECTURE.drawio`**
 
@@ -790,7 +790,7 @@ Génére la documentation de BANKDATA.
 ```text
 /generate-doc BANKDATA
 ````
-### ✅ Résultat Attendu
+### ✅ Exemple de résultat
 
 IBM Bob Premium Package for Z utilise un skill specialisé pour générer des documents techniques détaillés à partir du code source COBOL (whole-file-explanation) et un outil spécifique (explnation_type)). Si vous n'avez pas précisé à qui s'adresse l'éxplication, Bob proposera de choisir entre 3 progils ARCHITECT, DEVELOPER, BUSINESS.
 
@@ -910,7 +910,7 @@ Commencer par identifier les variables d'un programme. Puis, affiner la descript
 Quelles sont les variables utilisées dans INQACCCU?
 ```
 
-### ✅ Résultat Attendu
+### ✅ Exemple de résultat
 
 Analyse des variables du programme INQACCCU terminée avec succès.
 
@@ -939,7 +939,7 @@ Le dictionnaire de données contient maintenant les définitions métier pour le
 Comment est utilisée la variable SORTCODE dans l'application?
 ```
 
-### ✅ Résultat Attendu
+### ✅ Exemple de résultat
 
 Analyse de l'utilisation de la variable SORTCODE dans l'application CBSA.
 
@@ -1030,7 +1030,7 @@ Extraire et sauvegarder dans un fichier md, les règles métier de @cobol_src/BN
 - cibler le prompt sur le module cible
 - demander les règles métier implicites
 
-### ✅ Résultat Attendu
+### ✅ Exemple de résultat
 
 Création du fichier BNK1CAC-business-rules.md.
 
@@ -1054,7 +1054,7 @@ ajouter un test pour vérifier qu'un numéro client doit commencer par 99
 
 Une ampoule apparaît au début de la phrase. Cliquer dessus et sélectionner "Ajouter à IBM Bob"
 
-### ✅ Résultat Attendu 
+### ✅ Exemple de résultat 
 
 Dans la zone de prompt d'IBM Bob apparaît :
 ```text
@@ -1066,7 +1066,7 @@ ajouter un test pour vérifier qu'un numéro client doit commencer par 99
 
 Envoyer le prompt à IBM Bob
 
-### ✅ Résultat Attendu 
+### ✅ Exemple de résultat 
 1 - BNK1CAC est mis à jour avec une nouvelle règle commençant à la ligne 459 :
 ```text
            IF CUSTNOI(1:2) NOT = '99'
@@ -1134,7 +1134,7 @@ Fournis :
 Réalise une analyse d'impact complète pour transformer le SORTCODE fixe en donnée multi-agences, avec risques, effort et migration.
 ```
 
-### ✅ Résultat Attendu
+### ✅ Exemple de résultat
 
 **Fichier créé : `docs/CBSA-archi-impact***.md`**
 
@@ -1233,7 +1233,7 @@ Rédige un guide métier simple expliquant comment un guichetier consulte les co
 Documente pas à pas le parcours de consultation des comptes client dans CBSA, avec un ton pédagogique et des exemples visuels.
 ```
 
-### ✅ Résultat Attendu
+### ✅ Exemple de résultat
 
 **Fichier créé : `docs/CBSA-guide-Consultation comptes.md`**
 
@@ -1308,7 +1308,7 @@ On pourra au préalable vérifier les modes de recherche actuels pour s'assurer 
 Quel est le plan pour implémenter la recherche d'un client par email ?
 ```
 
-#### ✅ Résultat Attendu
+#### ✅ Exemple de résultat
 
 Bob crée **`docs/CBSA-plan-recherche-email.md`** :
 ```
@@ -1370,7 +1370,7 @@ Le mode Z Code excelle dans l'analyse de patterns et l'extraction de règles mé
 Selon le plan d'implémentation, mets à jour les structures de données CUSTOMER
 ```
 
-#### ✅ Résultat Attendu
+#### ✅ Exemple de résultat
 
 Bob crée/modifie les fichiers dans le répertoire `baseupdated/cobol_copy/` :
 
@@ -1490,7 +1490,7 @@ Le mode Z Code excelle dans la génération de code COBOL pour Z/OS.
 Crée le programme INQEMAIL selon le plan d'implémentation
 ```
 
-#### ✅ Résultat Attendu
+#### ✅ Exemple de résultat
 
 Bob développe **`baseupdated/cobol_src/INQEMAIL.cbl`** :
 
@@ -1642,7 +1642,7 @@ Le mode Z Code excelle dans la génération de code COBOL pour Z/OS.
 Vérifie la syntaxe du programme INQEMAIL.cbl
 ```
 
-#### ✅ Résultat Attendu
+#### ✅ Exemple de résultat
 
 Bob effectue une **vérification syntaxique complète** du programme généré :
 
@@ -1779,7 +1779,7 @@ Crée un Bobshell qui génère automatiquement la documentation technique de cha
 Stocke chaque documentation dans docs/ avec le format de nommage : [PROGRAMME]-docu-technique.md
 ```
 
-### ✅ Résultat Attendu
+### ✅ Exemple de résultat
 
 Bob crée **`./bobshells/generate-cobol-docs.sh`** :
 

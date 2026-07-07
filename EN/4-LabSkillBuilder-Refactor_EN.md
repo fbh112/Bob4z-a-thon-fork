@@ -46,7 +46,7 @@ Bob will:
    - `CBSA-example.md`: Examples of compliant code
    - `skills.md`: Skill definition
 
-#### ✅ Expected Result
+#### ✅ Sample Result
 
 Bob creates three files documenting:
 - Naming conventions (programs, variables, paragraphs)
@@ -206,7 +206,7 @@ Bob will:
 4. Document the access patterns
 5. Assess migration complexity for each operation
 
-#### ✅ Expected Result
+#### ✅ Sample Result
 
 Bob generates a detailed analysis report with:
 - VSAM files used (type, keys, length)
@@ -237,7 +237,7 @@ Bob will:
 4. Propose the appropriate indexes
 5. Document the design choices
 
-#### ✅ Expected Result
+#### ✅ Sample Result
 
 Bob generates:
 - Complete DDL scripts for the CUSTOMER table
@@ -282,7 +282,7 @@ Bob launches the **interactive refactoring workflow** in 4 phases:
 - Generates a BEFORE/AFTER comparison report
 - Documents all changes
 
-#### ✅ Expected Result
+#### ✅ Sample Result
 
 Refactored COBOL program with:
 - All VSAM operations replaced by SQL
