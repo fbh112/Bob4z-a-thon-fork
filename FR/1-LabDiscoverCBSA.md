@@ -138,11 +138,11 @@ Récupérer le code source de l'application CBSA depuis GitHub et préparer le w
 
 ### 🎯 Prérequis
 
-- avoir installé IBM Bob sur une station de travail (MacOS, Linux ou MSWindows)
+- avoir installé IBM Bob Version 2 sur une station de travail (MacOS, Linux ou MSWindows)
 - avoir installé les extensions suivantes:
     - Zowe Explorer 3.5.0 (ou plus)
-    - IBM Z Open Editor 6.5.0 (ou plus)
-    - IBM Bob Premium Package for Z 0.2.1 (ou plus)
+    - IBM Z Open Editor 6.6.0 (ou plus)
+    - IBM Bob Premium Package for Z 3.0.0 (ou plus)
     - Mermaid (dervière version)
     - Draw.io Integration (dernière version)
 
@@ -206,7 +206,7 @@ Avant de commencer le lab, assurez-vous d'avoir :
 
 ### 🎯 Vous êtes prêt !
 
-Une fois le workspace préparé avec Bob, vous pouvez commencer l'Exercice 1.
+Une fois le workspace préparé avec Bob, vous pouvez commencer l'Exercice 1 en créant une nouvelle tâche Bob.
 
 ---
 
