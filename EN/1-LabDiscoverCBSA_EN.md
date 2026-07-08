@@ -149,51 +149,42 @@ Retrieve the CBSA application source code from GitHub and prepare the workspace 
 
 **Mode: 💻 Agent**
 
-Code mode allows executing system commands and manipulating files.
+Agent mode allows executing system commands and manipulating files.
 
 ### 📝 Context
 
 Before starting the analysis, you need to retrieve the CBSA application source code from the official GitHub repository. We will use Bob to automate this preparation.
-Open Bob, click on the **File>Open Folder** menu and choose the ~/CBSA directory.
+First, create a CBSA directory in your home directory.
+Open Bob IDE, click on the **File>Open Folder** menu and choose the ~/CBSA directory.
 
 
 ### 💬 Bob Prompt
 
 ```
-Retrieve the directory named "src/base" from the GitHub repository https://github.com/cicsdev/cics-banking-sample-application-cbsa.git and place it in this workspace.
+Retrieve the sub-directory named "src/base" in the CBSA directory from the GitHub repository https://github.com/ovallod/Bob4z-a-thon.git t and place it in the current workspace folder. Then remove any temporary working directory you would have created.
 ```
 
 #### Alternative
 ```
-Retrieve the directory named "src/base" from the GitHub repository https://github.com/cicsdev/cics-banking-sample-application-cbsa.git and place it in a new folder named CBSA in my home directory
+Retrieve the directory named "src/base" from CBSA in GitHub repository https://github.com/ovallod/Bob4z-a-thon.git and place it in a new folder named CBSA in the current workspace.
 ```
 
 
 ### ✅ Sample Result
 
-Bob executes the following commands:
+Bob executes the git commands, the sub-directory copy and the removal of the working directory where the git repository was cloned.
 
-```bash
-# Clone the repository in a temporary directory
-git clone --depth 1 --filter=blob:none --sparse https://github.com/cicsdev/cics-banking-sample-application-cbsa.git temp_repo 
-cd temp_repo 
-git sparse-checkout set src/base 
-cd .. 
-mv temp_repo/src/base . 
-rm -rf temp_repo
+
+**Prompt output**:
 ```
+Confirms the "src/base" directory from the GitHub repository has been successfully retrieved.
 
-**Console output**:
-```
-The "src/base" directory from the GitHub repository has been successfully retrieved in the CBSA directory.
+Prompt ends with the detail of the retrieved context:
+README.md 
+bms_src/:  CICS screens
+cobol_copy/: copybooks 
+cobol_src/: COBOL programs 
 
-Retrieved content:
-
-README.md and zapp.yaml at the root
-bms_src/: 9 BMS files (Basic Mapping Support) for CICS screens
-cobol_copy/: 42 COBOL copybooks (.cpy) for data structures
-cobol_src/: 29 COBOL programs (.cbl) for business logic
-The "base" directory contains a complete CICS banking application with COBOL programs, copybooks, and BMS screen definitions.
 ```
 
 

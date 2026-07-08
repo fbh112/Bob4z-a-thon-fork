@@ -151,51 +151,39 @@ Récupérer le code source de l'application CBSA depuis GitHub et préparer le w
 
 **Mode : 💻 Agent**
 
-Le mode Code permet d'exécuter des commandes système et de manipuler des fichiers.
+Le mode Agent permet d'exécuter des commandes système et de manipuler des fichiers.
 
 ### 📝 Contexte
 
 Avant de commencer l'analyse, vous devez récupérer le code source de l'application CBSA depuis le repository GitHub officiel. Nous allons utiliser Bob pour automatiser cette préparation. 
-Ouvrir Bob, cliquer sur le menu **File>Open Folder** et choisissez le répertoire ~/CBSA.
+Créer un répertoire CBSA dans votre "home" directory.
+Ouvrir Bob IDE, cliquer sur le menu **File>Open Folder** et choisissez le répertoire ~/CBSA.
 
 
 ### 💬 Prompt Bob 
 
 ```
-Récupère le répertoire nommé "src/base" du repository GitHub https://github.com/cicsdev/cics-banking-sample-application-cbsa.git et place le dans ce workspace.
+Récupère le sous-répertoire nommé "src/base" dans le répertoire CBSA du repository GitHub https://github.com/ovallod/Bob4z-a-thon.git et place le dans ce workspace. Supprime le répertoire de travail qui aurait été créé.
 ```
 
-#### Alternative
-```
-Récupère le répertoire nommé "src/base" du repository GitHub https://github.com/cicsdev/cics-banking-sample-application-cbsa.git et place le dans un nouveau dossier nommé CBSA dans ma home directory"
-```
 
 
 ### ✅ Exemple de résultat 
 
-Bob exécute les commandes suivantes :
+Bob IDE exécute les commandes got copy et remove.
 
-```bash
-# Cloner le repository dans un répertoire temporaire
-git clone --depth 1 --filter=blob:none --sparse https://github.com/cicsdev/cics-banking-sample-application-cbsa.git temp_repo 
-cd temp_repo 
-git sparse-checkout set src/base 
-cd .. 
-mv temp_repo/src/base . 
-rm -rf temp_repo
-```
+
 
 **Console de sortie** :
 ```
-Le répertoire "src/base" du repository GitHub a été récupéré avec succès dans le répertoire CBSA.
+Confirmation que le répertoire "src/base" du repository GitHub a été récupéré avec succès dans le répertoire CBSA.
 
-Contenu récupéré :
+Liste du contenu récupéré :
 
-README.md et zapp.yaml à la racine
-bms_src/ : 9 fichiers BMS (Basic Mapping Support) pour les écrans CICS
-cobol_copy/ : 42 copybooks COBOL (.cpy) pour les structures de données
-cobol_src/ : 29 programmes COBOL (.cbl) pour la logique métier
-Le répertoire "base" contient une application bancaire CICS complète avec des programmes COBOL, des copybooks et des définitions d'écrans BMS.
+README.md 
+bms_src/ : fichiers BMS 
+cobol_copy/ : copybooks COBOL 
+cobol_src/ :  programmes COBOL (.cbl) 
 ```
 
 
