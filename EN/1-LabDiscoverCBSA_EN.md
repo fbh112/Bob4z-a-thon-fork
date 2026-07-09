@@ -164,11 +164,6 @@ Open Bob IDE, click on the **File>Open Folder** menu and choose the ~/CBSA direc
 Retrieve the sub-directory named "src/base" in the CBSA directory from the GitHub repository https://github.com/ovallod/Bob4z-a-thon.git t and place it in the current workspace folder. Then remove any temporary working directory you would have created.
 ```
 
-#### Alternative
-```
-Retrieve the directory named "src/base" from CBSA in GitHub repository https://github.com/ovallod/Bob4z-a-thon.git and place it in a new folder named CBSA in the current workspace.
-```
-
 
 ### ✅ Sample Result
 
@@ -296,14 +291,22 @@ Write your own prompt to ask Bob to define naming and organization conventions f
 - specify target directories ([`docs/`](docs) for documentation, [`tools/`](tools) for tools)
 - impose a structured naming convention
 - provide concrete examples of expected format
-- explicitly request the update of [`AGENTS.md`](AGENTS.md)
+- you may explicitly request the creation/update of [`AGENTS.md`](AGENTS.md)
 
 ### ✅ Recommended Prompt
 
 ```text
-Create the following Bob rules: - Documents must be stored in the docs/ directory, tools in tools/, - Document names must follow these conventions:
+Create the following Bob rules (file .bob/rules): 
+- Documents must be stored in the docs/ directory.Documents specific to a program should be stored in a sub-directory of docs/ using the program name. For example documents about BNKMENU should be stored in docs/BNKMENU/.
+- Tools must be stored in the tools/ directory.
+- Schemas, drawings and graphs must be stored in graph/ directory.
+
+Document, schemas, drawings and graphs names must follow these conventions:
+
 -- Prefix: program name (e.g., BNKMENU) if the document concerns a specific program, or CBSA for the application, or GLOBAL for cross-cutting documents
+
 -- Document type: analysis, archi, docu, inv, plan, spec
+
 -- Format: [PREFIX]-[TYPE]-[description].md
 ```
 
@@ -319,7 +322,7 @@ Add rules in AGENTS.md for organizing documentation and scripts, with a consiste
 
 ### ✅ Sample Result
 
-Bob updates the **`AGENTS.md`** file with a dedicated section for conventions and may create a specific document to detail naming conventions:
+Bob create .bob/rules or updates the **`AGENTS.md`** file with a dedicated section for conventions and may create a specific document to detail naming conventions:
 
 ```markdown
 
@@ -329,10 +332,7 @@ Bob updates the **`AGENTS.md`** file with a dedicated section for conventions an
 
 - **`docs/`**: All project documents (analyses, architectures, specifications, etc.)
 - **`tools/`**: Scripts and utility tools for the project
-- **`base/`**: CICS banking application source code
-  - `cobol_src/`: COBOL programs
-  - `cobol_copy/`: COBOL copybooks
-  - `bms_src/`: BMS screen definitions
+...
 
 ## Document Naming Conventions
 ...
@@ -342,45 +342,6 @@ Bob updates the **`AGENTS.md`** file with a dedicated section for conventions an
 #### Note:
 Bob may create the rules in the .bob/rules.md file rather than in AGENTS.md. It will take the rules into account the same way, whether in one file or the other
 
-### ✍️ Your Prompt to complete the rules.
-
-Write your own prompt to ask Bob to add a global rule for generating documentation in English.
-
-**Expected in your prompt:**
-- explicitly request the addition of a Bob rule
-- specify that this rule concerns the output language
-- request persistence of this rule in [`AGENTS.md`](AGENTS.md)
-
-### ✅ Recommended Prompt
-
-```text
-Add a Bob rule: generate documentation in English and respond in English.
-```
-
-### 🔀 Prompt Variants
-
-```text
-Add a rule in AGENTS.md indicating that all generated documentation must be written in English.
-```
-
-```text
-Define a Bob convention imposing English as the default language for documentation deliverables.
-```
-
-
-### ✅ Sample Result
-
-Bob updates the **`AGENTS.md`** file with a new rule.
-```markdown
-## Documentation Language
-
-**IMPORTANT RULE**: All documentation must be written in English.
-
-- Documents in `docs/` must be in English
-- Comments in tools (`tools/`) must be in English
-- README and documentation files must be in English
-- Only file names, variables, and source code can remain in their original language
-```
 
 ### 🎓 What You Learn
 
@@ -439,6 +400,8 @@ You have a CBSA project that you are discovering. You need to:
 - Identify the languages used
 - Locate important files
 - Build metadata that will facilitate project analysis and the data dictionary that will enable more relevant documentation.
+
+### ✍️ Start a new bob task (good practice)
 
 ### ✍️ Your Prompt
 

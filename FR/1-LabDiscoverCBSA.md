@@ -159,6 +159,7 @@ Avant de commencer l'analyse, vous devez récupérer le code source de l'applica
 Créer un répertoire CBSA dans votre "home" directory.
 Ouvrir Bob IDE, cliquer sur le menu **File>Open Folder** et choisissez le répertoire ~/CBSA.
 
+C'est aussi le moment pour passer le Bob IDE en français. Allez sur le "Settings" IBM BOB (roue crantée) et cliquez sur "Configure Language".
 
 ### 💬 Prompt Bob 
 
@@ -292,6 +293,8 @@ Et préciser que la documentation sera rédigée en français.
 
 Le mode Z Code est spécialisé pour l'analyse et la documentation des applications mainframe (COBOL, PL/I, JCL, Assembler, REXX).
 
+### 🔧 Créez une nouvelle tâche dans Bob (bonne pratique)
+
 ### ✍️ Votre Prompt
 
 Rédigez votre propre prompt pour demander à Bob de définir des conventions de nommage et d'organisation pour les ressources générées.
@@ -300,14 +303,23 @@ Rédigez votre propre prompt pour demander à Bob de définir des conventions de
 - préciser les répertoires cibles ([`docs/`](docs) pour la documentation, [`tools/`](tools) pour les outils)
 - imposer une convention de nommage structurée
 - donner des exemples concrets de format attendu
-- demander explicitement la mise à jour de [`AGENTS.md`](AGENTS.md)
+- demander éventuellement la mise à jour de [`AGENTS.md`](AGENTS.md)
 
 ### ✅ Prompt Recommandé
 
 ```text
-Crée les règles Bob suivantes : - Les documents doivent être stockés dans le répertoire docs/, les outils dans tools/, - Les noms de documents doivent suivre ces conventions :
+Crée les règles Bob (fichier .bob/rules/) suivantes : 
+
+Les documents doivent être stockés dans le répertoire docs/. Si le document s'applique à un programme, il doit être stocké dans un sous répertoire de docs/ qui a le nom du programme. Par example, les documents  sur le programme BNKMENU doivent être dans docs/BNKMENU/. 
+Les outils doivent être stockés dans le répertoire tools/.
+Les schémas, dessins et graphes doivent être stockés dans le répertoire graph/.
+
+Les noms de documents doivent suivre ces conventions :
+
 -- Préfixe : nom du programme (ex: BNKMENU) si le document concerne un programme spécifique, ou CBSA pour l'application, ou GLOBAL pour les documents transverses
+
 -- Type de document : analyse, archi, docu, inv, plan, spec
+
 -- Format : [PREFIXE]-[TYPE]-[description].md
 ```
 
@@ -333,10 +345,7 @@ Bob créer un document (.md) pour stocker les règles. Il va soit mettre à jour
 
 - **`docs/`** : Tous les documents de projet (analyses, architectures, spécifications, etc.)
 - **`tools/`** : Scripts et outils utilitaires pour le projet
-- **`base/`** : Code source de l'application bancaire CICS
-  - `cobol_src/` : Programmes COBOL
-  - `cobol_copy/` : Copybooks COBOL
-  - `bms_src/` : Définitions d'écrans BMS
+...
 
 ## Conventions de Nommage des Documents
 ...
@@ -358,13 +367,7 @@ Rédigez votre propre prompt pour demander à Bob d'ajouter une règle globale d
 ### ✅ Prompt Recommandé
 
 ```text
-Ajoute une règle Bob : génére les documentations en français et réponds<img width="468" height="25" alt="image" src="https://github.com/user-attachments/assets/b39301bc-a81d-4e99-9d37-80f4e027d0ab" />
-<img width="468" height="25" alt="image" src="https://github.com/user-attachments/assets/0457dcd2-8432-40a5-8b83-55815d9c84fd" />
-<img width="468" height="25" alt="image" src="https://github.com/user-attachments/assets/95418bea-9627-4bf1-9f21-fe4e4924186c" />
-<img width="468" height="25" alt="image" src="https://github.com/user-attachments/assets/254066e2-8b15-4cc0-bce0-631fae5466a3" />
-<img width="468" height="25" alt="image" src="https://github.com/user-attachments/assets/83ff5ad2-0ef0-4f67-a430-8fe34e7dedfd" />
-<img width="468" height="25" alt="image" src="https://github.com/user-attachments/assets/c59da4c4-8e4a-43c2-abb7-49014ed65e20" />
- en français. 
+Ajoute une règle Bob : génére les documentations en français et réponds en français. 
 ```
 
 ### 🔀 Variantes de Prompt
@@ -394,7 +397,7 @@ Bob met à jour le fichier **`AGENTS.md`** avec une nouvelle règle.
 
 ### 🎓 Ce que vous apprenez
 
-- **Agents.md** (ou **.bob/rules.md**) fournit les règles qui seront appliquées au workspace.
+- **Agents.md** (ou **.bob/rules.md**) fournit les règles qui seront appliquées à l'espace de travail.
 
 - **Organisation structurée :** Un workspace bien organisé facilite la navigation et la maintenance
 - **Conventions claires :** Des règles de nommage cohérentes permettent de retrouver rapidement les documents
@@ -435,6 +438,7 @@ Bob met à jour le fichier **`AGENTS.md`** avec une nouvelle règle.
 Initialiser le workspace et créer le fichier `AGENTS.md` qui servira de guide pour Bob et les développeurs.
 Créer les méta-données à partir des programmes et ressources existants, et générer le dictionnaire de données.
 
+### 🔧 Créez une nouvelle tâche dans Bob (bonne pratique)
 
 ### 🔧 Mode Bob à Utiliser
 
@@ -489,12 +493,12 @@ Bob va :
 ***Localiser la documentation technique***
 ***Mapper les programmes COBOL à leur documentation***
 ***Afficher la configuration détectée pour confirmation***
-***Mettre à jour AGENTS.md avec les informations non-évidentes***
+***Mettre à jour ou créer AGENTS.md avec les informations non-évidentes***
 
 ### ✅ Exemple de résultat
 
 
-**Fichiers modifiés :**
+**Fichiers modifiés/créés :**
 
 1. **`AGENTS.md`** (racine du workspace)
 
