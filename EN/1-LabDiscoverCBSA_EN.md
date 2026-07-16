@@ -451,21 +451,14 @@ Bob will:
 
 1. **`AGENTS.md`** (workspace root)
 
-### ✍️ Your Prompt to generate the data dictionary
+### ✍️ Your Action to generate the data dictionary
 
-Write your own prompt to ask Bob to generate the data dictionary. It should extract metadata from application programs to store them in a local database.
+To initiate the workflow, click the Start Workflow icon (Play button), select "Generate data dictionary". Then click "Start".
+Bob will ask you to select the program from which the data dictionary will be build: BANKDATA (you can only select one program).
 
-**Expected in your prompt:**
-- request data dictionary generation
-
-### ✅ Recommended Prompt
-
-```text
-Create the application data dictionary
-```
 ### ⚙️ What Bob Does Automatically
 
-Bob will use specific ***Skills*** and ***tools*** from the ***Premium package for Z***. It will:
+Bob will use specific ***Skills*** and ***tools*** from the ***IBM Bob Premium Package for Z***. It will:
 - Check for .bobz/local-settings.json and database existence
 - **Scan COBOL programs if necessary**
 - Extract variables from programs
@@ -475,7 +468,7 @@ Bob will use specific ***Skills*** and ***tools*** from the ***Premium package f
 
 ### ✅ Points of Attention
 
-You will observe that Bob will use specific ***skills*** and ***tools*** from the ***Premium package for Z***. It will notably use the following tools:
+You will observe that Bob will use specific ***skills*** and ***tools*** from the ***IBM Premium Package for Z***. It will notably use the following tools:
 - `scan_program` to scan COBOL programs
 - `get_variables` to extract variables from programs
 - `edit_data_dictionary` to create the database
