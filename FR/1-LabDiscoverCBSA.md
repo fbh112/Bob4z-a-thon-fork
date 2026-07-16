@@ -423,7 +423,6 @@ Bob met à jour le fichier **`AGENTS.md`** avec une nouvelle règle.
 
 | Sans Bob | Avec IBM Bob Premium Package for Z |
 |----------|------------------------|
-| 2-3 jours d'exploration manuelle | 2-3 minutes d'analyse automatique |
 | Documentation incomplète | Documentation exhaustive et structurée |
 | Risque d'oublier des patterns critiques | Tous les patterns identifiés automatiquement |
 | Pas de standardisation | Conventions établies dès le départ |
@@ -467,10 +466,10 @@ Rédigez votre propre prompt pour demander à Bob d'initialiser et d'analyser co
 ### ✅ Prompt Recommandé
 
 ```text
-/init
+/init avec la création de la base locale de métadonnées 
 ```
 
-**Note :** La commande `init` est une commande spéciale de IBM Bob Premium Package for Z qui déclenche une analyse complète du workspace.
+**Note :** La commande `/init` est une commande spéciale de IBM Bob Premium Package for Z qui déclenche une analyse complète du workspace.
 
 ### 🔀 Variantes de Prompt
 
@@ -502,17 +501,15 @@ Bob va :
 
 1. **`AGENTS.md`** (racine du workspace)
 
-### ✍️ Votre Prompt pour générer le dictionnaire de données
+### ✍️ Votre Action pour générer le dictionnaire de données
 
-Rédigez votre propre prompt pour demander à Bob de générer le dictionnaire de données. Il devrait à cette occasion extraire les méta-données des programmes de l'application pour les stocker dans une BDD locale. 
+En mode "Z Code", cliquez sur l'icone "Play" de la barre Bob et démarrez le "Workflow" "Generate data dictionary". Sélectionez le programme dont les variables doivent être inspectées: BANKDATA
 
-**Attendu dans votre prompt :**
-- demander la génération du dictionnaire de données
 
-### ✅ Prompt Recommandé
+### ✅ Prompt Recommandé (méthode alternative)
 
 ```text
-Crée le dictionnaire de données de l'application
+Crée le dictionnaire de données du programme BANKDATA
 ```
 ### ⚙️ Ce que Bob fait automatiquement
 
@@ -523,6 +520,8 @@ Bob va utiliser des ***Skill*** et ***tools*** spécifiques du ***Premium packag
 - **Créer le dictionnaire de données DD.json**
 - Mettre à jour AGENTS.md avec l'emplacement du dictionnaire
 
+ZOpen Editor créé automatiquement un fichier zapp.yaml (description de l'emplacement des composants de l'application)
+
 
 ### ✅ Points d'attention
 
@@ -531,7 +530,7 @@ Vous observerez que Bob va utiliser des ***skills*** et ***tools*** spécifiques
 - `get_variables` pour extraire les variables des programmes
 - `edit_data_dictionary` pour créer la base de données
 
-Voici les informations intémédiaires fournies par Bob :
+Voici les informations intémédiaires fournies par Bob (si la base de métadonnées n'a pas été créé précédement):
 '''
 Aucune base de données n'a été trouvée pour les programmes COBOL. Je dois scanner les programmes pour créer la base de données d'analyse. Je vais scanner le répertoire contenant les programmes COBOL.
 
