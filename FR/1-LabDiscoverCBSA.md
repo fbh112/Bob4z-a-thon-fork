@@ -729,7 +729,7 @@ Rédigez votre propre prompt pour demander un diagramme d'architecture visuel de
 ```text
 Construit un schéma d'architecture (en draw.io) illustrant les dépendances des programmes de l'application CBSA.
 ```
-
+Si Bob vous demande l'autorisation de se connecter à zUnderstand, déclinez et il utilisera la base de donnée locale.
 
 ### 🔀 Variantes de Prompt
 
@@ -743,7 +743,7 @@ Documente visuellement l'architecture de CBSA dans un fichier Draw.io en représ
 
 ### ✅ Exemple de résultat
 
-**Fichier créé : `docs/CBSA-ARCHITECTURE.drawio`**
+**Fichier créé : `graph/CBSA-ARCHITECTURE.drawio`**
 
 Diagramme éditable montrant 4 couches :
 - Présentation (terminaux 3270)
@@ -759,10 +759,12 @@ Modifie le diagramme avec des liens droits (non orthogonaux).
 Dans le diagramme, distingue les différents types d'accès (SELECT, INSERT, DELETE, UPDATE) sur les tables, par des couleurs distinctes.
 ```
 ```text
-change @docs/CBSA-archi-dependances.drawio pour que tous les textes soient écrits en noir
+change @graph/CBSA-archi-....drawio pour que tous les textes soient écrits en noir
 ```
 
-**Comparer ce résultat à celui du prompt :**
+Pour éviter de répéter ces instructions pour chaque graphique, il est possible de créer une compétence ou des règles.
+
+**Comparer ce résultat à celui du prompt (dans une nouvelle tâche) :**
 
 ```text
 génére un graphe d'appel des programmes
@@ -772,7 +774,7 @@ génére un graphe d'appel des programmes
 
 | Sans Bob | Avec IBM Bob Premium Package for Z |
 |----------|------------------------|
-| 2-3 jours de création manuelle | 5 minutes de génération automatique |
+| 1-2 jours de création manuelle | 5 minutes de génération automatique |
 | Diagramme statique (PowerPoint) | Format éditable (Draw.io) |
 | Mise à jour difficile | Régénération facile |
 
@@ -808,73 +810,26 @@ Rédigez votre propre prompt pour demander une documentation technique complète
 - demander d'expliquer ou documenter le pgm
 - vous n'êtes pas obligé de préciser les sections de l'explication, IBM Bob Premium Package for Z fournissant une structure de document par défaut.
 
-### ✅ Prompt Recommandé
+### ✅ Action Recommandée
 
 ```text
-Explique le pgm BANKDATA
+Cliquez sur le bouton "Play" de Bob, puis démarrez "Explain code". Sélectionnez BANKDATA.cbl. Sélectionnez la perspective d'explication souhaitée.
 ```
+Vous pouvez tester les 3 perspectives. Elles vont créer des fichiers différents dont le contenu sera spécifique à l'audience sélectionnée.
 
+IBM Bob Premium Package for Z utilise un skill specialisé pour générer des documents techniques détaillés à partir du code source COBOL (whole-file-explanation) et un outil spécifique (explanation_type)). Si vous n'avez pas précisé à qui s'adresse l'éxplication, Bob proposera de choisir entre 3 profils ARCHITECT, DEVELOPER, BUSINESS.
 ### 🔀 Variantes de Prompt
 
 ```text
-Génére la documentation de BANKDATA.
+/explain @base/cobol_src/BANKDATA.cbl
 ```
-**Notez que vous pouvez générer une documentation formatée en utilisant le mot réserver  `/generate-doc`. Alors vous observerez qu'un skill spécifique au Premium Package for Z estis utilsé pour cette génération.**
-
-```text
-/generate-doc BANKDATA
-````
+Dans ce le niveau d'explication s'adapte au mode Bob (Z Code ou Z Architect).
 ### ✅ Exemple de résultat
 
-IBM Bob Premium Package for Z utilise un skill specialisé pour générer des documents techniques détaillés à partir du code source COBOL (whole-file-explanation) et un outil spécifique (explnation_type)). Si vous n'avez pas précisé à qui s'adresse l'éxplication, Bob proposera de choisir entre 3 progils ARCHITECT, DEVELOPER, BUSINESS.
 
-Si vous demander une explication, Bob est susceptible de ne pas l'enregistrer dans un fichier. Il faut alors le demander explicitement.
-```text
-enregistre l'explication de Bankdata
-```
+**Fichier(s) créé(s) : `docs/explain/xxxxxx-BANKDATA.md`**
+ou (/explain) **`docs/BANKDATA/BANKDATA/docu....md`**
 
-**Fichier créé : `docs/BANKDATA-xxx-xxxxxxx.md`**
-
-Document structuré contenant :
-
-#### 1. Vue d'Ensemble
-
-```markdown
-# Documentation Technique - BANKDATA
-
-**Programme** : BANKDATA.cbl  
-**Type** : Programme batch d'initialisation  
-**Langage** : IBM Enterprise COBOL for z/OS  
-**Auteur** : JON COLLETT
-
-## Description
-
-BANKDATA est le programme batch responsable de l'initialisation des données 
-de l'application bancaire CBSA. Il génère et peuple :
-- Le fichier VSAM CUSTOMER (données clients)
-- La table DB2 ACCOUNT (comptes bancaires)
-
-## Objectif Métier
-
-Créer un jeu de données de test cohérent pour l'application CBSA avec :
-- Génération paramétrable de clients
-- Création automatique de comptes associés
-- Données réalistes (noms, adresses, soldes)
-- Support de génération en masse
-```
-
-#### 2. Paramètres d'Entrée
-...
-
-#### 3. Structures de Données
-...
-
-## Logique de Traitement
-
-### Flux Principal
-...
-```
-```
 
 ### 🎓 Ce que vous apprenez
 
