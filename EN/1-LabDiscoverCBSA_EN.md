@@ -296,12 +296,12 @@ Write your own prompt to ask Bob to define naming and organization conventions f
 ### ✅ Recommended Prompt
 
 ```text
-Create the following Bob rules (file .bob/rules): 
-- Documents must be stored in the docs/ directory.Documents specific to a program should be stored in a sub-directory of docs/ using the program name. For example documents about BNKMENU should be stored in docs/BNKMENU/.
+Create the following Bob rules (file in .bob/rules): 
+- Documents must be stored in the docs/ directory. Documents specific to a program should be stored in a sub-directory of docs/ using the program name. For example, documents about BNKMENU should be stored in docs/BNKMENU/ directory.
 - Tools must be stored in the tools/ directory.
 - Schemas, drawings and graphs must be stored in graph/ directory.
 
-Document, schemas, drawings and graphs names must follow these conventions:
+Document, schemas, drawings and graphs file names must follow these conventions:
 
 -- Prefix: program name (e.g., BNKMENU) if the document concerns a specific program, or CBSA for the application, or GLOBAL for cross-cutting documents
 
@@ -310,7 +310,7 @@ Document, schemas, drawings and graphs names must follow these conventions:
 -- Format: [PREFIX]-[TYPE]-[description].md
 ```
 
-### 🔀 Prompt Variants
+### 🔀 Prompt Variants (to be refined)
 
 ```text
 Define a standard naming convention for all documents and tools generated in this workspace, then save it in AGENTS.md.
@@ -345,7 +345,7 @@ Bob may create the rules in the .bob/rules.md file rather than in AGENTS.md. It 
 
 ### 🎓 What You Learn
 
-- **Agents.md** (or **.bob/rules.md**) provides the rules that will be applied to the workspace.
+- **.bob/rules.md** (or **AGENTS.md**) provides the rules that will be applied to the workspace.
 
 - **Structured organization:** A well-organized workspace facilitates navigation and maintenance
 - **Clear conventions:** Consistent naming rules allow quick document retrieval
@@ -371,7 +371,6 @@ Bob may create the rules in the .bob/rules.md file rather than in AGENTS.md. It 
 
 | Without Bob | With IBM Bob Premium Package for Z |
 |----------|------------------------|
-| 2-3 days of manual exploration | 2-3 minutes of automatic analysis |
 | Incomplete documentation | Exhaustive and structured documentation |
 | Risk of missing critical patterns | All patterns automatically identified |
 | No standardization | Conventions established from the start |
@@ -416,7 +415,7 @@ Write your own prompt to ask Bob to initialize and fully analyze the workspace.
 ### ✅ Recommended Prompt
 
 ```text
-/init
+/init and create with the scan_program tool the local metadata database.
 ```
 
 **Note:** The `init` command is a special IBM Bob Premium Package for Z command that triggers a complete workspace analysis.

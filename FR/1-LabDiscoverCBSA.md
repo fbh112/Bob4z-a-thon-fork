@@ -16,7 +16,7 @@
 5. [Objectifs Pédagogiques](#5-objectifs-pédagogiques)
 6. [Exercice 0 : Définir les Règles de Nommage et d'Organisation](#exercice-0--définir-les-règles-de-nommage-et-dorganisation)
 7. [Exercice 1 : Initialisation et Analyse du Workspace](#exercice-1--initialisation-et-analyse-du-workspace)
-8. [Exercice 2 : Génération de l'Inventaire Applicatif](#exercice-2--génération-de-linventaire-applicatif)
+8. [Exercice 2 : Génération de l'Inventaire Applicatif et des Standards de Dévelopement](#exercice-2--génération-de-linventaire-applicatif-et-des-standards-de-dévelopement)
 9. [Exercice 3 : Création du Diagramme d'Architecture](#exercice-3--création-du-diagramme-darchitecture)
 10. [Exercice 4 : Documentation du Programme BANKDATA](#exercice-4--documentation-du-programme-bankdata)
 11. [Exercice 5a : Analyse des Règles Métier](#exercice-5a--analyse-des-règles-métier)
@@ -308,13 +308,13 @@ Rédigez votre propre prompt pour demander à Bob de définir des conventions de
 ### ✅ Prompt Recommandé
 
 ```text
-Crée les règles Bob (fichier .bob/rules/) suivantes : 
+Crée les règles Bob (fichier dans .bob/rules/) suivantes : 
 
-Les documents doivent être stockés dans le répertoire docs/. Si le document s'applique à un programme, il doit être stocké dans un sous répertoire de docs/ qui a le nom du programme. Par example, les documents  sur le programme BNKMENU doivent être dans docs/BNKMENU/. 
+Les documents doivent être stockés dans le répertoire docs/. Si le document s'applique à un programme, il doit être stocké dans un sous répertoire de docs/ qui a le nom du programme. Par example, les documents  sur le programme BNKMENU doivent être dans e répertoire docs/BNKMENU/. 
 Les outils doivent être stockés dans le répertoire tools/.
 Les schémas, dessins et graphes doivent être stockés dans le répertoire graph/.
 
-Les noms de documents doivent suivre ces conventions :
+Les noms de fichiers des documents doivent suivre ces conventions :
 
 -- Préfixe : nom du programme (ex: BNKMENU) si le document concerne un programme spécifique, ou CBSA pour l'application, ou GLOBAL pour les documents transverses
 
@@ -323,7 +323,7 @@ Les noms de documents doivent suivre ces conventions :
 -- Format : [PREFIXE]-[TYPE]-[description].md
 ```
 
-### 🔀 Variantes de Prompt
+### 🔀 Variantes de Prompt (à affiner)
 
 ```text
 Définis une convention de nommage standard pour tous les documents et outils générés dans ce workspace, puis enregistre-la dans AGENTS.md.
@@ -335,7 +335,7 @@ Ajoute dans AGENTS.md des règles d'organisation pour la documentation et les sc
 
 ### ✅ Exemple de résultat
 
-Bob créer un document (.md) pour stocker les règles. Il va soit mettre à jour le fichier **`AGENTS.md`**, soit mettre à jour un document dans le répertoire **.bob/rules/xxxx.md**. Il créera une section dédiée aux conventions et pourra créer un documents spécifique pour détailler les conventions de nommage :
+Bob créer un document (.md) pour stocker les règles. Il va mettre à jour un document dans le répertoire **.bob/rules/**. Il créera une section dédiée aux conventions et pourra créer un documents spécifique pour détailler les conventions de nommage :
 
 ```markdown
 
@@ -353,7 +353,7 @@ Bob créer un document (.md) pour stocker les règles. Il va soit mettre à jour
 ```
 
 #### Remarque :
-Bob peut créer les règles dans le fichier .bob/rules.md plutôt que dans AGENTS.md. Il prendra en compte les règles de la même manière, qu'il soit dans un fichier ou dans l'autre
+Il aurait été possible de demander à Bob de créer les règles dans le fichier AGENTS.md. Il prendra en compte les règles de la même manière, qu'il soit dans un fichier sous rules  ou dans AGENTS.md
 
 ### ✍️ Votre Prompt pour compléter les règles. 
 
@@ -466,7 +466,7 @@ Rédigez votre propre prompt pour demander à Bob d'initialiser et d'analyser co
 ### ✅ Prompt Recommandé
 
 ```text
-/init avec la création de la base locale de métadonnées 
+/init avec la création par l'outil scan_program de la base de données locale de métadonnées 
 ```
 
 **Note :** La commande `/init` est une commande spéciale de IBM Bob Premium Package for Z qui déclenche une analyse complète du workspace.
@@ -493,6 +493,7 @@ Bob va :
 ***Mapper les programmes COBOL à leur documentation***
 ***Afficher la configuration détectée pour confirmation***
 ***Mettre à jour ou créer AGENTS.md avec les informations non-évidentes***
+*** z Open Editor va créer un fichier zapp.yaml, descriptif des resources de l'application***
 
 ### ✅ Exemple de résultat
 
@@ -583,10 +584,10 @@ Résumé des actions :
 
 ---
 
-## Exercice 2 : Génération de l'Inventaire Applicatif
+## Exercice 2 : Génération de l'Inventaire Applicatif et des Standards de Dévelopement
 [↩️](#-table-des-matières)
 
-### 🎯 Objectif
+### 🎯 Objectif de l'inventaire applicatif
 
 Générer un inventaire complet de l'application avec tous les programmes, copybooks, écrans BMS et tables Db2.
 
@@ -617,10 +618,10 @@ Rédigez votre propre prompt pour demander un inventaire applicatif complet de C
 ### ✅ Prompt Recommandé
 
 ```text
-Génère un inventaire complet de l'application CBSA, avec pour chaque programme, leur type, leur rôle et leur dépendances (les copybook utilisés, les écrans BMS, les tables DB2 et fichiers utilisés - avec mode d'accès-, les queues, et les programmes appelés). Utiliser les méta-données pour cela. 
+Créé un document avec l'inventaire complet de l'application CBSA, avec pour chaque programme, leur type, leur rôle et leur dépendances (les copybook utilisés, les écrans BMS, les tables DB2 et fichiers utilisés - avec mode d'accès-, les queues, et les programmes appelés). Utiliser la database des méta-données pour cela. 
 ```
 
-### 🔀 Variantes de Prompt
+### 🔀 Variantes de Prompt (à affiner)
 
 ```text
 Crée un document d'inventaire de l'application CBSA avec les composants techniques, leurs usages et les principaux flux.
@@ -642,6 +643,44 @@ Contient :
 - Résumé exécutif avec statistiques
 - Inventaire des programmes COBOL et de leurs dépendances
 - ...
+
+### 🎯 Objectif de la création des standards de codage
+
+Garder une cohérence du code et des conventions de nommage quand on va générer du nouveau code
+
+### 🔧 Mode Bob à Utiliser
+
+**Mode : 🧰 Z Code**
+
+Le mode Z Code analyse automatiquement la structure des applications mainframe et génère des inventaires détaillés.
+
+### 📝 Contexte
+
+Maintenant que le workspace est initialisé, vous avez parcourir les programmes existants pour identifier :
+- les directives de compilation utilisées
+- les conventions de nommage des variables, paragraphes...
+- la gestion des erreurs utilisée
+- ...
+
+### ✅ Prompt Recommandé
+
+```text
+/z-coding-standards-skill-builder
+```
+
+### ⚙️ Ce que Bob fait automatiquement
+
+Bob va scanner, analyser et documenter tous le contenu des composants de l'application. Il va utiliser l'outil IBM Bob Premium Package for Z ***z-coding-standards-skill-builder*** pour identifier les motifs récurents dans le code.
+
+### ✅ Exemple de résultat
+
+**Fichier créé : `.bob/skills/cbsa-coding-standards/SKILL.md avec sous sections dans sous-répertoire références`**
+
+Contient :
+- les parties attendues pour un programme de cette application
+- les standards de nommage
+- une liste de vérification pour tout nouveau code
+...
 
 ### 💡 Valeur Ajoutée IBM Bob Premium Package for Z
 
