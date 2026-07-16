@@ -322,7 +322,7 @@ Les noms de fichiers des documents doivent suivre ces conventions :
 
 -- Format : [PREFIXE]-[TYPE]-[description].md
 ```
-
+Si Bob vous propose d'utiliser la compétence create-skill, refusez (dans le cas contraire, il devrait quand même s'apercevoir tout seul que ce n'est pas nécessaire.)
 ### 🔀 Variantes de Prompt (à affiner)
 
 ```text
@@ -369,6 +369,8 @@ Rédigez votre propre prompt pour demander à Bob d'ajouter une règle globale d
 ```text
 Ajoute une règle Bob : génére les documentations en français et réponds en français. 
 ```
+
+
 
 ### 🔀 Variantes de Prompt
 
@@ -667,20 +669,22 @@ Maintenant que le workspace est initialisé, vous avez parcourir les programmes 
 ```text
 /z-coding-standards-skill-builder
 ```
-
+Répondre Oui quand Bob vous proposera d'include ZCodeScan dans la compétence
 ### ⚙️ Ce que Bob fait automatiquement
 
 Bob va scanner, analyser et documenter tous le contenu des composants de l'application. Il va utiliser l'outil IBM Bob Premium Package for Z ***z-coding-standards-skill-builder*** pour identifier les motifs récurents dans le code.
 
 ### ✅ Exemple de résultat
 
-**Fichier créé : `.bob/skills/cbsa-coding-standards/SKILL.md avec sous sections dans sous-répertoire références`**
+**Fichier créé : `.bob/skills/cbsa-coding-standards/SKILL.md avec sous sections dans le sous-répertoire "references"`**
 
 Contient :
 - les parties attendues pour un programme de cette application
 - les standards de nommage
 - une liste de vérification pour tout nouveau code
 ...
+
+La fin du résumé de la tâche Bob comprend des exemples d'appels à la nouvelle compétence ("skill").
 
 ### 💡 Valeur Ajoutée IBM Bob Premium Package for Z
 

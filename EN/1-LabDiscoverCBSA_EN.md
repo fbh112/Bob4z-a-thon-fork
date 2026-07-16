@@ -16,7 +16,7 @@
 5. [Learning Objectives](#5-learning-objectives)
 6. [Exercise 0: Define Naming and Organization Rules](#exercise-0-define-naming-and-organization-rules)
 7. [Exercise 1: Workspace Initialization and Analysis](#exercise-1-workspace-initialization-and-analysis)
-8. [Exercise 2: Application Inventory Generation](#exercise-2-application-inventory-generation)
+8. [Exercise 2: Application Inventory Generation and Coding Standards](#exercise-2-application-inventory-generation-and-coding-standards)
 9. [Exercise 3: Architecture Diagram Creation](#exercise-3-architecture-diagram-creation)
 10. [Exercise 4: BANKDATA Program Documentation](#exercise-4-bankdata-program-documentation)
 11. [Exercise 5a: Business Rules Analysis](#exercise-5a-business-rules-analysis)
@@ -309,7 +309,7 @@ Document, schemas, drawings and graphs file names must follow these conventions:
 
 -- Format: [PREFIX]-[TYPE]-[description].md
 ```
-
+If Bob propose you to use create-skill skill, decline (anyway, if you accept it should find that he does not need it).
 ### 🔀 Prompt Variants (to be refined)
 
 ```text
@@ -415,7 +415,7 @@ Write your own prompt to ask Bob to initialize and fully analyze the workspace.
 ### ✅ Recommended Prompt
 
 ```text
-/init and create with the scan_program tool the local metadata database.
+/init and create  the local metadata database with the scan_program tool.
 ```
 
 **Note:** The `init` command is a special IBM Bob Premium Package for Z command that triggers a complete workspace analysis.
@@ -525,12 +525,12 @@ Summary of actions:
 
 ---
 
-## Exercise 2: Application Inventory Generation
+## Exercise 2: Application Inventory Generation and Coding Standards
 [↩️](#-table-of-contents)
 
-### 🎯 Objective
+### 🎯 Objective of Application Inventory Generation
 
-Generate a complete application inventory with all programs, copybooks, BMS screens, and Db2 tables.
+Generate a complete application inventory with all programs, copybooks, BMS screens, Db2 tables and VSAM files.
 
 ### 🔧 Bob Mode to Use
 
@@ -583,6 +583,45 @@ Bob will scan, analyze, and document all application components by creating a st
 Contains:
 - Executive summary with statistics
 - Inventory of COBOL programs and their dependencies
+- ...
+
+### 🎯 Objective of Coding Standards
+
+Discover and document the current patterns to apply them to new code (or assert them to the current code).
+
+### 🔧 Bob Mode to Use
+
+**Mode: 🧰 Z Code**
+
+Z Code mode automatically analyzes mainframe application structure and generates detailed inventories.
+
+### 📝 Context
+
+Now that the workspace is initialized and you have a detailed inventory, you need to find:
+- coding practice
+- naming conventions
+- error handling practice
+...
+
+### ✅ Recommended Prompt
+
+```text
+/z-coding-standards-skill-builder
+```
+Reply Yes when Bob propose you to include ZCodeScan in the skill
+### ⚙️ What Bob Does Automatically
+
+Bob will scan, analyze, and document all application components. It will use the IBM bob Premium Package for Z skill tool ***ez-coding-standards-skill-builder*** to analyse the code, varaible and paragraphs names, error handling...
+
+At the end of Bob output, you will find examples on how to activate this new skill.
+### ✅ Sample Result
+
+**Created file: `.bob/skills/cbsa-coding -standards.md` with more details in references sub-directory**
+
+Contains:
+- patterns
+- checklist
+- sample code
 - ...
 
 
