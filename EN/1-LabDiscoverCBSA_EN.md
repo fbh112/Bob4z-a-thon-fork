@@ -521,8 +521,6 @@ Summary of actions:
 - **Standardization:** Conventions are automatically established
 - **Living documentation:** The AGENTS.md file serves as a reference for the entire team
 
-
-
 ---
 
 ## Exercise 2: Application Inventory Generation and Coding Standards
@@ -628,7 +626,13 @@ Contains:
 ```text
 verify @base/cobol_src/BNK1CAC.cbl is respecting cbsa coding standards
 ```
+Only for some lines of code:
+Either select a code block. Right click > IBM Bob > Improve code
 
+Or using the prompt:
+```text
+Improve the following code from base/cobol_src/BNK1CAC.cbl:239-254
+```
 ## Exercise 3: Architecture Diagram Creation
 [↩️](#-table-of-contents)
 

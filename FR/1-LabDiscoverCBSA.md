@@ -687,9 +687,17 @@ Contient :
 La fin du résumé de la tâche Bob comprend des exemples d'appels à la nouvelle compétence ("skill").
 
 ### ✅ Test de la nouvelle compétence dans une nouvelle tâche 
-
+Pour un programme complet:
 ```text
 vérifie la conformité de @base/cobol_src/BNK1CAC.cbl aux standards de codage de cbsa
+```
+
+Pour un fragment de code:
+Soit en sélectionnant le bloc de code. Click droit > IBM Bob > Improve code
+
+Soit avec le prompt suivant
+```text
+Vérifie la conformité aux standards et propose des amméliorations pour le code @base/cobol_src/BNK1CAC.cbl:239-254
 ```
 
 ### 💡 Valeur Ajoutée IBM Bob Premium Package for Z
@@ -837,6 +845,8 @@ Il vous faudra demander l'enregistrement de l'explication dans un fichier md pou
 **Fichier(s) créé(s) : `docs/explain/xxxxxx-BANKDATA.md`**
 ou (/explain) **`docs/BANKDATA/BANKDATA/docu....md`**
 
+### 🔀 Example de prompt plus ciblé pour explication de code (en mode Z Code)
+Explain the following code from base/cobol_src/BNK1CAC.cbl:239-254
 
 ### 🎓 Ce que vous apprenez
 
