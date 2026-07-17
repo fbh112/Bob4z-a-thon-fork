@@ -739,294 +739,33 @@ Write your own prompt to request complete technical documentation for the [`BANK
 - request to explain or document the program
 - you are not required to specify explanation sections, as IBM Bob Premium Package for Z provides a default document structure.
 
-### ✅ Recommended Prompt
+### ✅ Recommended Action
 
 ```text
-Explain the BANKDATA program
+click on the "Play" button of Bob, then start "Explain code". Select BANKDATA.cbl. Select the perspective.
 ```
+nb: you may test the three perspectives. For each perspective, there will a different file with content tailored to the selected job role.
 
 ### 🔀 Prompt Variants
 
 ```text
-Generate BANKDATA documentation.
+/explain @base/cobol_src/BANKDATA.cbl
 ```
+With this prompt Bob will adapt the explanation to the current Bob mode (Z Code or Z Architect).
+You will need to ask mode to save the explanation in a md file.
 
 ### ✅ Sample Result
 
-IBM Bob Premium Package for Z uses a specialized skill to generate detailed technical documents from COBOL source code (whole-file-explanation) and a specific tool (explanation_type). If you haven't specified the target audience for the explanation, Bob will offer to choose between 3 profiles: ARCHITECT, DEVELOPER, BUSINESS.
+IBM Bob Premium Package for Z uses a specialized workflow to generate detailed technical documents from COBOL source code (whole-file-explanation). If you haven't specified the target audience for the explanation, Bob will offer to choose between 3 profiles: ARCHITECT, DEVELOPER, BUSINESS.
 
 If you request an explanation, Bob may not save it to a file. You must then explicitly request it.
 ```text
 save the BANKDATA explanation
 ```
 
-**File created: `docs/BANKDATA-xxx-xxxxxxx.md`**
+**File created: **`docs/explain/xxxxxx-BANKDATA.md`**
+or (/explain) **`docs/BANKDATA/BANKDATA/docu....md`**
 
-Structured document containing:
-
-#### 1. Overview
-
-```markdown
-# Technical Documentation - BANKDATA
-
-**Program**: BANKDATA.cbl  
-**Type**: Batch initialization program  
-**Language**: IBM Enterprise COBOL for z/OS  
-**Author**: JON COLLETT
-
-## Description
-
-BANKDATA is the batch program responsible for initializing data 
-for the CBSA banking application. It generates and populates:
-- The CUSTOMER VSAM file (customer data)
-- The ACCOUNT DB2 table (bank accounts)
-
-## Business Objective
-
-Create a coherent test data set for the CBSA application with:
-- Parameterizable customer generation
-- Automatic creation of associated accounts
-- Realistic data (names, addresses, balances)
-- Mass generation support
-```
-
-#### 2. Input Parameters
-
-```markdown
-## Input Parameters (PARM)
-
-Format: `PARM='fffffff,ttttttt,sssssss,rrrrrrr'`
-
-| Parameter | Position | Description | Example |
-|-----------|----------|-------------|---------|
-| fffffff | 1 | Starting key (FROM) | 0000001 |
-| ttttttt | 2 | Ending key (TO) | 0001000 |
-| sssssss | 3 | Increment step (STEP) | 0000001 |
-| rrrrrrr | 4 | Random seed (RANDOM SEED) | 1234567 |
-
-**Usage example**:
-```
-//SYSIN DD *
-PARM='0000001,0001000,0000001,9876543'
-/*
-```
-
-Generates 1000 customers (from 1 to 1000) with random seed 9876543.
-```
-
-#### 3. Data Structures
-
-```markdown
-## Data Structures
-
-### CUSTOMER VSAM File
-```
-
-#### 4. Processing Logic
-
-```markdown
-## Processing Logic
-
-### Main Flow
-
-1. **Parameter Reading**
-   - Parse PARM string
-   - Validate parameters
-   - Set default values if missing
-
-2. **VSAM File Opening**
-   - Open CUSTOMER file for output
-   - Handle opening errors
-
-3. **DB2 Connection**
-   - Connect to DB2 subsystem
-   - Prepare SQL statements
-
-4. **Customer Generation Loop**
-   - For each customer number (FROM to TO by STEP):
-     - Generate customer data
-     - Write to VSAM
-     - Generate 1-3 accounts
-     - Insert into DB2
-
-5. **Commit and Cleanup**
-   - Commit DB2 transactions
-   - Close VSAM file
-   - Display statistics
-```
-
-#### 5. Business Rules
-
-```markdown
-## Business Rules
-
-### Customer Generation
-
-- **Customer number**: Sequential from FROM to TO
-- **Name**: Random from predefined list
-- **Address**: Random combination of street/city/state
-- **Date of birth**: Random between 1940-2000
-- **Credit score**: Random between 300-850
-
-### Account Generation
-
-- **Number of accounts**: Random 1-3 per customer
-- **Account types**: 
-  - Checking (50% probability)
-  - Savings (30% probability)
-  - Loan (20% probability)
-- **Initial balance**:
-  - Checking: $100-$10,000
-  - Savings: $500-$50,000
-  - Loan: -$1,000 to -$100,000
-```
-
-#### 6. Error Handling
-
-```markdown
-## Error Handling
-
-### VSAM Errors
-
-- **File status 00**: Success
-- **File status 22**: Duplicate key → Ignored
-- **Other**: Display error and ABEND
-
-### DB2 Errors
-
-- **SQLCODE -803**: Duplicate key → Ignored
-- **SQLCODE < 0**: SQL error → ROLLBACK and ABEND
-- **SQLCODE = 100**: End of data → Normal
-
-### Parameter Validation
-
-- FROM > TO → Error "Invalid range"
-- STEP = 0 → Error "Invalid step"
-- Missing parameters → Default values
-```
-
-#### 7. Output Statistics
-
-```markdown
-## Output Statistics
-
-The program displays at end of processing:
-
-```
-BANKDATA - Data Initialization Complete
-==========================================
-Customers created    : 1000
-Accounts created     : 2347
-VSAM writes         : 1000
-DB2 inserts         : 2347
-Errors encountered  : 0
-Elapsed time        : 00:02:34
-==========================================
-```
-```
-
-#### 8. Flow Diagram
-
-```markdown
-## Flow Diagram
-
-```
-┌─────────────────────┐
-│   Start BANKDATA    │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Read PARM           │
-│ (FROM,TO,STEP,SEED) │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Validate            │
-│ Parameters          │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Open VSAM           │
-│ CUSTOMER            │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Connect DB2         │
-└──────────┬──────────┘
-           │
-           ▼
-    ┌──────────────┐
-    │ Loop         │◄─────┐
-    │ FROM → TO    │      │
-    └──────┬───────┘      │
-           │              │
-           ▼              │
-┌─────────────────────┐   │
-│ Generate Customer   │   │
-│ (name, address, etc)│   │
-└──────────┬──────────┘   │
-           │              │
-           ▼              │
-┌─────────────────────┐   │
-│ WRITE CUSTOMER      │   │
-│ (VSAM)              │   │
-└──────────┬──────────┘   │
-           │              │
-           ▼              │
-    ┌──────────────┐      │
-    │ Loop         │◄──┐  │
-    │ 1-3 accounts │   │  │
-    └──────┬───────┘   │  │
-           │           │  │
-           ▼           │  │
-┌─────────────────────┐│  │
-│ Generate Account    ││  │
-│ (type, balance, etc)││  │
-└──────────┬──────────┘│  │
-           │           │  │
-           ▼           │  │
-┌─────────────────────┐│  │
-│ INSERT ACCOUNT      ││  │
-│ (DB2)               ││  │
-└──────────┬──────────┘│  │
-           │           │  │
-           ▼           │  │
-    ┌──────────────┐   │  │
-    │ Next         │───┘  │
-    │ account?     │      │
-    └──────┬───────┘      │
-           │              │
-           ▼              │
-    ┌──────────────┐      │
-    │ Next         │──────┘
-    │ customer?    │
-    └──────┬───────┘
-           │
-           ▼
-┌─────────────────────┐
-│ COMMIT DB2          │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Close VSAM          │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Display Stats       │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│   End BANKDATA      │
-└─────────────────────┘
-```
-```
 
 ### 🎓 What You Learn
 
