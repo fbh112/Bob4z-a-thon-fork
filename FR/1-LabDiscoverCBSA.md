@@ -686,6 +686,12 @@ Contient :
 
 La fin du résumé de la tâche Bob comprend des exemples d'appels à la nouvelle compétence ("skill").
 
+### ✅ Test de la nouvelle compétence dans une nouvelle tâche 
+
+```text
+vérifie la conformité de @base/cobol_src/BNK1CAC.cbl aux standards de codage de cbsa
+```
+
 ### 💡 Valeur Ajoutée IBM Bob Premium Package for Z
 
 | Sans Bob | Avec IBM Bob Premium Package for Z |
@@ -823,8 +829,9 @@ IBM Bob Premium Package for Z utilise un skill specialisé pour générer des do
 ```text
 /explain @base/cobol_src/BANKDATA.cbl
 ```
-Dans ce le niveau d'explication s'adapte au mode Bob (Z Code ou Z Architect).
-### ✅ Exemple de résultat
+Dans ce mode, le niveau d'explication s'adapte au mode Bob (Z Code ou Z Architect).
+Il vous faudra demander l'enregistrement de l'explication dans un fichier md pour la conserver.
+### ✅ Résultats
 
 
 **Fichier(s) créé(s) : `docs/explain/xxxxxx-BANKDATA.md`**

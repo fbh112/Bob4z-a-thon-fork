@@ -623,7 +623,11 @@ Contains:
 - checklist
 - sample code
 - ...
+### ✅ Testing the new skill in a new task
 
+```text
+verify @base/cobol_src/BNK1CAC.cbl is respecting cbsa coding standards
+```
 
 ## Exercise 3: Architecture Diagram Creation
 [↩️](#-table-of-contents)
