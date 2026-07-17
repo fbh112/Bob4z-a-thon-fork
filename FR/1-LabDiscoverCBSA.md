@@ -927,15 +927,15 @@ Résultats :
 Total : 28 entrées dans le dictionnaire (15 existantes de BANKDATA + 13 nouvelles)
 Variables clés documentées pour INQACCCU :
 
-CUSTOMER-NUMBER - Identifiant client utilisé pour la recherche
-NUMBER-OF-ACCOUNTS - Compteur de comptes trouvés (max 20)
-CUSTOMER-FOUND - Indicateur d'existence du client
-COMM-SUCCESS - Indicateur de succès de l'opération
-HV-ACCOUNT-* - Variables hôtes DB2 pour les données de compte (numéro, type, soldes, taux, découvert)
-COMM-FAIL-CODE - Code d'erreur détaillé
-DB2-DATE-REFORMAT - Conversion de dates DB2 vers format d'affichage
-SORTCODE - Code de tri bancaire pour filtrage par succursale
-Fichier mis à jour : /Users/ovallod/Library/CloudStorage/Box-Box/OV_IBM/Lab/bobforZ/Bob4z/testbobathon4/bobz/DD.json
+CUSTOMER-NUMBER - Identifiant client utilisé pour la recherche\
+NUMBER-OF-ACCOUNTS - Compteur de comptes trouvés (max 20)\
+CUSTOMER-FOUND - Indicateur d'existence du client\
+COMM-SUCCESS - Indicateur de succès de l'opération\
+HV-ACCOUNT-* - Variables hôtes DB2 pour les données de compte (numéro, type, soldes, taux, découvert)\
+COMM-FAIL-CODE - Code d'erreur détaillé\
+DB2-DATE-REFORMAT - Conversion de dates DB2 vers format d'affichage\
+SORTCODE - Code de tri bancaire pour filtrage par succursale\
+Fichier mis à jour : bobz/DD.json
 
 Le dictionnaire de données contient maintenant les définitions métier pour les programmes BANKDATA et INQACCCU.
 
@@ -947,67 +947,14 @@ Comment est utilisée la variable SORTCODE dans l'application?
 
 ### ✅ Exemple de résultat
 
-Analyse de l'utilisation de la variable SORTCODE dans l'application CBSA.
+Role de la variable, utilisation par programmes...
 
-***Définition***
-SORTCODE est une constante définie dans le copybook SORTCODE.cpy avec la valeur 987654 (6 chiffres).
 
-***Rôle dans l'Application***
-Le SORTCODE identifie la succursale bancaire où les comptes et clients sont gérés. C'est un identifiant de branche utilisé dans tout le système bancaire.
+### ✅ Prompt pour continuer l'analyse :
 
-***Utilisation par Programme***
-
-***1. Programmes de Création (CREACC, CRECUST)***
-- Clé de génération : Utilisé pour générer les numéros de compte/client via les compteurs nommés CICS
-- Stockage DB2/VSAM : Enregistré dans les tables ACCOUNT (DB2) et fichiers CUSTOMER (VSAM)
-Audit : Inclus dans les enregistrements PROCTRAN pour traçabilité
-
-***2. Programmes d'Interrogation (INQACC, INQACCCU, INQCUST)***
-- Critère de recherche SQL : Utilisé dans les clauses WHERE pour filtrer les comptes par succursale
-```sql
-WHERE ACCOUNT_SORTCODE = :HV-ACCOUNT-SORTCODE
+```text
+Quelle est l'importance architecturale de SORTCODE?
 ```
-
-- Clé VSAM : Partie de la clé composite pour accéder aux enregistrements CUSTOMER
-
-***3. Programmes de Mise à Jour (UPDACC, UPDCUST, DBCRFUN, XFRFUN)***
-- Identification : Identifie la succursale du compte à modifier
-- Validation : Vérifie que les opérations se font sur la bonne succursale
-- Transactions : Enregistré dans PROCTRAN pour chaque opération réussie
-
-***4. Programmes de Suppression (DELACC, DELCUS)***
-- Critère de suppression : Utilisé pour cibler précisément les enregistrements à supprimer
-- Audit : Tracé dans PROCTRAN avant suppression
-
-***5. Programme Batch (BANKDATA)***
-- Initialisation : Utilisé pour créer les données de test avec le SORTCODE 987654
-- Compteurs CONTROL : Clé des enregistrements de contrôle (format: "987654-ACCOUNT" ou "987654-CUSTOMER")
-- Nettoyage : Critère pour supprimer les données par succursale
-
-***6. Programme Utilitaire (GETSCODE)***
-
-Distribution : Retourne le SORTCODE aux programmes appelants via COMMAREA
-
-***Structure des Clés***
-
-***Clés Composites Utilisant SORTCODE***
-
-1- ACCOUNT (DB2) : SORTCODE (6) + ACCOUNT_NUMBER (8) = 14 caractères
-
-2- CUSTOMER (VSAM) : SORTCODE (6) + CUSTOMER_NUMBER (10) = 16 caractères
-
-3- CONTROL (DB2) : "SORTCODE-TYPE" (ex: "987654-ACCOUNT")
-
-
-***Importance Architecturale***
-- Isolation des données : Permet de séparer les données par succursale
-- Scalabilité : Facilite la distribution des données dans un environnement multi-succursales
-- Sécurité : Limite l'accès aux données d'une succursale spécifique
-- Audit : Traçabilité complète des opérations par succursale
-
-***Valeur Actuelle***
-
-***987654*** - Code de succursale utilisé pour l'environnement de test/démonstration de l'application CBSA.
 
 
 ---

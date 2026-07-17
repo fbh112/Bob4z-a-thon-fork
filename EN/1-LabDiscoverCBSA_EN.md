@@ -858,7 +858,7 @@ HV-ACCOUNT-* - DB2 host variables for account data (number, type, balances, rate
 COMM-FAIL-CODE - Detailed error code
 DB2-DATE-REFORMAT - DB2 date conversion to display format
 SORTCODE - Bank sort code for branch filtering
-Updated file: /Users/ovallod/Library/CloudStorage/Box-Box/OV_IBM/Lab/bobforZ/Bob4z/testbobathon4/bobz/DD.json
+Updated file: bobz/DD.json
 
 The data dictionary now contains business definitions for BANKDATA and INQACCCU programs.
 
@@ -870,67 +870,14 @@ How is the SORTCODE variable used in the application?
 
 ### ✅ Sample Result
 
-Analysis of SORTCODE variable usage in the CBSA application.
+Role in application,usage by program...
 
-***Definition***
-SORTCODE is a constant defined in the SORTCODE.cpy copybook with value 987654 (6 digits).
 
-***Role in Application***
-SORTCODE identifies the bank branch where accounts and customers are managed. It's a branch identifier used throughout the banking system.
+### ✅ Prompt to Continue Analysis:
 
-***Usage by Program***
-
-***1. Creation Programs (CREACC, CRECUST)***
-- Key generation: Used to generate account/customer numbers via CICS named counters
-- DB2/VSAM storage: Stored in ACCOUNT tables (DB2) and CUSTOMER files (VSAM)
-- Audit: Included in PROCTRAN records for traceability
-
-***2. Inquiry Programs (INQACC, INQACCCU, INQCUST)***
-- SQL search criterion: Used in WHERE clauses to filter accounts by branch
-```sql
-WHERE ACCOUNT_SORTCODE = :HV-ACCOUNT-SORTCODE
+```text
+what is the architectural importance of SORTCODE?
 ```
-
-- VSAM key: Part of composite key to access CUSTOMER records
-
-***3. Update Programs (UPDACC, UPDCUST, DBCRFUN, XFRFUN)***
-- Identification: Identifies the account's branch to modify
-- Validation: Verifies operations are performed on correct branch
-- Transactions: Recorded in PROCTRAN for each successful operation
-
-***4. Deletion Programs (DELACC, DELCUS)***
-- Deletion criterion: Used to precisely target records to delete
-- Audit: Traced in PROCTRAN before deletion
-
-***5. Batch Program (BANKDATA)***
-- Initialization: Used to create test data with SORTCODE 987654
-- CONTROL counters: Key for control records (format: "987654-ACCOUNT" or "987654-CUSTOMER")
-- Cleanup: Criterion to delete data by branch
-
-***6. Utility Program (GETSCODE)***
-
-Distribution: Returns SORTCODE to calling programs via COMMAREA
-
-***Key Structures***
-
-***Composite Keys Using SORTCODE***
-
-1- ACCOUNT (DB2): SORTCODE (6) + ACCOUNT_NUMBER (8) = 14 characters
-
-2- CUSTOMER (VSAM): SORTCODE (6) + CUSTOMER_NUMBER (10) = 16 characters
-
-3- CONTROL (DB2): "SORTCODE-TYPE" (ex: "987654-ACCOUNT")
-
-
-***Architectural Importance***
-- Data isolation: Allows separating data by branch
-- Scalability: Facilitates data distribution in multi-branch environment
-- Security: Limits access to specific branch data
-- Audit: Complete traceability of operations by branch
-
-***Current Value***
-
-***987654*** - Branch code used for CBSA application test/demonstration environment.
 
 ---
 ## Exercise 5b: Business Rules Analysis and inline code generation
