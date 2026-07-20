@@ -977,7 +977,7 @@ BNK1CAC est le programme de création de compte. Il vérifie les données d'entr
 
 ### ✍️ Votre Prompt
 
-Extraire et sauvegarder dans un fichier md, les règles métier de @cobol_src/BNK1CAC.cbl
+Extraire et sauvegarder dans un fichier md, les règles métier de @base/cobol_src/BNK1CAC.cbl
 
 **Attendu dans votre prompt :**
 - cibler le prompt sur le module cible
@@ -985,7 +985,7 @@ Extraire et sauvegarder dans un fichier md, les règles métier de @cobol_src/BN
 
 ### ✅ Exemple de résultat
 
-Création du fichier BNK1CAC-business-rules.md.
+Création du fichier docs/BNK1CAC/BNK1CAC-business-rules.md.
 
 Il devrait contenir les Règles de Validation des Entrées
 - Validation du Numéro Client
@@ -999,17 +999,8 @@ Commentaire: le fichier devrait également contenir d'autres sections que "Règl
 
 ### ✅ Prompt pour Créer la nouvelle règle :
 
-Ouvrir BNK1CAC.cbl dans l'éditeur. Placer votre curseur au début de la ligne 458 (qui devrait être juste après la validation que le numéro client est numérique) et saisir dans l'éditeur
+Ouvrir BNK1CAC.cbl dans l'éditeur. Placer votre curseur au début de la ligne 458 (Ctrl G 458; cela devrait être juste après la validation que le numéro client est numérique) et saisir le prompt:
 
-```text
-ajouter un test pour vérifier qu'un numéro client doit commencer par 99
-```
-
-Une ampoule apparaît au début de la phrase. Cliquer dessus et sélectionner "Ajouter à IBM Bob"
-
-### ✅ Exemple de résultat 
-
-Dans la zone de prompt d'IBM Bob apparaît :
 ```text
 base\cobol_src\BNK1CAC.cbl:458-458
 '''
@@ -1017,9 +1008,7 @@ ajouter un test pour vérifier qu'un numéro client doit commencer par 99
 '''
 ```
 
-Envoyer le prompt à IBM Bob
-
-### ✅ Exemple de résultat 
+### ✅ Exemple de résultat (vous pourriez avoir à clore l'édition de BNK1CAC.cbr (sans sauvegarde) et le réouvrir)
 1 - BNK1CAC est mis à jour avec une nouvelle règle commençant à la ligne 459 :
 ```text
            IF CUSTNOI(1:2) NOT = '99'

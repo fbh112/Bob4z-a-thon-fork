@@ -899,7 +899,7 @@ BNK1CAC is the create account program. It verifies the input with a list of rule
 
 ### ✍️ Your Prompt
 
-Extract and save in a md file, the business rules from @cobol_src/BNK1CAC.cbl
+Extract and save in a md file, the business rules from @base/cobol_src/BNK1CAC.cbl
 
 **Expected in your prompt:**
 - scope the promp to the target module
@@ -907,7 +907,7 @@ Extract and save in a md file, the business rules from @cobol_src/BNK1CAC.cbl
 
 ### ✅ Sample Result
 
-Creation of BNK1CAC-business-rules.md file.
+Creation of docs/BNK1CAC/BNK1CAC-business-rules.md file.
 
 It should contain Input Validation Rules
 - Customer Number Validation
@@ -921,17 +921,9 @@ Comment: the file should also contain other sections than "Input Validation Rule
 
 ### ✅ Prompt to Create the new rule:
 
-Open BNK1CAC.cbl in the editor. Place your cursor at the beginning of line 458 (which should be just after the validation that the customer number is numeric) and enter in the editor
+Open BNK1CAC.cbl in the editor. Place your cursor at the beginning of line 458 (Ctrl G 458; this should be just after the validation that the customer number is numeric) and enter in the editor
 
-```text
-add a test to verify a customer number should start with 99
-```
-
-A bulb appears at the begining of the sentence. Click it and select "Add to IBM Bob"
-
-### ✅ Sample Result 
-
-In the prompt area of IBM Bob appears:
+In the prompt area of IBM Bob type:
 ```text
 base\cobol_src\BNK1CAC.cbl:458-458
 '''
@@ -939,9 +931,8 @@ add a test to verify a customer number should start with 99
 '''
 ```
 
-Send the prompt to IBM Bob
 
-### ✅ Sample Result 
+### ✅ Sample Result (you may have to close BNK1CAC.cbl out of the editor (do not save it) and reèopen it)
 1 - BNK1CAC is updated with a new rule startting at line 459:
 ```text
            IF CUSTNOI(1:2) NOT = '99'
