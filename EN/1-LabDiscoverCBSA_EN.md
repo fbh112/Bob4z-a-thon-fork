@@ -202,7 +202,7 @@ Before starting the lab, make sure you have:
 
 ### 🎯 You're Ready!
 
-Once the workspace is prepared with Bob, you can click on "New Task" and start Exercise 1.
+Once the workspace is prepared with Bob, you can click on "New Task" and start Exercise 0.
 
 ---
 

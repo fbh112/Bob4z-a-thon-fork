@@ -156,10 +156,10 @@ Le mode Agent permet d'exécuter des commandes système et de manipuler des fich
 ### 📝 Contexte
 
 Avant de commencer l'analyse, vous devez récupérer le code source de l'application CBSA depuis le repository GitHub officiel. Nous allons utiliser Bob pour automatiser cette préparation. 
-Créer un répertoire CBSA dans votre "home" directory.
-Ouvrir Bob IDE, cliquer sur le menu **File>Open Folder** et choisissez le répertoire ~/CBSA.
+**Créer un répertoire CBSA dans votre "home" directory.**
+**Ouvrir Bob IDE, cliquer sur le menu **File>Open Folder** et choisissez le répertoire ~/CBSA.**
 
-C'est aussi le moment pour passer le Bob IDE en français. Allez sur le "Settings" IBM BOB (roue crantée) et cliquez sur "Configure Language".
+**C'est aussi le moment pour passer le Bob IDE en français. Allez sur le "Settings" IBM BOB (roue crantée) et cliquez sur "Configure Language".**
 
 ### 💬 Prompt Bob 
 
@@ -171,9 +171,7 @@ Récupère le sous-répertoire nommé "src/base" dans le répertoire CBSA du rep
 
 ### ✅ Exemple de résultat 
 
-Bob IDE exécute les commandes got copy et remove.
-
-
+Bob IDE exécute les commandes git, la copie et la suppression du répertoire de travail.
 
 **Console de sortie** :
 ```
@@ -186,8 +184,6 @@ bms_src/ : fichiers BMS
 cobol_copy/ : copybooks COBOL 
 cobol_src/ :  programmes COBOL (.cbl) 
 ```
-
-
 
 ### 🎓 Ce que vous apprenez
 
@@ -207,7 +203,7 @@ Avant de commencer le lab, assurez-vous d'avoir :
 
 ### 🎯 Vous êtes prêt !
 
-Une fois le workspace préparé avec Bob, vous pouvez commencer l'Exercice 1 en créant une nouvelle tâche Bob.
+Une fois le workspace préparé avec Bob, vous pouvez commencer l'Exercice 0 en créant une nouvelle tâche Bob.
 
 ---
 
@@ -669,7 +665,7 @@ Maintenant que le workspace est initialisé, vous avez parcourir les programmes 
 ```text
 /z-coding-standards-skill-builder
 ```
-Répondre Oui quand Bob vous proposera d'include ZCodeScan dans la compétence
+Répondre Non quand Bob vous proposera d'include ZCodeScan dans la compétence. ZCodeScan est un outil d'analyse de code inclus dans z Open Editor qui permet d'analyser les applications COBOL et PL/I à la recherche de failles de sécurité et d'effectuer des revues de code.
 ### ⚙️ Ce que Bob fait automatiquement
 
 Bob va scanner, analyser et documenter tous le contenu des composants de l'application. Il va utiliser l'outil IBM Bob Premium Package for Z ***z-coding-standards-skill-builder*** pour identifier les motifs récurents dans le code.
@@ -999,12 +995,15 @@ Commentaire: le fichier devrait également contenir d'autres sections que "Règl
 
 ### ✅ Prompt pour Créer la nouvelle règle :
 
+### 📝 Contexte
+
+BNK1CAC est le programme de création de compte. Il vérifie les données d'entrée avec une liste de règles.
 Ouvrir BNK1CAC.cbl dans l'éditeur. Placer votre curseur au début de la ligne 458 (Ctrl G 458; cela devrait être juste après la validation que le numéro client est numérique) et saisir le prompt:
 
 ```text
 base\cobol_src\BNK1CAC.cbl:458-458
 '''
-ajouter un test pour vérifier qu'un numéro client doit commencer par 99
+ajouter une nouvelle règle métier: test pour vérifier qu'un numéro client doit commencer par 99
 '''
 ```
 
@@ -1023,9 +1022,36 @@ ajouter un test pour vérifier qu'un numéro client doit commencer par 99
            END-IF.
 ```
 
-2 - BNK1CAC-business-rules.md est mis à jour avec la nouvelle règle et son message d'erreur associé.
+2 - BNK1CAC-business-rules.md est mis à jour avec la nouvelle règle et son message d'erreur associé (à vérifier!).
 
 ---
+
+### ✅ Recréer copybook manquant.
+
+Après avoir ouvert BNK1CAC.cbl dans l'éditeur, vous verrez dans la fenêtre du bas "PROBLEMES" un grand nombre de copybooks et variables non résolus. Même si la solution est d'aller les retrouver dans le référenciel des fichiers source, nous allons en faire recréer un par Bob.
+
+### ✅ Action pour recréer le copybook manquant.
+
+Ouvrir BNK1CAC.cbl\
+Dans la liste des problèmes, repérer "Copybook BNK1CAM introuvable" \
+Cliquez droit sur le message d'erreur et sélectionnez "Corrigez avec Bob" \
+Acceptez le prompt
+
+### ✅ Exemple de résultat
+
+Bob doit s'apercevoir que le copybook manquant correspond aux champs d'un écran BMS. A partir de la définitions de l'écran BMS, Bob doit recréer le copybook manquant.
+Il ne doit plus rester que des erreurs de références sur un copybook "système" CICS (DFHAID) qui n'est pas fourni (là encore, la bonne action est d'aller cherche le copybook dans les librairies CICS mais Bob est capabale de le recréer, si vous luis demandez)
+
+
+### ✅ Inspection de la qualité du code.
+
+### ✅ Action pour avoir un rapport
+
+Fais moi un rapport en format markdown sur toutes les améliorations possibles qui pourraient être faites sur @base/cobol_src/BNK1CAC.cbl
+
+### ✅ Exemple de résultat
+
+Le rapport (dans docs/BNK1CAC) doit identifier le bug dans la construction de ABND-TIME, des lignes dupliquées...
 
 ## Exercice 6 : Analyse d'Impact des Changements
 [↩️](#-table-des-matières)
