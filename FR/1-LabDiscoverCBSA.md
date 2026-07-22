@@ -381,7 +381,7 @@ Définis une convention Bob imposant le français comme langue par défaut pour 
 
 ### ✅ Exemple de résultat
 
-Bob met à jour le fichier **`AGENTS.md`** avec une nouvelle règle.
+Bob met à jour le fichier **`AGENTS.md`** avec une nouvelle règle ou créé une nouvelle compétence "SKILL".
 ```markdown
 ## Langue de la Documentation
 
@@ -991,7 +991,9 @@ Il devrait contenir les Règles de Validation des Entrées
 
 Il y a trois vérifications sur le numéro client (longueur, pas de tirets bas, numérique). Nous allons en ajouter une nouvelle : le numéro client doit commencer par 99.
 
-Commentaire: le fichier devrait également contenir d'autres sections que "Règles de Validation des Entrées". Elles peuvent être considérées comme des règles plus techniques que métier et être supprimées).
+Commentaire 1: le fichier devrait également contenir d'autres sections que "Règles de Validation des Entrées". Elles peuvent être considérées comme des règles plus techniques que métier et être supprimées).
+
+Commentaire 2: avec le workflow "Generate Documentation" on peut créer une documentation qui va contenir les règles métier. Cette documentation comprend d'autres aspects d'explications du programme.
 
 ### ✅ Créer la nouvelle règle
 

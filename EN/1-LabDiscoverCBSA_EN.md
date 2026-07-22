@@ -917,7 +917,9 @@ It should contain Input Validation Rules
 
 Thare are three verifications on the customer number (length, not underscore, numeric). We will add a new one: the customer number should start with 99.
 
-Comment: the file should also contain other sections than "Input Validation Rules". They may be considered to be more technical rules than business rules and removed).
+Comment 1: the file should also contain other sections than "Input Validation Rules". They may be considered to be more technical rules than business rules and removed).
+
+Comment 2: ""Generate Documentation"" workflow can also be used to create a file that will contain the list of business rules (per paragraph). This report contains documentation with many other aspects of a program.
 
 ### ✅ Prompt to Create the new rule:
 
