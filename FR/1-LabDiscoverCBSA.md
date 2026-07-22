@@ -1,4 +1,4 @@
-# Lab : Découverte de IBM Bob Premium Packgae for Z
+# Lab : Découverte de IBM Bob Premium Package for Z
 ## Analyse et Documentation d'une Application Mainframe CICS
 
 **Durée estimée :** 2-3 heures  
@@ -993,13 +993,14 @@ Il y a trois vérifications sur le numéro client (longueur, pas de tirets bas, 
 
 Commentaire: le fichier devrait également contenir d'autres sections que "Règles de Validation des Entrées". Elles peuvent être considérées comme des règles plus techniques que métier et être supprimées).
 
-### ✅ Prompt pour Créer la nouvelle règle :
+### ✅ Créer la nouvelle règle
 
 ### 📝 Contexte
 
 BNK1CAC est le programme de création de compte. Il vérifie les données d'entrée avec une liste de règles.
-Ouvrir BNK1CAC.cbl dans l'éditeur. Placer votre curseur au début de la ligne 458 (Ctrl G 458; cela devrait être juste après la validation que le numéro client est numérique) et saisir le prompt:
+Ouvrir BNK1CAC.cbl dans l'éditeur. Placer votre curseur au début de la ligne 458 (Ctrl G 458; cela devrait être juste après la validation que le numéro client est numérique) 
 
+### ✅ Prompt pour Créer la nouvelle règle 
 ```text
 base\cobol_src\BNK1CAC.cbl:458-458
 '''
@@ -1040,12 +1041,12 @@ Acceptez le prompt
 ### ✅ Exemple de résultat
 
 Bob doit s'apercevoir que le copybook manquant correspond aux champs d'un écran BMS. A partir de la définitions de l'écran BMS, Bob doit recréer le copybook manquant.
-Il ne doit plus rester que des erreurs de références sur un copybook "système" CICS (DFHAID) qui n'est pas fourni (là encore, la bonne action est d'aller cherche le copybook dans les librairies CICS mais Bob est capabale de le recréer, si vous luis demandez)
+Il ne doit plus rester que des erreurs de références sur un copybook "système" CICS (DFHAID) qui n'est pas fourni (là encore, la bonne action est d'aller cherche le copybook dans les librairies CICS mais Bob est capabale de le recréer, si vous lui demandez)
 
 
 ### ✅ Inspection de la qualité du code.
 
-### ✅ Action pour avoir un rapport
+### ✅ Prompt pour avoir un rapport
 
 Fais moi un rapport en format markdown sur toutes les améliorations possibles qui pourraient être faites sur @base/cobol_src/BNK1CAC.cbl
 

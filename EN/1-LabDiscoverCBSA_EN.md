@@ -420,7 +420,7 @@ Write your own prompt to ask Bob to initialize and fully analyze the workspace.
 
 **Note:** The `init` command is a special IBM Bob Premium Package for Z command that triggers a complete workspace analysis.
 
-### 🔀 Prompt Variants
+### 🔀 Prompt Variants(to be refined)
 
 ```text
 Initialize this workspace and analyze the complete project structure.
@@ -609,12 +609,12 @@ Now that the workspace is initialized and you have a detailed inventory, you nee
 Reply Yes when Bob propose you to include ZCodeScan in the skill
 ### ⚙️ What Bob Does Automatically
 
-Bob will scan, analyze, and document all application components. It will use the IBM bob Premium Package for Z skill tool ***ez-coding-standards-skill-builder*** to analyse the code, varaible and paragraphs names, error handling...
+Bob will scan, analyze, and document all application components. It will use the IBM bob Premium Package for Z skill tool ***/z-coding-standards-skill-builder*** to analyse the code, varaible and paragraphs names, error handling...
 
 At the end of Bob output, you will find examples on how to activate this new skill.
 ### ✅ Sample Result
 
-**Created file: `.bob/skills/cbsa-coding -standards.md` with more details in references sub-directory**
+**Created file: `.bob/skills/cbsa-coding-standards/SKILL.md` with more details in references sub-directory**
 
 Contains:
 - patterns
@@ -948,6 +948,33 @@ add a test to verify a customer number should start with 99
 ```
 
 2 - BNK1CAC-business-rules.md is updated with the new rule and its associated error message.
+
+
+### ✅ Recréer copybook manquant.
+
+Après avoir ouvert BNK1CAC.cbl dans l'éditeur, vous verrez dans la fenêtre du bas "PROBLEMES" un grand nombre de copybooks et variables non résolus. Même si la solution est d'aller les retrouver dans le référenciel des fichiers source, nous allons en faire recréer un par Bob.
+
+### ✅ Missing Copybook.
+
+Edit BNK1CAC.cbl\
+In the list of problems at the bottom of the IDE you should see a message indicating  "Copybook BNK1CAM is missing introuvable" \
+right click on the message and select "Correct with Bob" \
+Accept the prompt
+
+### ✅ Sample result
+Bob should find the missing copybook should contain BMS field definitions. From the BMS definition, it should recreate the missing copybook.
+After Bob IDE has recreated BNK1CAM.cpy, there still should be errors about the missing DFAID copybook which is part of CICS system libraries.
+
+
+### ✅ Potential enhancements
+
+### ✅ Prompt to generate the report
+
+Create a markdown formatted report on all of the possible enhancements that could be made on @base/cobol_src/BNK1CAC.cbl
+
+### ✅ Exemple de résultat
+
+The report (in docs/BNK1CAC) should find a bug in move to ABND-TIME, duplicated lines...
 
 ---
 
