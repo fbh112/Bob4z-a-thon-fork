@@ -14,7 +14,7 @@ It is your first week on the team. You have been given access to the **CICS Bank
 
 Right now, CBSA is hardcoded to a single branch. Every transaction, every customer record, every account is tied to one fixed sort code. The ask sounds straightforward — make the sort code variable so different branches can operate independently. But before you write a single line of code, you need to understand what you are actually dealing with.
 
-> **What is a sort code?** A sort code is a unique identifier assigned to a specific branch of a bank. It is used to route transactions to the correct location, separate from the code that identifies the bank itself. Depending on the country, the same concept goes by different names — sort code (UK), routing number (US), IFSC code (India), or branch code elsewhere. In CBSA, it is stored as a fixed constant called `SORTCODE`.
+> **💡 What is a sort code?** A sort code is a unique identifier assigned to a specific branch of a bank. It is used to route transactions to the correct location, separate from the code that identifies the bank itself. Depending on the country, the same concept goes by different names — sort code (UK), routing number (US), IFSC code (India), or branch code elsewhere. In CBSA, it is stored as a fixed constant called `SORTCODE`.
 
 The source code is there, but documentation is thin and the original developers have moved on. So you start with three basic questions:
 - What does this system actually do?
@@ -36,28 +36,50 @@ By the end of this lab, you will know how to:
 - **implement with confidence** — use IBM Bob to generate the code changes, review the output, and validate it against the plan before committing.
 
 ## Application background
+### What the application does
 
-CBSA simulates bank-teller operations on IBM z/OS:
+**CBSA (CICS Banking Sample Application)** is a simulated bank-teller system running on IBM z/OS. Think of it as the kind of software a bank teller would use to look up customers, open accounts, and process transactions — built on mainframe technology that has been in use at real banks for decades.
 
-- COBOL and CICS programs, 3270/BMS screens, copybooks, Db2, and VSAM;
-- customer and account creation, inquiry, maintenance, transfer, debit, and credit operations;
-- Multi-tier architecture (presentation, business logic, data)
+> **💡 What is a bank teller?** A bank teller is a front-line bank employee who serves customers at a branch counter. Tellers handle everyday transactions — deposits, withdrawals, transfers, and account inquiries — and are often the first point of contact when a customer has a problem. In CBSA, the teller interacts with the system through a 3270 terminal screen.
 
-You are working from local source only. If Bob asks whether to use a centralized metadata service such as `Z Understand`, choose **local workspace analysis** for this lab.
 
-> **Important — working with AI-assisted analysis**
+A bank teller using CBSA can:
+- create and look up customers and accounts;
+- perform debits, credits, and fund transfers between accounts; and
+- manage account details such as interest rates and account type.
+
+### How it is built
+
+CBSA follows a layered architecture common in mainframe applications:
+
+| Layer | Technology | What it contains |
+|---|---|---|
+| Presentation | CICS + BMS (3270 screens) | The green-screen forms a teller sees and fills in |
+| Business logic | COBOL programs | The rules that validate input and drive each operation |
+| Data | Db2 tables and VSAM files | Where customers, accounts, and transactions are stored |
+| Shared definitions | Copybooks | Shared data layouts reused across multiple programs |
+
+
+### Working in this lab
+
+You are working from **local source files only** — no connection to a live z/OS system is required. IBM Bob analyzes the source in your workspace and builds a local metadata database so you can navigate, query, and understand the application without needing a mainframe.
+
+If Bob asks whether to use a centralized metadata service such as Z Understand, choose **local workspace analysis** for this lab.
+
+> **💡 Important to know — working with AI-assisted analysis**
 >
-> - **Non-determinism.** Bob uses AI, which is not deterministic. Results may differ slightly between runs, and you may occasionally need to rephrase a prompt to steer toward the expected outcome. This is normal: Bob will reach the result, but the path may vary.
+> - **Non-determinism.** Bob uses AI, which is not deterministic. Results may differ slightly between runs, and you may need to rephrase a prompt to steer toward the expected outcome. This is normal — Bob will reach the result, but the path may vary.
 > - **Counts and estimates.** AI-generated counts can be inaccurate. Treat them as starting points and validate through engineering review.
 > - **Options and choices.** Bob may offer multiple options in response to a prompt. Choose the option that best fits the exercise goal. You can always restart a task and try a different option.
 
 ## Lab preparation
 
+### Prerequisites
 Before starting the lab, make sure the following are in place on your workstation:
 
 - IBM Bob Version 2 installed (macOS, Linux, or Windows) — download from https://bob.ibm.com/download
-- You have signed up for a Bob trial and have access to Bob Premium Package for Z — sign up at https://bob.ibm.com/trial
-- Git and internet access available
+- You have signed up for a Bob trial (sign up at https://bob.ibm.com/trial) and have access to Bob Premium Package for Z 
+- Git and Internet access available
 - The following extensions installed on Bob IDE:
 
 | Extension                     | Tested version |
@@ -71,65 +93,98 @@ Before starting the lab, make sure the following are in place on your workstatio
 
 ## Session 1 — Arrive on the team: prepare a trustworthy workspace
 
-### Prerequisites
-
-- IBM Bob Version 2 installed on macOS, Linux, or Windows.
-- IBM Bob Premium Package for Z 3.0.0 or later enabled.
-- Zowe Explorer 3.5.0 or later and IBM Z Open Editor 6.6.0 or later installed.
-- Git and internet access available.
-- Mermaid and Draw.io integrations installed if you plan to complete the diagram session.
-
-### User story
-
-**As a new CBSA maintainer, I want a clean local workspace with clear rules for generated artifacts, so that I can investigate the application without creating documentation that the rest of the team cannot find or maintain.**
-
 ### Your task
 
-1. Create a `CBSA` directory and open it in Bob.
-2. Retrieve the lab source into the current workspace.
-3. Ask Bob to establish artifact-location and naming rules before you begin analysis.
+As a new CBSA developer, I want a clean local workspace with clear rules for generated artifacts, so that I can investigate the application without creating documentation that the rest of the team cannot find or maintain.
 
-Use **Agent** mode for source retrieval. In a new task, enter:
+Think of this session as setting up your desk on day one. Before you dive into the code, you need three things in place: a workspace folder to keep everything together, the CBSA source code, and a quick word with Bob so it knows where to put things.
 
-```text
-Retrieve the sub-directory named "src/base" in the CBSA directory from the GitHub repository https://github.com/ovallod/Bob4z-a-thon.git and place it in the current workspace folder. Then remove any temporary working directory you created.
+#### Step 1 — Create the workspace folder and open it in Bob
+
+Create an empty directory on your machine called `CBSA` — this is your home base for everything you build in this lab. Then open it in Bob:
+
+In Bob, choose **File → Open Folder** and select the `CBSA` directory.
+
+That's it. You now have a clean, empty workspace. Everything Bob generates — diagrams, docs, analysis files — will live inside this folder.
+
+#### Step 2 — Bring the source code locally
+
+The CBSA source lives in a public GitHub repository. Pull it down and copy it into your workspace. 
+
+In Bob, choose **Terminal -> New Terminal**, and type
+
+```bash
+git clone https://github.com/ovallod/Bob4z-a-thon.git
+cp -r Bob4z-a-thon/CBSA/src/base ./base
 ```
 
-Confirm that the workspace contains:
+Once the copy is done, you can tidy up the cloned repository:
+
+```bash
+rm -rf Bob4z-a-thon
+```
+
+Take a quick look inside your workspace — you should see:
 
 ```text
 base/
-  bms_src/       CICS screens
-  cobol_copy/    copybooks
-  cobol_src/     COBOL programs
+  bms_src/       ← CICS screens (what the bank teller sees)
+  cobol_copy/    ← copybooks (shared data layouts)
+  cobol_src/     ← COBOL programs (the business logic)
+  README.md
 ```
 
-Next, in a new task, ask Bob to record the working conventions. You can write your own request, or use:
+Three folders, one banking application. You'll get to know all of them.
 
-```text
-Create workspace rules in .bob/rules or AGENTS.md:
-- Store documentation in docs/. Store program-specific documentation in docs/<PROGRAM>/.
-- Store tools in tools/.
-- Store schemas, drawings, and graphs in graph/.
-- Write documentation in English.
 
-Use this filename pattern:
-[PREFIX]-[TYPE]-[description].md
+**IBM TODO: seperate the codebase from Bob-a-thon git repo**
 
-PREFIX is a program name, CBSA for application-level artifacts, or GLOBAL for cross-cutting artifacts.
-TYPE is one of analysis, archi, docu, inv, plan, or spec.
-Include examples in the rules.
+#### Step 3 — Introduce yourself to Bob
+
+Now comes the fun part. Before Bob starts generating anything, you want it to understand your workspace — where things live, what the project is called, and how output files should be named. Think of this as a five-second briefing so your new AI pair programmer is aligned with the team from the start.
+
+**First time using Bob chat?** Here's how to log in:
+
+1. Open the Bob chat panel in the sidebar.
+2. Click **Log in to Bob** — this opens the IBM Bob login page in your browser.
+3. Enter your IBMid and complete authentication.
+4. Once done, you'll land back in the Bob chat window, ready to go.
+
+In a new Bob task, switch to **Z Code** mode and type:
+
+```
+/init
 ```
 
-If Bob offers to create a skill for this request, decline it; workspace rules are sufficient.
+Bob will explore your workspace and create an `AGENTS.md` file — a living document that captures your project's structure and conventions. Open it and have a read. You'll see Bob has already picked up the application layout from your source folders.
+
+> **💡 Setup auto approve**
+> are you tied of click "approve once" everytime?  select "Approve todo tools for task" this time
+
+> **💡 Meet your two mainframe modes**
+>
+> Bob Premium Package for Z (PPZ) gives you two specialized modes, and you'll use both throughout this lab. Here's how to think about them:
+>
+> | Mode | Best for | Examples |
+> |---|---|---|
+> |  **Z Code** | *Understanding and changing code* | Reading programs, extracting business rules, building data dictionaries, writing or editing COBOL, generating technical docs |
+> |  **Z Architect** | *Understanding how the pieces fit together* | Architecture diagrams, impact analysis, dependency mapping, feasibility assessments, evolution planning |
+>
+> Quick rule of thumb: reach for **Z Code** when you're asking *"what does this do and how do I change it?"* — and **Z Architect** when you're asking *"what connects to what, and what breaks if I touch this?"*
+>
+> You'll switch between them naturally as the lab progresses. For now, **Z Code** is all you need.
+
 
 ### Checkpoint
 
-You have a local `base/` source tree and either `.bob/rules` or `AGENTS.md` explains where future deliverables belong and how they are named.
+Before moving on, make sure:
+
+- your workspace has a `base/` directory containing `bms_src/`, `cobol_copy/`, and `cobol_src/`; and
+- `AGENTS.md` exists in the workspace root and describes the application structure Bob discovered.
 
 ### Summary
 
-You have established the team’s shared working agreement before generating artifacts. This small step makes later investigation reproducible and keeps the evidence from the lab usable after the session ends.
+Nice work — your workspace is ready. You've got the source, a clean folder structure, and Bob already knows the lay of the land. That `AGENTS.md` file might look small right now, but it's the foundation that keeps every generated artifact organized and findable as the lab grows. On to the real investigation.
 
 ---
 
