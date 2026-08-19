@@ -1,10 +1,10 @@
-# Lab: On boarding a new developer into CBSA application
+# Lab: Onboarding a new developer into the CBSA application
 
 ## Discover, document, and change a CICS banking application with IBM Bob Premium Package for Z
 
-**Estimated duration:** 3–4 hours  
-**Level:** Intermediate  
-**Audience:** Developers, architects, and technical leads joining a mainframe application team
+**Estimated duration:** 4–6 hours   
+**Level:** Intermediate   
+**Audience:** Developers, Architecure and technical leads joining a mainframe application team  
 
 ---
 
@@ -17,33 +17,41 @@ Right now, CBSA is hardcoded to a single branch. Every transaction, every custom
 > **💡 What is a sort code?** A sort code is a unique identifier assigned to a specific branch of a bank. It is used to route transactions to the correct location, separate from the code that identifies the bank itself. Depending on the country, the same concept goes by different names — sort code (UK), routing number (US), IFSC code (India), or branch code elsewhere. In CBSA, it is stored as a fixed constant called `SORTCODE`.
 
 The source code is there, but documentation is thin and the original developers have moved on. So you start with three basic questions:
+
 - What does this system actually do?
 - How do its pieces fit together?
 - What breaks if the sort code changes?
 
-That is exactly what this lab walks you through. Session by session, you will go from a blank workspace to a clear picture of the application — its programs, its data, its business rules, and the full blast radius of the multi-branch change. Then, once the plan is approved, you will use IBM Bob to generate the code changes and implement the first slice of the feature.
+That is exactly what this lab walks you through. Session by session, you will go from a blank workspace to a clear picture of the application — its programs, its data, its business rules, and the full impact s of the multi-branch change. Then, once the plan is approved, you will use IBM Bob to generate the code changes and implement the first slice of the feature.
 
 No prior knowledge of CBSA is assumed. All you need is curiosity and the willingness to ask good questions.
+
+---
 
 ## Learning outcomes
 
 By the end of this lab, you will know how to:
 
-- **find your way around** — set up a local workspace, map the application's programs and data, and locate what you need quickly;
-- **understand before you change** — read unfamiliar code, trace a feature end to end, and extract the business rules behind it;
-- **check what the change affects** — identify every program and data structure affected by the multi-branch `SORTCODE` change before touching anything;
-- **plan before you code** — turn a business request into a structured plan your team lead can review and approve; and
-- **implement with confidence** — use IBM Bob to generate the code changes, review the output, and validate it against the plan before committing.
+- **find your way around** — set up a local workspace, scan the application, build an inventory, and locate what you need quickly;
+- **read unfamiliar code** — use Bob to explain a COBOL program from developer and business perspectives;
+- **trace a feature end to end** — follow a call chain from a teller screen down to the data layer and visualise it as a diagram;
+- **map the blast radius** — find every occurrence of a hardcoded value across programs, copybooks, and data structures before proposing a change;
+- **assess architectural impact** — turn raw evidence into a decision document that separates facts from assumptions;
+- **plan before you code** — produce a phased implementation plan with acceptance criteria and a rollback strategy; and
+- **implement with confidence** — use Bob to generate and apply the first code change, review the diff, and keep documentation in sync.
+
+---
 
 ## Application background
+
 ### What the application does
 
 **CBSA (CICS Banking Sample Application)** is a simulated bank-teller system running on IBM z/OS. Think of it as the kind of software a bank teller would use to look up customers, open accounts, and process transactions — built on mainframe technology that has been in use at real banks for decades.
 
 > **💡 What is a bank teller?** A bank teller is a front-line bank employee who serves customers at a branch counter. Tellers handle everyday transactions — deposits, withdrawals, transfers, and account inquiries — and are often the first point of contact when a customer has a problem. In CBSA, the teller interacts with the system through a 3270 terminal screen.
 
-
 A bank teller using CBSA can:
+
 - create and look up customers and accounts;
 - perform debits, credits, and fund transfers between accounts; and
 - manage account details such as interest rates and account type.
@@ -52,19 +60,18 @@ A bank teller using CBSA can:
 
 CBSA follows a layered architecture common in mainframe applications:
 
-| Layer | Technology | What it contains |
-|---|---|---|
-| Presentation | CICS + BMS (3270 screens) | The green-screen forms a teller sees and fills in |
-| Business logic | COBOL programs | The rules that validate input and drive each operation |
-| Data | Db2 tables and VSAM files | Where customers, accounts, and transactions are stored |
-| Shared definitions | Copybooks | Shared data layouts reused across multiple programs |
-
+| Layer              | Technology                | What it contains                                        |
+|--------------------|---------------------------|---------------------------------------------------------|
+| Presentation       | CICS + BMS (3270 screens) | The green-screen forms a teller sees and fills in       |
+| Business logic     | COBOL programs            | The rules that validate input and drive each operation  |
+| Data               | Db2 tables and VSAM files | Where customers, accounts, and transactions are stored  |
+| Shared definitions | Copybooks                 | Shared data layouts reused across multiple programs     |
 
 ### Working in this lab
 
-You are working from **local source files only** — no connection to a live z/OS system is required. IBM Bob analyzes the source in your workspace and builds a local metadata database so you can navigate, query, and understand the application without needing a mainframe.
+You are working from **local source files only** — no connection to a live z/OS system is required. IBM Bob analyses the source in your workspace and builds a local metadata database so you can navigate, query, and understand the application without needing a mainframe.
 
-If Bob asks whether to use a centralized metadata service such as Z Understand, choose **local workspace analysis** for this lab.
+If Bob asks whether to use a backend metadata service such as Z Understand, choose **local workspace analysis** for this lab.
 
 > **💡 Important to know — working with AI-assisted analysis**
 >
@@ -72,18 +79,19 @@ If Bob asks whether to use a centralized metadata service such as Z Understand, 
 > - **Counts and estimates.** AI-generated counts can be inaccurate. Treat them as starting points and validate through engineering review.
 > - **Options and choices.** Bob may offer multiple options in response to a prompt. Choose the option that best fits the exercise goal. You can always restart a task and try a different option.
 
+---
+
 ## Lab preparation
 
-### Prerequisites
 Before starting the lab, make sure the following are in place on your workstation:
 
 - IBM Bob Version 2 installed (macOS, Linux, or Windows) — download from https://bob.ibm.com/download
-- You have signed up for a Bob trial (sign up at https://bob.ibm.com/trial) and have access to Bob Premium Package for Z 
+- You have signed up for a Bob trial (sign up at https://bob.ibm.com/trial) and have access to Bob Premium Package for Z
 - Git and Internet access available
-- The following extensions installed on Bob IDE:
+- The following extensions installed in Bob:
 
 | Extension                     | Tested version |
-| -------------------------------| ----------------|
+|-------------------------------|----------------|
 | Zowe Explorer                 | 3.5.1          |
 | IBM Z Open Editor             | 6.6.1          |
 | IBM Bob Premium Package for Z | 3.0.10         |
@@ -91,13 +99,18 @@ Before starting the lab, make sure the following are in place on your workstatio
 
 ---
 
-## Session 1 — Arrive on the team: prepare a trustworthy workspace
+## Session 1 — Arrive on the team: prepare a user workspace
+
+### Prerequisites
+
+- You are login to Bob 
+- You are using **Z Code** mode
+
+### Why
+
+Think of this session as setting up your desk on day one. Before you dive into the code, you need three things in place: a workspace folder to keep everything together, the CBSA source code, and a quick briefing with Bob so it understands your project from the start.
 
 ### Your task
-
-As a new CBSA developer, I want a clean local workspace with clear rules for generated artifacts, so that I can investigate the application without creating documentation that the rest of the team cannot find or maintain.
-
-Think of this session as setting up your desk on day one. Before you dive into the code, you need three things in place: a workspace folder to keep everything together, the CBSA source code, and a quick word with Bob so it knows where to put things.
 
 #### Step 1 — Create the workspace folder and open it in Bob
 
@@ -105,22 +118,17 @@ Create an empty directory on your machine called `CBSA` — this is your home ba
 
 In Bob, choose **File → Open Folder** and select the `CBSA` directory.
 
-That's it. You now have a clean, empty workspace. Everything Bob generates — diagrams, docs, analysis files — will live inside this folder.
+You now have a clean, empty workspace. Everything Bob generates — diagrams, docs, analysis files — will live inside this folder.
 
 #### Step 2 — Bring the source code locally
 
-The CBSA source lives in a public GitHub repository. Pull it down and copy it into your workspace. 
+The CBSA source lives in a public GitHub repository. Pull it down and copy it into your workspace.
 
-In Bob, choose **Terminal -> New Terminal**, and type
+In Bob, choose **Terminal → New Terminal**, and type:
 
 ```bash
 git clone https://github.com/ovallod/Bob4z-a-thon.git
 cp -r Bob4z-a-thon/CBSA/src/base ./base
-```
-
-Once the copy is done, you can tidy up the cloned repository:
-
-```bash
 rm -rf Bob4z-a-thon
 ```
 
@@ -134,46 +142,29 @@ base/
   README.md
 ```
 
-Three folders, one banking application. You'll get to know all of them.
+Three folders, one banking application. You will get to know all of them.
 
+#### Step 3 — Introduce your workspace to Bob
 
-**IBM TODO: seperate the codebase from Bob-a-thon git repo**
+Before Bob starts generating anything, you want it to understand your workspace — where things live, what the project is called, and how output files should be named.
 
-#### Step 3 — Introduce yourself to Bob
-
-Now comes the fun part. Before Bob starts generating anything, you want it to understand your workspace — where things live, what the project is called, and how output files should be named. Think of this as a five-second briefing so your new AI pair programmer is aligned with the team from the start.
-
-**First time using Bob chat?** Here's how to log in:
+**First time using Bob chat?** Here is how to log in:
 
 1. Open the Bob chat panel in the sidebar.
 2. Click **Log in to Bob** — this opens the IBM Bob login page in your browser.
 3. Enter your IBMid and complete authentication.
-4. Once done, you'll land back in the Bob chat window, ready to go.
+4. Once done, you will land back in the Bob chat window, ready to go.
 
 In a new Bob task, switch to **Z Code** mode and type:
 
-```
+```text
 /init
 ```
 
-Bob will explore your workspace and create an `AGENTS.md` file — a living document that captures your project's structure and conventions. Open it and have a read. You'll see Bob has already picked up the application layout from your source folders.
+Bob will explore your workspace and create an `AGENTS.md` file — a living document that captures your project's structure and conventions. Open it and have a read. You will see Bob has already picked up the application layout from your source folders.
 
-> **💡 Setup auto approve**
-> are you tied of click "approve once" everytime?  select "Approve todo tools for task" this time
-
-> **💡 Meet your two mainframe modes**
->
-> Bob Premium Package for Z (PPZ) gives you two specialized modes, and you'll use both throughout this lab. Here's how to think about them:
->
-> | Mode | Best for | Examples |
-> |---|---|---|
-> |  **Z Code** | *Understanding and changing code* | Reading programs, extracting business rules, building data dictionaries, writing or editing COBOL, generating technical docs |
-> |  **Z Architect** | *Understanding how the pieces fit together* | Architecture diagrams, impact analysis, dependency mapping, feasibility assessments, evolution planning |
->
-> Quick rule of thumb: reach for **Z Code** when you're asking *"what does this do and how do I change it?"* — and **Z Architect** when you're asking *"what connects to what, and what breaks if I touch this?"*
->
-> You'll switch between them naturally as the lab progresses. For now, **Z Code** is all you need.
-
+> **💡 Set up auto-approve**
+> Tired of clicking *Approve once* every time? Select **Approve todo tools for task** to auto-approve all tool actions in the current task. You can also manage auto-approval permissions by clicking the **Permissions** tab at the bottom of the chat window.
 
 ### Checkpoint
 
@@ -184,335 +175,330 @@ Before moving on, make sure:
 
 ### Summary
 
-Nice work — your workspace is ready. You've got the source, a clean folder structure, and Bob already knows the lay of the land. That `AGENTS.md` file might look small right now, but it's the foundation that keeps every generated artifact organized and findable as the lab grows. On to the real investigation.
+Your workspace is ready. You have got the source, a clean folder structure, and Bob already knows the lay of the land. That `AGENTS.md` file might look small right now, but it is the foundation that keeps every generated artefact organised and findable as the lab grows.
+
+> **💡 Meet your two mainframe modes**
+>
+> Bob Premium Package for Z gives you two specialised modes, and you will use both throughout this lab:
+>
+> | Mode | Best for | Examples |
+> |---|---|---|
+> | **Z Code** | *Understanding and changing code* | Reading programs, extracting business rules, building data dictionaries, writing or editing COBOL, generating technical docs |
+> | **Z Architect** | *Understanding how the pieces fit together* | Architecture diagrams, impact analysis, dependency mapping, feasibility assessments, evolution planning |
+>
+> Quick rule of thumb: reach for **Z Code** when you are asking *"what does this do and how do I change it?"* — and **Z Architect** when you are asking *"what connects to what, and what breaks if I touch this?"*
 
 ---
 
-## Session 2 — Build the team’s map of the application
+## Session 2 — Get oriented: build the application map
 
 ### Prerequisites
 
 - Session 1 is complete.
-- The `base/cobol_src/` sources are present in the workspace.
+- The `base/` sources are present in the workspace.
 - You are using **Z Code** mode.
 
-### User story
+### Why
 
-**As a maintainer assigned an unfamiliar incident, I want a reliable inventory and local metadata for CBSA, so that I can locate the programs, data structures, and dependencies relevant to the issue.**
+You cannot judge risk in a system you have never seen. A five-minute inventory pass tells you the shape of the application — how many programs, how they are named, what is grouped together — before you commit to reading anything in depth. File names in this codebase are meaningful: `CREACC` = create account, `INQCUST` = inquire customer, `DBCRFUN` = debit/credit function. That alone tells you a lot.
 
 ### Your task
 
-Initialize analysis metadata, generate a data dictionary, and create a component inventory.
+Build two artefacts that will serve as your reference throughout the rest of the lab: a program inventory and an architecture diagram.
 
-In a new Z Code task, enter:
-
-```text
-/init and create the local metadata database with the scan_program tool.
-```
-
-Bob may inspect the workspace, scan programs, and update `AGENTS.md` with information that is not obvious from the file structure. When it offers a centralized metadata option, select local analysis.
-
-Then start the **Generate data dictionary** workflow from the Play button. Select `BANKDATA.cbl` when asked for a source program. Bob should scan the COBOL directory if necessary, extract variables, and create or update `bobz/DD.json`.
-
-Finally, request an inventory:
+**Inventory** — In **Z Code** mode, ask:
 
 ```text
-Generate a complete inventory of the CBSA application. For each program, include its type, role, and dependencies: copybooks, BMS screens, Db2 tables and files with access mode, queues, and called programs. Save an exploitable Markdown document using the workspace conventions.
+I'm new to this codebase. Give me a directory-level overview of
+base/cobol_src, base/cobol_copy, and base/bms_src — how many files
+in each, and group the COBOL program names by what they seem to do
+based on naming (e.g. inquiry, create, delete, transfer).
+
+Save it as a markdown file under docs/
 ```
 
-Optionally, capture existing code practices for later changes:
+Alternative prompt: 
+```text
+Create a CBSA application inventory document with technical components, their uses, and main flows.
+```
+
+**Architecture diagram** — Switch to **Z Architect** mode and ask:
+
+```text
+Build an architecture diagram illustrating the program dependencies of the CBSA application.
+
+Save it as a markdown file under docs/
+```
+
+### Checkpoint
+
+- An inventory document such as `docs/overview.md` is saved and lists the key programs grouped by function.
+- An architecture diagram document such as `docs/architecture.md` is saved and shows how the layers connect.
+
+### Summary
+
+You now have a searchable map of the entire application. Every session that follows builds on what you just created — the inventory tells you where to look, and the architecture diagram tells you what connects to what.
+
+---
+
+## Session 3 — Find ground zero: locate the hardcoded sort code
+
+### Prerequisites
+
+- Session 2 is complete.
+- The inventory document is available in `docs/`.
+- You are using **Z Code** mode.
+
+### Why
+
+Every hardcoded-value problem starts with finding ground zero. You want the *authoritative* definition, not just the first place you see the word "sortcode" in a search. In CBSA specifically, this step reveals something important: there is a copybook with the literal value, *and* a small CICS program built to return it — meaning someone already anticipated this might need to be looked up dynamically one day, but the rest of the system does not use that path yet. That is a real clue about design intent you would otherwise miss.
+
+### Your task
+
+- Search for where the sort code value is actually defined (not just referenced).
+- Read that definition closely: what is its data type, what is its current value, is it a standalone item or part of something larger?
+- Check whether there is already a "getter" program or utility that hands this value out, rather than every caller reading the literal directly.
+
+In **Z Code** mode, ask:
+
+```text
+Search the codebase for where "sort code" or "sortcode" is defined
+as a literal value (not just referenced). Show me the definition,
+its data type, and its current value.
+
+Then tell me if there's any "get" program for this value.
+```
+
+You will see the value is literally hardcoded in `base/cobol_copy/SORTCODE.cpy` with the value `987654`. You will also find a dedicated CICS program, `GETSCODE.cbl`, whose sole job is to return this value to the caller via a COMMAREA — but no other program currently calls it.
+
+### Checkpoint
+
+- You can name the file and line where `987654` is defined.
+- You can describe what `GETSCODE.cbl` does and explain why no other program calls it yet.
+
+### Summary
+
+You found ground zero. The sort code lives in one copybook, every program copies it at compile time, and there is already a service program ready to return it dynamically — it just has no callers. That unused service is your solution. The next session will show you exactly how many programs need to change to wire it in.
+
+---
+
+## Session 4 — Assess the blast radius: impact analysis
+
+### Prerequisites
+
+- Session 3 is complete.
+- You know where `SORTCODE.cpy` is defined and what `GETSCODE.cbl` does.
+- Switch to **Z Architect** mode for this session.
+
+### Why
+
+Before proposing any change to the team, you need to answer two questions: *how much of the codebase does this touch?* and *what could go wrong?* An impact analysis turns those questions into a document your team lead can actually review — with named programs, named risks, and clear separation of what you know versus what you are assuming.
+
+### Your task
+
+In **Z Architect** mode, ask:
+
+```text
+Analyse the impact of changing SORTCODE from a fixed constant to a variable value
+to support multiple bank branches.
+
+Save the analysis as a markdown file under docs/
+```
+
+Bob will triger a build-in skill `impact-analysis` to evaluate the effort and risks and may ask you open questions to help you choose the best design strategy. Select the option that best fits the goal: enabling multi-branch support without changing any COMMAREA interfaces or recompiling programs on every branch change.
+
+When the document is ready, share it with your team lead and talk through the open questions before proceeding. **Do not start coding until the assumptions are signed off.**
+
+### Checkpoint
+
+A saved impact analysis — such as `docs/impact-analysis-sortcode.md` — exists and:
+
+- names every program that uses `SORTCODE` directly;
+- identifies `GETSCODE` as the intended abstraction; and
+- clearly separates confirmed evidence from open assumptions.
+
+### Summary
+
+You turned a vague business request into a concrete technical document with named risks and open decisions. The team can now have a real conversation about the multi-branch proposal. That is the job before any code moves.
+
+---
+
+## Session 5 — Write the implementation plan
+
+### Prerequisites
+
+- Session 4 is complete and the impact analysis has been reviewed by your team lead.
+- The open questions from the impact analysis have been answered.
+- You are using **Z Architect** mode.
+
+### Why
+
+An impact analysis tells you *what* is affected. An implementation plan tells you *how* and *in what order* to make the change safely. A good plan also includes a rollback step for each phase — so if something goes wrong in production you know exactly how to undo it.
+
+### Your task
+
+In **Z Architect** mode, ask:
+
+```text
+Based on the SORTCODE impact analysis in the workspace, create a phased implementation
+plan for the multi-branch feature.
+
+Separate each phase clearly. Save the plan using the workspace conventions.
+```
+
+Bob will triger a build-in skill `implementation-planning` to produce a phased plan. Review it with your team and pay special attention to:
+
+- **the sequence** — does each step leave the application in a working state?
+- **the test scenarios** — are there cases that only appear when two branches are active simultaneously?
+- **the rollback plan** — could you safely undo Phase 1 if something went wrong in production?
+
+Only move to Session 6 once the plan is reviewed and approved by your team lead.
+
+### Checkpoint
+
+A saved implementation plan — such as `docs/implementation-plan-sortcode-multibranch.md` — exists, is phased, and includes acceptance criteria and a rollback step for each phase.
+
+### Summary
+
+You have a plan, not just a wish list. The plan is what you show your team lead for approval. It is also what you will use in the next session to guide Bob's code generation — because a well-specified plan produces much better code than a vague prompt.
+
+---
+
+## Session 6 — Implement the first slice
+
+### Prerequisites
+
+- Session 5 is complete and the implementation plan is approved by your team lead.
+- You are using **Z Code** mode.
+
+### Why
+
+Good implementation starts with the smallest change that moves the system in the right direction. Rather than changing all programs at once, Phase 1 of the plan targets the most complex business logic program first — `CREACC.cbl` — and uses it as a proven template for the remaining programs. But before you change a single line, you document what the program currently does. That baseline is your safety net.
+
+### Your task
+
+#### Step 1 — Document `CREACC.cbl` before touching it
+
+Before you change a single line of code, document the program you are about to modify. Why document first? because it is one of the most important engineering habits on a mainframe team. 
+
+In **Z Code** mode, use the "Start Workflow" icon, select **Generate program documentation**, click `Start`, and select `base/cobol_src/CREACC.cbl`. Alternatively, type in the chat:
+
+```text
+Generate documentation for @base/cobol_src/CREACC.cbl
+
+Save it to docs/
+```
+
+Bob will produce a structured document covering:
+
+- what the program does (its business function)
+- the key paragraphs and their execution sequence
+- the data stores it reads and writes (Db2 `ACCOUNT`, `PROCTRAN`, and `CONTROL` tables; Named Counter Service)
+- the programs it calls (`INQCUST`, `INQACCCU`, `ABNDPROC`)
+- the error and abend paths
+
+Read the document before continuing. Pay particular attention to:
+
+- the **entry sequence in `P010`** — this is where you will insert the `GETSCODE` call
+- the **Named Counter sections (`ENC010`, `DNC010`)** — the sort code is part of the counter name, so your change directly affects counter identity
+- the **Db2 write sections (`WAD010`, `WPD010`)** — the sort code is written into the `ACCOUNT` and `PROCTRAN` rows, which is the whole reason this change matters for multi-branch
+
+> **💡 Why `CREACC.cbl` first?**
+> The implementation plan starts with `CREACC.cbl` because it is the most complex program in Phase 1 — it uses `SORTCODE` in **six paragraphs** (`P010`, `ENC010`, `DNC010`, `FNA010`, `WAD010`, `WPD010`) and will serve as the template all other programs follow. If the pattern works here, it works everywhere. If there is a design issue, you want to find it on program one, not program ten.
+
+#### Step 2 — (Optional) Establish CBSA coding standards
+
+Before generating any new code, it is good practice to discover and formalise the coding standards already in use in the workspace. This ensures Bob's generated code matches your team's existing style.
+
+In a new Bob task in **Z Code** mode, type:
 
 ```text
 /z-coding-standards-skill-builder
 ```
 
-Accept inclusion of ZCodeScan if Bob asks. Test the resulting standards with:
+This runs the built-in `z-coding-standards-skill-builder` skill, which analyses the codebase and creates a reusable `.bob/skills/cbsa-coding-standards` skill. If asked about ZCodeScan validation, select **Yes**.
+
+To test the new skill, start a new task and type:
 
 ```text
-Verify whether @base/cobol_src/BNK1CAC.cbl follows the CBSA coding standards.
+Verify @base/cobol_src/CREACC.cbl is respecting CBSA coding standards
 ```
+
+Bob will use the newly created skill to review the program and report any deviations.
+
+#### Step 3 — Propose the Phase 1 change
+
+Now ask Bob to propose the change before applying it. Reviewing a proposal first gives you the chance to catch anything unexpected before any file is edited.
+
+In **Z Code** mode, type:
+
+```text
+According to the approved multi-branch implementation plan, propose the Phase 1 change.
+
+Do not edit files yet — show me the proposal first.
+```
+
+Review the proposal carefully:
+
+- Does it remove `COPY SORTCODE.` from Working-Storage?
+- Does it add a `WS-GETSCODE-COMMAREA` and call `EXEC CICS LINK PROGRAM('GETSCODE')` at the start of `P010`?
+- Does it replace every bare `SORTCODE` reference in the Procedure Division with `WS-SORTCODE`?
+- Does the abend handling on the new `EXEC CICS LINK` follow the standard CBSA pattern?
+
+#### Step 4 — Apply the change and review the diff
+
+When you are satisfied with the proposal, ask Bob to apply it:
+
+```text
+Apply the Phase 1 changes to @base/cobol_src/CREACC.cbl following the CBSA coding standards.
+```
+
+After Bob applies the changes, review the diff carefully — compare it against the documentation you generated in Step 1 and confirm that:
+
+- the entry sequence documented in `P010` is preserved, with the new `GETSCODE` call placed at the very start
+- every paragraph that previously used the bare `SORTCODE` identifier now uses `WS-SORTCODE`
+- the Named Counter name still incorporates the sort code (now retrieved dynamically)
+- the Db2 writes to `ACCOUNT` and `PROCTRAN` now use the runtime value from `WS-SORTCODE`
+
+#### Step 5 — Keep the documentation in sync
+
+After every code change, update the inventory and architecture documents so the team's knowledge base reflects the new state.
+
+```text
+Update the existing inventory documentation and relevant documentation to reflect the changes.
+```
+
+> **💡 Important reminder**
+> Bob's generated COBOL is a proposal, not a finished product. Before any code reaches a real z/OS system, it must go through your team's normal review, syntax checking, compilation, and test execution. AI-assisted code generation is a starting point — it is not a substitute for a compiler.
 
 ### Checkpoint
 
-Verify that:
+Before marking this session complete, verify:
 
-- local metadata is recorded in `.bobz/local-settings.json`;
-- `bobz/DD.json` contains documented variables from `BANKDATA`;
-- an inventory such as `docs/CBSA-INV-*.md` lists the key application components; and
-- if you completed the optional step, a CBSA coding-standards skill exists under `.bob/skills/`.
-
-### Summary
-
-Instead of beginning with a guess about which program matters, you now have a searchable map of the estate. The metadata and dictionary make the rest of the lab’s questions more specific and easier to validate.
-
----
-
-## Session 3 — Help a teller understand the account-inquiry journey
-
-### Prerequisites
-
-- Session 2 is complete.
-- You have the inventory and local analysis metadata.
-- Use **Z Code** for source analysis and **Ask** for a teller-facing explanation, if available.
-
-### User story
-
-**As a bank teller, I want a simple guide to viewing a customer’s accounts from the main menu, so that I can complete an inquiry confidently and explain common outcomes to a customer.**
-
-### Your task
-
-First identify the implementation path. Ask Bob:
-
-```text
-Explain the account-inquiry path that starts at BNKMENU and continues through BNK1CCA to INQACCCU. Identify the screens, programs, data accessed, and meaningful error paths.
-```
-
-Then create the teller guide. Use **Ask** mode if it is available:
-
-```text
-Create a user journey guide for a teller who consults a customer's accounts in CBSA.
-
-The guide must:
-- use non-technical language;
-- begin at the main menu;
-- describe each user decision and expected screen outcome;
-- include screen examples or clearly labelled placeholders;
-- include practical tips and a short troubleshooting section.
-
-Save the guide using the workspace naming convention.
-```
-
-Review the result against the source-analysis explanation. The guide should describe what a teller does, while the implementation note explains why the screens behave that way.
-
-### Checkpoint
-
-You have a user-facing guide—typically named like `docs/CBSA-DOCU-account-inquiry.md`—and can trace its steps to `BNKMENU`, `BNK1CCA`, and `INQACCCU`.
+- A documentation file for `CREACC.cbl` exists under `docs/` and was generated **before** any code was changed.
+- (Optional) The skill `.bob/skills/cbsa-coding-standards` exists in the workspace.
+- `base/cobol_src/CREACC.cbl` has been updated: `COPY SORTCODE.` removed, `EXEC CICS LINK PROGRAM('GETSCODE')` added at `P010`, and all `SORTCODE` references in the Procedure Division replaced with `WS-SORTCODE`.
+- The inventory and architecture documents in `docs/` reflect the updated state.
 
 ### Summary
 
-You translated implementation knowledge into a useful operational journey without losing traceability to the code. This is the foundation for distinguishing a user-reported problem from a technical cause.
-
----
-
-## Session 4 — Explain the data initialization program to the team
-
-### Prerequisites
-
-- Sessions 1–2 are complete.
-- `BANKDATA.cbl` is available at `base/cobol_src/BANKDATA.cbl`.
-- Use **Z Code** mode.
-
-### User story
-
-**As a developer preparing a test environment, I want to understand how CBSA initializes banking data, so that I can use realistic data and avoid breaking assumptions made by online transactions.**
-
-### Your task
-
-Use the Play button to start **Explain code**, select `BANKDATA.cbl`, and select an audience perspective. Try more than one perspective if time allows: developer, architect, and business users need different information.
-
-Alternatively, enter:
-
-```text
-/explain @base/cobol_src/BANKDATA.cbl
-```
-
-If the explanation appears only in the conversation, save it explicitly:
-
-```text
-Save the BANKDATA explanation as Markdown using the workspace naming convention.
-```
-
-Review the document for these questions:
-
-- What data is generated or initialized?
-- Which copybooks, VSAM files, Db2 tables, or supporting programs are involved?
-- Which parameters or rules control the generated data?
-- Which failure paths need attention before a test run?
-
-### Checkpoint
-
-A saved `BANKDATA` explanation exists under `docs/`, ideally in a `docs/BANKDATA/` directory, and addresses both the batch flow and its dependencies.
-
-### Summary
-
-You created a reviewable starting point for an important batch program. The explanation accelerates onboarding, but it still needs normal engineering validation before a production change or run.
-
----
-
-## Session 5 — Find the rule hidden behind a customer-number validation
-
-### Prerequisites
-
-- Session 2 is complete.
-- `base/cobol_src/BNK1CAC.cbl` is open in the editor.
-- Use **Z Code** mode.
-
-### User story
-
-**As a product owner, I want new customer numbers to start with `99`, so that numbers created in the new channel can be recognized consistently by downstream processes.**
-
-### Your task
-
-Before changing code, ask Bob to extract the current rules:
-
-```text
-Extract the business rules from @base/cobol_src/BNK1CAC.cbl. Save them in a Markdown document using the workspace conventions. Separate customer-facing validation rules from technical implementation notes.
-```
-
-Review the customer-number rules. You should find checks for length, numeric content, and underscores. Locate the validation area around line 458, immediately after the numeric check.
-
-In the editor, ask Bob to add the requested rule for the selected location:
-
-```text
-base/cobol_src/BNK1CAC.cbl:458-458
-
-Add a validation that rejects a customer number unless it starts with 99. Use the established CBSA error-handling and message conventions.
-```
-
-Review the proposed edit before accepting it. It should:
-
-- test the first two characters of the input customer number;
-- show a clear error message;
-- set the validation state and cursor location consistently with nearby checks; and
-- be reflected in the generated business-rule document.
-
-If the editor shows a missing `BNK1CAM` copybook, right-click the problem and choose **Correct with Bob**. Review the recreated copybook against the BMS definition. Do not treat unresolved CICS system copybooks, such as `DFAID`, as a reason to invent application copybooks.
-
-### Checkpoint
-
-The updated source and rule document both describe the new `99` prefix rule. You have reviewed the diff and can identify the existing validation convention the change follows.
-
-### Summary
-
-You used the existing code to discover the rule set before adding a new rule. This is safer than inserting an isolated condition because the new behavior now follows the program’s established validation and error-handling pattern.
-
----
-
-## Session 6 — Determine whether CBSA can support multiple branches
-
-### Prerequisites
-
-- Session 2 is complete.
-- The data dictionary and inventory are available.
-- Use **Z Code** for variable exploration and **Z Architect** for impact analysis.
-
-### User story
-
-**As the architecture lead, I want to know the consequences of making `SORTCODE` variable rather than fixed, so that the business can decide whether and how to support multiple bank branches.**
-
-### Your task
-
-Build the evidence in stages. In Z Code mode, ask:
-
-```text
-What variables are used in INQACCCU?
-```
-
-Then focus the investigation:
-
-```text
-How is SORTCODE used across the CBSA application? Include occurrences, data access patterns, and implicit business rules.
-```
-
-In Z Architect mode, request the decision document:
-
-```text
-Analyze the impact of changing SORTCODE from a fixed value to a variable value to support multiple bank branches.
-
-Include:
-- current and target architecture;
-- affected programs, copybooks, BMS maps, Db2 tables, VSAM files, and data access patterns;
-- business rules that must be clarified;
-- implementation sequencing, migration considerations, testing strategy, risks, and mitigations;
-- clearly labelled assumptions and estimates.
-
-Save the analysis as a Markdown artifact using the workspace conventions.
-```
-
-Optionally create a dependency view to support the review:
-
-```text
-Build a Draw.io architecture diagram that shows CBSA program dependencies, application layers, data stores, and major data flows.
-```
-
-### Checkpoint
-
-You have an impact analysis such as `docs/CBSA-ARCHI-sortcode-impact.md`. It separates confirmed source evidence from assumptions, and it identifies the components and decisions that must be addressed before implementation.
-
-### Summary
-
-The team can now discuss the multi-branch proposal with concrete evidence instead of treating it as a local constant change. This is the moment to agree on business rules and migration ownership—not to start editing every affected program.
-
----
-
-## Session 7 — Turn an email-search request into a safe delivery plan
-
-### Prerequisites
-
-- Sessions 2 and 6 are complete.
-- You can use **Z Architect** and **Z Code** modes.
-- The team has agreed that planning an email-search capability is in scope; do not apply changes to a production branch during this lab.
-
-### User story
-
-**As a teller, I want to find a customer by email address when I do not know the customer number, so that I can serve the customer without abandoning the inquiry.**
-
-### Your task
-
-First understand existing search capabilities:
-
-```text
-What criteria can be used to search for a customer in CBSA? Identify the programs, screens, data structures, and limitations involved.
-```
-
-Then use Z Architect to produce a plan:
-
-```text
-Create an implementation plan for customer search by email in CBSA.
-
-Include requirements and non-goals, current-state evidence, data-model and access-path options, affected components, validation and privacy considerations, test scenarios, deployment steps, risks, and open decisions. Clearly distinguish facts found in the workspace from assumptions. Save the plan using the workspace conventions.
-```
-
-Review the plan with the team before coding. In particular, resolve:
-
-- whether email is unique and whether partial matching is permitted;
-- where email is stored and how existing records are migrated;
-- the preferred Db2 or VSAM access path and performance expectations;
-- validation, normalization, privacy, and audit requirements; and
-- user-interface changes and error behavior.
-
-Only after that review, use Z Code in a separate working branch or copy of the source to implement approved slices. For example:
-
-```text
-According to the approved email-search plan, propose the smallest first change to the CUSTOMER data structures. Show the affected copybooks, compatibility considerations, and tests before editing files.
-```
-
-For any generated COBOL, perform normal source review, syntax checking, compilation, and test execution in the appropriate z/OS environment. Do not consider an AI syntax review a compilation result.
-
-### Checkpoint
-
-You have a saved email-search plan—such as `docs/CBSA-PLAN-email-search.md`—that the team could use to make an implementation decision. If you started code changes, they are clearly separated from the plan and include a review/test checklist.
-
-### Summary
-
-You converted a broad feature request into a sequence of decisions and verifiable work. The deliverable is not merely code generation; it is a plan that makes design, risk, and testing visible before the team commits to the change.
+You made the first real step toward multi-branch support — and you did it the right way: **document first, then change, then keep records in sync**. The documentation gave you a baseline before you touched anything, made the scope of the change obvious, and gave your reviewer something concrete to work with. `CREACC.cbl` is now the proven template — every other program in Phase 1 follows the same four-step pattern.
 
 ---
 
 ## Lab wrap-up
 
-You completed the work of a maintainer joining a legacy application:
+You have just done what a real developer does when they join a team with a live mainframe application and a demanding feature request:
 
-1. prepared a governed workspace;
-2. created metadata, a data dictionary, and an application inventory;
-3. connected a teller journey to its implementation path;
-4. documented a critical batch program;
-5. discovered and safely extended a validation rule;
-6. assessed a multi-branch architectural change; and
-7. planned an email-search enhancement before coding it.
+1. **Set up a governed workspace** — so your work is findable and reproducible.
+2. **Built an application map** — inventory, architecture diagram, metadata database.
+3. **Found ground zero** — the authoritative definition of the hardcoded value and the unused service already designed to replace it.
+4. **Assessed the blast radius** — a documented impact analysis your team lead could actually review, with named risks and open assumptions.
+5. **Wrote an implementation plan** — phased, sequenced, with acceptance criteria and a rollback step.
+6. **Documented before changing** — a pre-change baseline for the first program.
+7. **Made the first safe code change** — smallest slice, proposal reviewed before applying.
+8. **Kept documentation in sync** — the inventory and architecture docs reflect the new state.
 
-The artifacts you created are the real outcome of the lab: they make the codebase easier to navigate, review, explain, and change. Keep them current as the application evolves, and validate every proposed change through your normal engineering, security, and release processes.
+The habit behind all of this is simple: **understand before you change, and plan before you code**. The tools change. The frameworks change. That habit stays.
 
-## Suggested next step
-
-Choose one approved, small change from the email-search plan. Create its technical specification, define acceptance and regression tests, then implement it in a controlled branch. Re-run the inventory or relevant documentation afterward so the project knowledge remains aligned with the source.
+The artefacts you created are not throwaway — they are the living documentation of the application. Keep them updated as the work continues.
