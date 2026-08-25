@@ -973,7 +973,9 @@ BNK1CAC est le programme de création de compte. Il vérifie les données d'entr
 
 ### ✍️ Votre Prompt
 
+```text
 Extraire et sauvegarder dans un fichier md, les règles métier de @base/cobol_src/BNK1CAC.cbl
+```
 
 **Attendu dans votre prompt :**
 - cibler le prompt sur le module cible
