@@ -4,7 +4,7 @@
 
 **Estimated duration:** 4–6 hours   
 **Level:** Intermediate   
-**Audience:** Developers, Architecure and technical leads joining a mainframe application team  
+**Audience:** Developers, Architecture and technical leads joining a mainframe application team  
 
 ---
 
@@ -71,7 +71,7 @@ CBSA follows a layered architecture common in mainframe applications:
 
 You are working from **local source files only** — no connection to a live z/OS system is required. IBM Bob analyses the source in your workspace and builds a local metadata database so you can navigate, query, and understand the application without needing a mainframe.
 
-If Bob asks whether to use a backend metadata service such as Z Understand, choose **local workspace analysis** for this lab.
+If Bob asks whether to use a back-end metadata service such as Z Understand, choose **local workspace analysis** for this lab.
 
 > **💡 Important to know — working with AI-assisted analysis**
 >
@@ -175,11 +175,11 @@ Before moving on, make sure:
 
 ### Summary
 
-Your workspace is ready. You have got the source, a clean folder structure, and Bob already knows the lay of the land. That `AGENTS.md` file might look small right now, but it is the foundation that keeps every generated artefact organised and findable as the lab grows.
+Your workspace is ready. You have got the source, a clean folder structure, and Bob already knows the lay of the land. That `AGENTS.md` file might look small right now, but it is the foundation that keeps every generated artifact organized and findable as the lab grows.
 
 > **💡 Meet your two mainframe modes**
 >
-> Bob Premium Package for Z gives you two specialised modes, and you will use both throughout this lab:
+> Bob Premium Package for Z gives you two specialized modes, and you will use both throughout this lab:
 >
 > | Mode | Best for | Examples |
 > |---|---|---|
@@ -196,7 +196,6 @@ Your workspace is ready. You have got the source, a clean folder structure, and 
 
 - Session 1 is complete.
 - The `base/` sources are present in the workspace.
-- You are using **Z Code** mode.
 
 ### Why
 
@@ -204,7 +203,7 @@ You cannot judge risk in a system you have never seen. A five-minute inventory p
 
 ### Your task
 
-Build two artefacts that will serve as your reference throughout the rest of the lab: a program inventory and an architecture diagram.
+Build two artifacts that will serve as your reference throughout the rest of the lab: a program inventory and an architecture diagram.
 
 **Inventory** — In **Z Code** mode, ask:
 
@@ -246,7 +245,7 @@ You now have a searchable map of the entire application. Every session that foll
 ### Prerequisites
 
 - Session 2 is complete.
-- The inventory document is available in `docs/`.
+- The artifacts document are available in `docs/`.
 - You are using **Z Code** mode.
 
 ### Why
@@ -305,7 +304,7 @@ to support multiple bank branches.
 Save the analysis as a markdown file under docs/
 ```
 
-Bob will triger a build-in skill `impact-analysis` to evaluate the effort and risks and may ask you open questions to help you choose the best design strategy. Select the option that best fits the goal: enabling multi-branch support without changing any COMMAREA interfaces or recompiling programs on every branch change.
+Bob will trigger a build-in skill `impact-analysis` to evaluate the effort and risks and may ask you open questions to help you choose the best design strategy. Select the option that best fits the goal: enabling multi-branch support without changing any COMMAREA interfaces or recompiling programs on every branch change.
 
 When the document is ready, share it with your team lead and talk through the open questions before proceeding. **Do not start coding until the assumptions are signed off.**
 
@@ -346,7 +345,7 @@ plan for the multi-branch feature.
 Separate each phase clearly. Save the plan using the workspace conventions.
 ```
 
-Bob will triger a build-in skill `implementation-planning` to produce a phased plan. Review it with your team and pay special attention to:
+Bob will trigger a build-in skill `implementation-planning` to produce a phased plan. Review it with your team and pay special attention to:
 
 - **the sequence** — does each step leave the application in a working state?
 - **the test scenarios** — are there cases that only appear when two branches are active simultaneously?
@@ -501,4 +500,4 @@ You have just done what a real developer does when they join a team with a live 
 
 The habit behind all of this is simple: **understand before you change, and plan before you code**. The tools change. The frameworks change. That habit stays.
 
-The artefacts you created are not throwaway — they are the living documentation of the application. Keep them updated as the work continues.
+The artifacts you created are not throwaway — they are the living documentation of the application. Keep them updated as the work continues.
