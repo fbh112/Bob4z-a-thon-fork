@@ -127,7 +127,7 @@ Bob Premium for Z offers several specialized modes for different types of tasks.
 - Strategy definition
 - Specification creation
 
-> **Switching modes:** Use the **dropdown selector** to the left of the chat input field to switch modes. You can also press **Ctrl+.** (Windows/Linux) or **⌘+.** (macOS) to cycle through all available modes.
+> **Switching modes:** Use the **dropdown selector** to the left of the chat input field to switch modes. 
 
 ---
 
@@ -139,8 +139,8 @@ Bob Premium for Z offers several specialized modes for different types of tasks.
 Retrieve the CBSA application source code from GitHub and prepare the workspace for the lab.
 
 ### ✅ Prerequisites
-- IBM Bob Version 2 (tested with Bob2.0.3) installed (macOS, Linux, or Windows) — download from https://bob.ibm.com/download
-- You have signed up for a Bob trial (sign up at https://bob.ibm.com/trial) and have access to Bob Premium Package for Z
+- IBM Bob Version 2 installed (macOS, Linux, or Windows) — download from https://bob.ibm.com/download
+- You have signed up and have access to Bob Premium Package for Z
 - Git and Internet access available
 - The following extensions installed in Bob:
 
@@ -313,10 +313,9 @@ Write your own prompt to ask Bob to initialize and fully analyze the workspace.
 /init and create the local metadata database with the scan_program tool.
 ```
 
-**Note:** `/init` is a **built-in Bob slash command**. It scans the project and generates persistent context files for Bob:
-- **`AGENTS.md`** in the workspace root
+**Note:** `/init` is a **built-in Bob slash command**. It scans the project and generates persistent context files for Bob: `AGENTS.md` in the workspace root
 
-These files give Bob persistent knowledge of your project across all conversations, so it does not need to rediscover the codebase each time. The `scan_program` part of the prompt is specific to the IBM Bob Premium Package for Z and builds the local metadata database for mainframe analysis.
+This file give Bob persistent knowledge of your project across all conversations, so it does not need to rediscover the codebase each time. The `scan_program` part of the prompt is specific to the IBM Bob Premium Package for Z and builds the local metadata database for mainframe analysis.
 
 You can find more tools at https://www.ibm.com/docs/en/bobz/3.0.0?topic=commands-using-tools-tool-groups
 
@@ -348,12 +347,12 @@ Bob will:
 
 **Modified files:**
 
-1. **`AGENTS.md`** (workspace root)
+**`AGENTS.md`** (workspace root)
 
-### ✍️ Your Action to generate the data dictionary
+### ✍️ Your Action - generate the data dictionary
 
 To initiate the workflow, click the **Start Workflow** button (the ▶ play icon in the Bob panel toolbar), select **"Generate data dictionary"**, then click **"Start"**.
-Bob will ask you to select the program from which the data dictionary will be built: choose **cobol_src/BANKDATA.cbl** (you can only select one program at a time).
+Bob will ask you to select the program from which the data dictionary will be built: choose `cobol_src/BANKDATA.cbl` (you can only select one program at a time).
 
 ### ⚙️ What Bob Does Automatically
 
@@ -371,14 +370,13 @@ Bob will use specific ***Skills*** and ***tools*** from the ***IBM Bob Premium P
 Data dictionary successfully created for the CBSA banking application in file `.bobz/DD.json`
 
 Summary of actions:
-
-✅ Scan of 29 COBOL programs in base/cobol_src/
-✅ Analysis database created and stored in `.bobz/local-settings.json`
-✅ Variable extraction from BANKDATA program
-✅ Selection of 15 critical business variables
-✅ Expansion and documentation of variables with business context
-✅ Creation of `.bobz/DD.json` file with 15 documented entries
-✅ Update of `AGENTS.md` with dictionary location
+- Scan of 29 COBOL programs in the source
+- Analysis database created and stored in `.bobz/local-settings.json`
+- Variable extraction from BANKDATA program
+- Selection of 15 critical business variables
+- Expansion and documentation of variables with business context
+- Creation of `.bobz/DD.json` file with 15 documented entries
+- Update of `AGENTS.md` with dictionary location
 
 
 
@@ -387,7 +385,7 @@ Summary of actions:
 - **The importance of initialization**: The workspace is the starting point for all analyses. Some steps are essential before going further. You need to generate metadata (see `.bobz/local-settings.json`) and the data dictionary (see `.bobz/DD.json`) to have quality analyses.
 - **Time savings:** Instead of spending 2-3 days manually exploring the code, Bob analyzes everything in a few minutes
 - **Standardization:** Conventions are automatically established
-- **Living documentation:** The AGENTS.md file serves as a reference for the entire team
+- **Living documentation:** The `AGENTS.md` file serves as a reference for the entire team
 
 ---
 
@@ -478,7 +476,7 @@ Now that the workspace is initialized and you have a detailed inventory, you nee
 ```text
 /z-coding-standards-skill-builder
 ```
-Reply No when Bob proposes you to include "ZCodeScan validation" in the skill, for the sake of simplicity in the lab process. 
+Reply **No** when Bob proposes you to include "ZCodeScan validation" in the skill, for the sake of simplicity in the lab process. 
 
 ### ⚙️ What Bob Does Automatically
 
@@ -503,12 +501,14 @@ verify @base/cobol_src/BNK1CAC.cbl is respecting cbsa coding standards
 Only for some lines of code:
 Either select a code block. Right click > IBM Bob > Improve code
 Or using the prompt:
+
 ```text
 Improve the following code from base/cobol_src/BNK1CAC.cbl:239-254
 ```
-Bob use the Z Context tool to automatically enrich Bob responses with approved IBM Z documentation to improve knowledge and guidance for COBOL and Assembler (ASM) development tasks.
 
-You can read more about the `zContext` tool [here](https://www.ibm.com/docs/en/bobz/3.0.0?topic=z-integrating-context-tool).
+Bob use the **Z Context** tool to automatically enrich Bob responses with approved IBM Z documentation to improve knowledge and guidance for COBOL and Assembler (ASM) development tasks.
+
+You can read more about the **zContext** tool [here](https://www.ibm.com/docs/en/bobz/3.0.0?topic=z-integrating-context-tool).
 
 ---
 
@@ -575,7 +575,7 @@ Save it as a markdown file under docs/
 
 ### 🎯 Objective
 
-Generate complete technical documentation for the BANKDATA batch program that initializes application data.
+Generate complete technical documentation for the `BANKDATA` batch program that initializes application data.
 
 ### 🔧 Bob Mode to Use
 
@@ -585,7 +585,7 @@ Z Code mode specializes in detailed analysis and documentation of COBOL programs
 
 ### 📝 Context
 
-BANKDATA is the batch data initialization program. It is critical to understand:
+`BANKDATA.cbl` is the batch data initialization program. It is critical to understand:
 - How data is generated
 - Which structures are initialized
 - Test data generation rules
@@ -593,7 +593,7 @@ BANKDATA is the batch data initialization program. It is critical to understand:
 
 ### ✍️ Your Task
 
-Write your own prompt to request complete technical documentation for the [`BANKDATA`](base/cobol_src/BANKDATA.cbl) program.
+Write your own prompt to request complete technical documentation for the `BANKDATA.cbl` program.
 
 **Expected in your prompt:**
 - explicitly name the target program
@@ -610,6 +610,7 @@ Click the **Start Workflow** button (the ▶ play icon in the Bob panel toolbar)
 ```text
 /explain @BANKDATA.cbl
 ```
+
 With this prompt Bob will adapt the explanation to the current Bob mode (Z Code or Z Architect).
 You will need to ask Bob to save the explanation in a md file.
 
@@ -685,15 +686,11 @@ How is the "sort code" or "sortcode" variable used in the application?
 
 ### ✅ Sample Result
 
-Role in application,usage by program...
+- You will see the value is literally hardcoded in `base/cobol_copy/SORTCODE.cpy` with the value `987654`. You will also find a dedicated CICS program, `GETSCODE.cbl`, whose sole job is to return this value to the caller via a COMMAREA. 
+- Bob will also give you a list of programs that use this variable
+- ...
 
-
-### ✅ Prompt to Continue Analysis
-
-```text
-what is the architectural importance of SORTCODE?
-```
-
+### 
 ---
 
 ## Exercise 5b: Business Rules Analysis and inline code generation
@@ -715,7 +712,7 @@ BNK1CAC is the create account program. It verifies the input with a list of rule
 
 ### ✍️ Your Task
 
-Extract and save in a md file, the business rules from @base/cobol_src/BNK1CAC.cbl
+Extract the business rules from `BNK1CAC.cbl` and save in a md file, 
 
 **Expected in your prompt:**
 - scope the prompt to the target module
@@ -730,9 +727,9 @@ save the result in a markdown file under docs/ folder
 
 ### ✅ Sample Result
 
-Creation of "docs/BNK1CAC-business-rules.md" file.
+Creation of `docs/BNK1CAC-business-rules.md` file.
 
-It should contain section "Input Validation Rules"
+It should contain section **Input Validation Rules**
 - Customer Number Validation
 - Account Type Validation
 - Interest Rate Validation
@@ -785,8 +782,9 @@ verify if file @docs/BNK1CAC-business-rules.md  reflect the code change in progr
 In the list of problems at the bottom of the IDE you should see a message indicating "Unable to find copybook BNK1CAM", right click on the message and select **Fix with Bob**, then accept the prompt.
 
 ### ✅ Sample Result
-Bob should find the missing copybook should contain BMS field definitions. From the BMS definition, it should recreate the missing copybook:`BNK1CAM.cpy` under base/cobol_copy folder
-After Bob IDE has recreated BNK1CAM.cpy, there still should be errors about the missing DFAID copybook which is part of CICS system libraries.
+Bob should find the missing copybook should contain BMS field definitions. From the BMS definition, it should recreate the missing copybook:`BNK1CAM.cpy`. 
+
+After Bob IDE has recreated `BNK1CAM.cpy`, there still should be errors about the missing DFAID copybook which is part of CICS system libraries.
 
 ### ✅ Prompt to Generate the Enhancement Report
 
@@ -797,7 +795,7 @@ save the result in a markdown file under docs/ folder
 ```
 
 ### ✅ Sample Result
-The report (in docs/BNK1CAC-enhancement.md) should find a bug in move to ABND-TIME, duplicated lines...
+The report (in `docs/BNK1CAC-enhancement.md`) should find a bug in move to ABND-TIME, duplicated lines...
 
 ---
 
@@ -853,7 +851,7 @@ Perform a complete impact analysis to transform the fixed SORTCODE into multi-br
 
 ### ✅ Sample Result
 
-Bob will trigger a built-in skill `impact-analysis` to evaluate the effort and risks and may ask you open questions to help you choose the best design strategy. Select the option that best fits your requirement.
+Bob will trigger a built-in skill **impact-analysis** to evaluate the effort and risks and may ask you open questions to help you choose the best design strategy. Select the option that best fits your requirement.
 
 **File created:** `docs/CBSA-archi-impact***.md`
 
@@ -965,7 +963,7 @@ What is the plan to implement customer search by email?
 
 #### ✅ Sample Result
 
-Bob will trigger a built-in skill `implementation-planning` to produce a phased plan.
+Bob will trigger a built-in skill **implementation-planning** to produce a phased plan.
 Bob creates **`docs/CBSA-plan-email-search.md`**:
 
 #### 🎓 What You Learn
@@ -1068,14 +1066,14 @@ Bob performs a **complete syntax verification** of the generated program, and gi
 
 You have completed the IBM Bob Premium Package for Z lab. In a few hours, you have:
 
-✅ Initialized and analyzed a complex mainframe workspace
-✅ Generated an exhaustive application inventory
-✅ Created a professional architecture diagram
-✅ Documented the BANKDATA batch program
-✅ Analyzed occurrences of business rules
-✅ Evaluated the impact of a major change
-✅ Documented a complete user journey
-✅ Proposed an evolution with implementation guide
+- Initialized and analyzed a complex mainframe workspace
+- Generated an exhaustive application inventory
+- Created a professional architecture diagram
+- Documented the BANKDATA batch program
+- Analyzed occurrences of business rules
+- Evaluated the impact of a major change
+- Documented a complete user journey
+- Proposed an evolution with implementation guide
 
 ### 🔧 Mode Usage Summary
 
