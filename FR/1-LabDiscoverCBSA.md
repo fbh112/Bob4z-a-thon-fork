@@ -494,6 +494,16 @@ Bob va :
 ***Mettre à jour ou créer AGENTS.md avec les informations non-évidentes***
 *** z Open Editor va créer un fichier zapp.yaml, descriptif des resources de l'application***
 
+### ✅ Enrichir le contexte des LLMs avec plus de contenu de référence spécifique z/OS prétraité (langages, middleware...)  (nb: cela sera fait automatiquement dans la prochaine version du produit)
+
+Ajouter à la fin de AGENTS.md:
+
+```text
+# Workspace Configuration
+
+Target Platform: IBM Z
+```
+
 ### ✅ Exemple de résultat
 
 

@@ -442,6 +442,16 @@ Bob will:
 ***Display detected configuration for confirmation***
 ***Update AGENTS.md with non-obvious information***
 
+### ✅ Add more z/OS knowledge (languages, middleware...) to your repository (will be automatic in the next version)
+
+Update AGENTS.md by adding at the end:
+
+```text
+# Workspace Configuration
+
+Target Platform: IBM Z
+```
+
 ### ✅ Sample Result
 
 
