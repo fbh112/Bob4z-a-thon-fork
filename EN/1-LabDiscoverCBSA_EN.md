@@ -162,7 +162,7 @@ Open Bob IDE, click on the **File>Open Folder** menu and choose the ~/CBSA direc
 ### 💬 Bob Prompt
 
 ```
-Retrieve the sub-directory named "src/base" in the CBSA directory from the GitHub repository https://github.com/ovallod/Bob4z-a-thon.git t and place it in the current workspace folder. Then remove any temporary working directory you would have created.
+Retrieve the sub-directory named "src/base" in the CBSA directory from the GitHub repository https://github.com/ovallod/Bob4z-a-thon.git and place it in the current workspace folder. Then remove any temporary working directory you would have created.
 ```
 
 
