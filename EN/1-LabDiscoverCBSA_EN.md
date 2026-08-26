@@ -1108,16 +1108,6 @@ During this lab, you used different Bob modes according to needs:
 | Automatic documentation | 2-3 weeks       | 3 minutes      | 99.8%     |
 | **TOTAL**               | **11-17 weeks** | **76 minutes** | **99.6%** |
 
-### 🚀 Next Steps
-
-Now that you master IBM Bob Premium Package for Z, you can:
-
-1. **Apply these techniques** to your own mainframe applications
-2. **Train your team** with this lab
-3. **Accelerate impact analyses** before modifications
-4. **Improve quality** of your deliverables
-
-
 ### 💼 Enterprise Use Cases
 
 IBM Bob Premium Package for Z is particularly useful for:
@@ -1145,31 +1135,6 @@ During this lab, you generated:
 | CBSA-EMAIL-ENHANCEMENT-GUIDE.md        | 1247            | Evolution guide             |
 | **TOTAL**                              | **4618+ lines** | **Complete documentation**  |
 
-### 🎯 Business Value
-
-**IBM Bob Premium Package for Z ROI:**
-
-- **Time-to-Market Reduction**: 99.6% time saved
-- **Quality Improvement**: Exhaustive and accurate documentation
-- **Risk Reduction**: Complete impact analyses
-- **Knowledge Transfer**: Documentation accessible to all
-- **Compliance**: Complete traceability and audit trail
-
-**Cost avoided:**
-- 8-12 weeks × 40h/week × $150/h = **$48,000 - $72,000**
-- Bob time: 68 minutes ≈ **$170**
-- **Net savings: $47,830 - $71,830 per project**
-
-### 📞 Support and Resources
-
-To go further with IBM Bob Premium Package for Z:
-
-- **Documentation**: Consult user guides
-- **Support**: Contact the IBM Bob Premium team
-- **Training**: Participate in training sessions
-- **Community**: Join the user community
-
----
 
 **Thank you for participating in this lab!**
 
