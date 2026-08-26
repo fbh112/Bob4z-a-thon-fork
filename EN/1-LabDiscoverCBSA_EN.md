@@ -136,6 +136,7 @@ Retrieve the CBSA application source code from GitHub and prepare the workspace 
 
 ### 🎯 Prerequisites
 
+- Have git client CLI installed on a workstation (MacOS, Linux, or Windows)
 - Have IBM Bob Version 2 installed on a workstation (MacOS, Linux, or Windows)
 - Have the following extensions installed:
     - Zowe Explorer 3.5.0 (or higher)

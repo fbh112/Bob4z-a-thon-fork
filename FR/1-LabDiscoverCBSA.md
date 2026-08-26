@@ -138,6 +138,7 @@ Récupérer le code source de l'application CBSA depuis GitHub et préparer le w
 
 ### 🎯 Prérequis
 
+- avoir installé le client git CLI sur une station de travail (MacOS, Linux ou MSWindows)
 - avoir installé IBM Bob Version 2 sur une station de travail (MacOS, Linux ou MSWindows)
 - avoir installé les extensions suivantes:
     - Zowe Explorer 3.5.0 (ou plus)
