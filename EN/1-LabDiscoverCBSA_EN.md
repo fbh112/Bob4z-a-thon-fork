@@ -609,11 +609,10 @@ Click the **Start Workflow** button (the ▶ play icon in the Bob panel toolbar)
 ```
 
 With this prompt Bob will adapt the explanation to the current Bob mode (Z Code or Z Architect).
-You will need to ask Bob to save the explanation in a md file.
 
 ### ✅ Sample Result
 
-File created: `docs/program/.../BANKDATA.md`
+workflow completed, file is created: `docs/program/.../BANKDATA.md`
 
 IBM Bob Premium Package for Z uses a specialized workflow to generate detailed technical documents from COBOL source code (whole-file-explanation). Based on your current mode, Bob will automatically produce either a developer documentation or an architecture documentation.
 
@@ -635,7 +634,7 @@ save the BANKDATA explaination in a markdown file under docs/ folder
 
 This documentation is useful for:
 
-1. **Onboarding**: New developers quickly understand BANKDATA
+1. **Onboarding**: New developers quickly understand the purpose of program `BANKDATA.cbl`
 2. **Maintenance**: Reference when modifying the program
 3. **Testing**: Understanding how to generate data sets
 4. **Migration**: Documenting behavior before modernization
@@ -717,7 +716,7 @@ Extract the business rules from `BNK1CAC.cbl` and save in a md file,
 ### 💬 Bob Prompt
 
 ```text
-extract the business rule from program @base/cobol_src/BNK1CAC.cbl
+extract the business rule from program @BNK1CAC.cbl
 
 ```
 
@@ -729,7 +728,7 @@ It should contain section **Input Validation Rules**
 - Customer Number Validation
 - Account Type Validation
 - Interest Rate Validation
-...
+- ...
 
 There are three verifications on the customer number (length, not underscore, numeric). We will add a new one: the customer number should start with 99.
 
@@ -737,7 +736,7 @@ There are three verifications on the customer number (length, not underscore, nu
 
 > **Note 2:** The **"Generate Documentation"** workflow can also be used to create a file that will contain the list of business rules (per paragraph). This report contains documentation with many other aspects of a program.
 
-### ✅ Prompt to Create the New Rule
+### 💬 Prompt to Create the New Rule
 
 Open `BNK1CAC.cbl` in the editor. Place your cursor at the beginning of line 458 (Ctrl G 458; this should be just after the validation that the customer number is numeric) and enter in the editor
 
@@ -773,19 +772,19 @@ If not, you can remind Bob to verify the md file if it reflects the updates in t
 verify if file @docs/BNK1CAC-business-rules.md  reflect the code change in program @base/cobol_src/BNK1CAC.cbl
 ```
 
-### ✅ Fix Missing Copybook
+### 💬 Fix Missing Copybook
 
-In the list of problems at the bottom of the IDE you should see a message indicating "Unable to find copybook BNK1CAM", right click on the message and select **Fix with Bob**, then accept the prompt.
+In the list of **PROBLEMS** at the bottom of the IDE you should see a message indicating "Unable to find copybook BNK1CAM", right click on the message and select **Fix with Bob**, then accept the prompt.
 
 ### ✅ Sample Result
 Bob should find the missing copybook should contain BMS field definitions. From the BMS definition, it should recreate the missing copybook:`BNK1CAM.cpy`. 
 
 After Bob IDE has recreated `BNK1CAM.cpy`, there still should be errors about the missing DFAID copybook which is part of CICS system libraries.
 
-### ✅ Prompt to Generate the Enhancement Report
+### 💬 Prompt to Generate the Enhancement Report
 
 ```text
-Create a markdown formatted report on all of the possible enhancements that could be made on @base/cobol_src/BNK1CAC.cbl
+Create a markdown formatted report on all of the possible enhancements that could be made on @BNK1CAC.cbl
 
 ```
 
@@ -813,7 +812,7 @@ The business wants to deploy the application in multiple branches. You must eval
 
 ### ✍️ Your Task
 
-Write your own prompt to request an impact analysis of a major design change around SORTCODE.
+Write your own prompt to request an impact analysis of a major design change around `SORTCODE`.
 
 **Expected in your prompt:**
 - clearly describe the target change
@@ -912,6 +911,10 @@ Document containing:
 - Troubleshooting guide
 - Real use cases
 
+If it does not create a new file , you can ask Bob to 
+```
+Write the result into a markdown file under /docs folder
+```
 ---
 
 ## Exercise 8: Email Search Implementation
@@ -958,7 +961,7 @@ What is the plan to implement customer search by email?
 #### ✅ Sample Result
 
 Bob will trigger a built-in skill **implementation-planning** to produce a phased plan.
-Bob creates **`docs/CBSA-plan-email-search.md`**:
+Bob creates `docs/CBSA-plan-email-search.md` or similar.
 
 #### 🎓 What You Learn
 
@@ -1043,7 +1046,7 @@ Z Code mode excels at generating COBOL code for Z/OS.
 #### 💬 Bob Prompt
 
 ```text
-Verify the syntax of the INQEMAIL.cbl program
+Verify the syntax of the program @INQEMAIL.cbl
 ```
 
 
@@ -1087,6 +1090,23 @@ During this lab, you used different Bob modes according to needs:
 
 **Key principle:** Choosing the right mode according to task nature maximizes efficiency and result quality.
 
+### 📚 Created Resources
+
+During this lab, you generated:
+
+| Document                               | Lines           | Value                       |
+| ----------------------------------------| -----------------| -----------------------------|
+| AGENTS.md                              | 122             | Reference guide             |
+| CBSA-INVENTORY.md                      | 850+            | Complete inventory          |
+| CBSA-ARCHITECTURE.md (Mermaid)         | -               | Visual diagram              |
+| BANKDATA-docu-technique.md             | 450+            | Batch program documentation |
+| CBSA-SORTCODE-BUSINESS-RULES.md        | 682             | Business rules              |
+| CBSA-SORTCODE-CHANGE-IMPACT.md         | 782             | Impact analysis             |
+| CBSA-USER-JOURNEY-CUSTOMER-ACCOUNTS.md | 485             | User guide                  |
+| CBSA-EMAIL-ENHANCEMENT-GUIDE.md        | 1247            | Evolution guide             |
+| **TOTAL**                              | **4618+ lines** | **Complete documentation**  |
+
+
 ### 📊 Gains Summary
 
 | Task                    | Without Bob     | With Bob       | Gain      |
@@ -1113,27 +1133,10 @@ IBM Bob Premium Package for Z is particularly useful for:
 - **Audit**: Prepare code and architecture reviews
 - **Training**: Create educational materials
 
-### 📚 Created Resources
-
-During this lab, you generated:
-
-| Document                               | Lines           | Value                       |
-| ----------------------------------------| -----------------| -----------------------------|
-| AGENTS.md                              | 122             | Reference guide             |
-| CBSA-INVENTORY.md                      | 850+            | Complete inventory          |
-| CBSA-ARCHITECTURE.md (Mermaid)         | -               | Visual diagram              |
-| BANKDATA-docu-technique.md             | 450+            | Batch program documentation |
-| CBSA-SORTCODE-BUSINESS-RULES.md        | 682             | Business rules              |
-| CBSA-SORTCODE-CHANGE-IMPACT.md         | 782             | Impact analysis             |
-| CBSA-USER-JOURNEY-CUSTOMER-ACCOUNTS.md | 485             | User guide                  |
-| CBSA-EMAIL-ENHANCEMENT-GUIDE.md        | 1247            | Evolution guide             |
-| **TOTAL**                              | **4618+ lines** | **Complete documentation**  |
-
-
 **Thank you for participating in this lab!**
 
 **Lab Version:** 2.0
-**Creation date:** 2025-06-26
+**Creation date:** 2026-08
 **Author:** IBM Bob Premium Package for Z Team
 
 ---
