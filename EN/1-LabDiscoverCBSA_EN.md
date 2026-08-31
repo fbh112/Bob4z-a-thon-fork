@@ -904,8 +904,11 @@ Z Code mode excels at pattern analysis and extracting business rules embedded in
 BNK1CAC is the create account program. It verifies the input with a list of rules.
 
 ### ✍️ Your Prompt
+### ✅ Recommended Prompt
 
+```text
 Extract and save in a md file, the business rules from @base/cobol_src/BNK1CAC.cbl
+```
 
 **Expected in your prompt:**
 - scope the promp to the target module
@@ -921,7 +924,7 @@ It should contain Input Validation Rules
 - Interest Rate Validation
 ...
 
-Thare are three verifications on the customer number (length, not underscore, numeric). We will add a new one: the customer number should start with 99.
+There are three verifications on the customer number (length, not underscore, numeric). We will add a new one: the customer number should start with 99.
 
 Comment 1: the file should also contain other sections than "Input Validation Rules". They may be considered to be more technical rules than business rules and removed).
 
@@ -929,14 +932,12 @@ Comment 2: ""Generate Documentation"" workflow can also be used to create a file
 
 ### ✅ Prompt to Create the new rule:
 
-Open BNK1CAC.cbl in the editor. Place your cursor at the beginning of line 458 (Ctrl G 458; this should be just after the validation that the customer number is numeric) and enter in the editor
+Open BNK1CAC.cbl in the editor. Place your cursor at the beginning of line 458 (Ctrl G 458; this should be just after the validation that the customer number is numeric) and enter in the editor). 
+Right click, in the contextual menu, select the menu "IBM Bob">"Add to Context" : it adds the reference as context in the prompt window ("BNK1CAC.cbl:458-458")
 
-In the prompt area of IBM Bob type:
+In the prompt area of IBM Bob complete the prompt with "add a test to verify a customer number should start with 99":
 ```text
-base\cobol_src\BNK1CAC.cbl:458-458
-'''
-add a test to verify a customer number should start with 99
-'''
+BNK1CAC.cbl:458-458 add a test to verify a customer number should start with 99
 ```
 
 
@@ -958,10 +959,6 @@ add a test to verify a customer number should start with 99
 2 - BNK1CAC-business-rules.md is updated with the new rule and its associated error message.
 
 
-### ✅ Recréer copybook manquant.
-
-Après avoir ouvert BNK1CAC.cbl dans l'éditeur, vous verrez dans la fenêtre du bas "PROBLEMES" un grand nombre de copybooks et variables non résolus. Même si la solution est d'aller les retrouver dans le référenciel des fichiers source, nous allons en faire recréer un par Bob.
-
 ### ✅ Missing Copybook.
 
 Edit BNK1CAC.cbl\
@@ -978,7 +975,9 @@ After Bob IDE has recreated BNK1CAM.cpy, there still should be errors about the 
 
 ### ✅ Prompt to generate the report
 
+```text
 Create a markdown formatted report on all of the possible enhancements that could be made on @base/cobol_src/BNK1CAC.cbl
+```
 
 ### ✅ Exemple de résultat
 
