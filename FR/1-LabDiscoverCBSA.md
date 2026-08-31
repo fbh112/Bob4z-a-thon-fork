@@ -469,6 +469,7 @@ Rédigez votre propre prompt pour demander à Bob d'initialiser et d'analyser co
 ```
 
 **Note :** La commande `/init` est une commande spéciale de IBM Bob Premium Package for Z qui déclenche une analyse complète du workspace.
+La base de données des métadonnées est une fonction spécifique du Premium Package for Z qui permet d'obtenir des analyses de code plus précises et détaillées
 
 ### 🔀 Variantes de Prompt
 
