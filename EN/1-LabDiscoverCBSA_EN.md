@@ -627,6 +627,7 @@ Contains:
 - sample code
 - ...
 ### ✅ Testing the new skill in a new task
+Attention: To be sure the new skill will be found, you have to reload your workspace. To do that, close the folder (Menu : File> Close Folder) then reopen it (Menu: File>Open Folder)
 
 ```text
 verify @base/cobol_src/BNK1CAC.cbl is respecting cbsa coding standards
