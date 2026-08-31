@@ -695,6 +695,9 @@ Contient :
 La fin du résumé de la tâche Bob comprend des exemples d'appels à la nouvelle compétence ("skill").
 
 ### ✅ Test de la nouvelle compétence dans une nouvelle tâche 
+Attention: pour être sur que le nouveau skill sera trouvé, vous devez recharger l'espace de travail. Pour cela, fermer le répertoire (Menu : File> Close Folder) puis réouvrez le (Menu: File>Open Folder).
+
+
 Pour un programme complet:
 ```text
 vérifie la conformité de @base/cobol_src/BNK1CAC.cbl aux standards de codage de cbsa
