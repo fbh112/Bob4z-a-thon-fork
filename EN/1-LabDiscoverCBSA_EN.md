@@ -141,7 +141,7 @@ Retrieve the CBSA application source code from GitHub and prepare the workspace 
 - Have the following extensions installed:
     - Zowe Explorer 3.5.0 (or higher)
     - IBM Z Open Editor 6.6.0 (or higher)
-    - IBM Bob Premium Package for Z 3.0.0 (or higher)
+    - IBM Bob Premium Pac 3.0.0 (or higher)
     - Mermaid (latest version)
     - Draw.io Integration (latest version)
 
@@ -197,7 +197,7 @@ cobol_src/: COBOL programs
 Before starting the lab, make sure you have:
 
 - **IBM Bob** installed with the **IBM Z Open Editor** extension
-- **IBM Bob Premium Package for Z** activated in Bob
+- **IBM Bob Premium Pac** activated in Bob
 - **Git** installed on your system
 - **Internet access** to clone the repository
 
@@ -246,14 +246,14 @@ You have just joined the maintenance team for this application. You have the sou
 - ❌ Dependencies between programs unknown
 - ❌ Impact of modifications difficult to assess
 
-**Your mission:** Use IBM Bob Premium Package for Z to analyze and document this application in a few hours instead of several weeks.
+**Your mission:** Use IBM Bob Premium Pac to analyze and document this application in a few hours instead of several weeks.
 
 ### Preliminary Remarks
 
 
 - <span style="color: red;">Bob relies on AI agentics, which by definition is not deterministic. For some exercises, you may therefore notice slight differences between your result and the one described in this lab. And sometimes, you will have to add additional instructions to Bob to get the result you expect. This is, in general, the approach to have with Bob: it always gets to the result, but sometimes you have to take a different path to get there.</span>
 - **Counts made by AI can be inaccurate. Therefore, calculations should be done by engineering rather than by AI.**
-- IBM Bob Premium Package for Z relies on existing metadata or metadata it builds in a local database. In the discussion with Bob, it may ask whether to use a centralized metadata repository (e.g., "Do you want to use the Z Understand service for a complete dependency analysis, or analyze only the local workspace?"). **In the context of this lab, we do not use the Z Understand service.**
+- IBM Bob Premium Pac relies on existing metadata or metadata it builds in a local database. In the discussion with Bob, it may ask whether to use a centralized metadata repository (e.g., "Do you want to use the Z Understand service for a complete dependency analysis, or analyze only the local workspace?"). **In the context of this lab, we do not use the Z Understand service.**
 - In the various exercises to follow, Bob will be able to propose different options in response to a prompt. It is important to choose the right option to obtain the desired result. In any case, you can always go back and test another option.
 
 
@@ -263,7 +263,7 @@ You have just joined the maintenance team for this application. You have the sou
 [↩️](#-table-of-contents)
 At the end of this lab, you will be able to:
 
-✅ **Initialize** a mainframe workspace with IBM Bob Premium Package for Z  
+✅ **Initialize** a mainframe workspace with IBM Bob Premium Pac  
 ✅ **Automatically generate** a complete application inventory  
 ✅ **Create** visual architecture diagrams  
 ✅ **Analyze** business rules buried in code  
@@ -368,9 +368,9 @@ Bob may create the rules in the .bob/rules.md file rather than in AGENTS.md. It 
 - ❌ Forgetting the prefix (program or CBSA/GLOBAL)
 - **Critical patterns:** Bob identifies mandatory compilation directives and error patterns
 
-### 💡 IBM Bob Premium Package for Z Added Value
+### 💡 IBM Bob Premium Pac Added Value
 
-| Without Bob | With IBM Bob Premium Package for Z |
+| Without Bob | With IBM Bob Premium Pac |
 |----------|------------------------|
 | Incomplete documentation | Exhaustive and structured documentation |
 | Risk of missing critical patterns | All patterns automatically identified |
@@ -414,10 +414,11 @@ Write your own prompt to ask Bob to initialize and fully analyze the workspace.
 ### ✅ Recommended Prompt
 
 ```text
-/init and create  the local metadata database with the scan_program tool.
+/init and create the local metadata database with the scan_program tool.
 ```
 
-**Note:** The `init` command is a special IBM Bob Premium Package for Z command that triggers a complete workspace analysis.
+**Note:** The `init` command is a special IBM Bob Premium Pac command that triggers a complete workspace analysis. 
+The metadata DB is a Premium Pac specific feature to provide better and accurate analysis about the code in the workspace.
 
 ### 🔀 Prompt Variants(to be refined)
 
@@ -483,8 +484,7 @@ Here is intermediate information provided by Bob:
 No database was found for COBOL programs. I need to scan the programs to create the analysis database. I will scan the directory containing the COBOL programs.
 
 
-****I want to use a tool on IBM Bob Premium Package for Z****
-***IBM Bob Premium Package for Z***
+***I want to use a tool on IBM Bob Premium Package for Z***
 
 scan_program
 Scans COBOL or PL/I programs. This tool uses the folder URI to scan all the programs in the directory. State the file URI to scan a single program.
@@ -497,7 +497,6 @@ Now, I will extract the variables to create the data dictionary. I will start wi
 
 
 ***I want to use a tool on IBM Bob Premium Package for Z***
-***IBM Bob Premium Package for Z***
 
 get_variables
 Returns up to 200 of the top variables used in the BANKDATA program. These variables are retrieved from metadata generated by the scan_program tool.
