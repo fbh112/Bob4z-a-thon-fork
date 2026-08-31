@@ -1018,13 +1018,13 @@ Commentaire 2: avec le workflow "Generate Documentation" on peut créer une docu
 
 BNK1CAC est le programme de création de compte. Il vérifie les données d'entrée avec une liste de règles.
 Ouvrir BNK1CAC.cbl dans l'éditeur. Placer votre curseur au début de la ligne 458 (Ctrl G 458; cela devrait être juste après la validation que le numéro client est numérique) 
+Cliquer droit, dans le menu contextuel, sélectionner le menu "IBM Bob">"Add to Context" : cela ajoute la référence de la ligne dans la zone de prompt ("BNK1CAC.cbl:458-458")
+
+Dans la zone de prompt, compléter avec "ajouter une nouvelle règle métier: test pour vérifier qu'un numéro client doit commencer par 99":
 
 ### ✅ Prompt pour Créer la nouvelle règle 
 ```text
-base\cobol_src\BNK1CAC.cbl:458-458
-'''
-ajouter une nouvelle règle métier: test pour vérifier qu'un numéro client doit commencer par 99
-'''
+BNK1CAC.cbl:458-458   ajouter une nouvelle règle métier: test pour vérifier qu'un numéro client doit commencer par 99
 ```
 
 ### ✅ Exemple de résultat (vous pourriez avoir à clore l'édition de BNK1CAC.cbr (sans sauvegarde) et le réouvrir)
