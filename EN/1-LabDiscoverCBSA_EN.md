@@ -18,12 +18,11 @@
 7. [Exercise 2: Application Inventory Generation and Coding Standards](#exercise-2-application-inventory-generation-and-coding-standards)
 8. [Exercise 3: Architecture Diagram Creation](#exercise-3-architecture-diagram-creation)
 9. [Exercise 4: BANKDATA Program Documentation](#exercise-4-bankdata-program-documentation)
-10. [Exercise 5a: Business Rules Analysis](#exercise-5a-business-rules-analysis)
-11. [Exercise 5b: Business Rules Analysis and inline code generation](#exercise-5b-business-rules-analysis-and-inline-code-generation)
-12. [Exercise 6: Change Impact Analysis](#exercise-6-change-impact-analysis)
-13. [Exercise 7: User Journey Documentation](#exercise-7-user-journey-documentation)
-14. [Exercise 8: Email Search Implementation](#exercise-8-email-search-implementation)
-15. [Conclusion](#6-conclusion)
+10. [Exercise 5: Business Rules Analysis and inline code generation](#exercise-5b-business-rules-analysis-and-inline-code-generation)
+11. [Exercise 6: Change Impact Analysis](#exercise-6-change-impact-analysis)
+12. [Exercise 7: User Journey Documentation](#exercise-7-user-journey-documentation)
+13. [Exercise 8: Email Search Implementation](#exercise-8-email-search-implementation)
+14. [Conclusion](#6-conclusion)
 
 ---
 
@@ -136,75 +135,49 @@ Bob Premium for Z offers several specialized modes for different types of tasks.
 
 ### 🎯 Objective
 
-Retrieve the CBSA application source code from GitHub and prepare the workspace for the lab.
+Retrieve the CBSA application source code from GitHub and prepare your workspace for the lab.
 
 ### ✅ Prerequisites
 - IBM Bob Version 2 installed (macOS, Linux, or Windows) — download from https://bob.ibm.com/download
-- You have signed up and have access to Bob Premium Package for Z
-- Git and Internet access available
+- An subscription with access to Bob Premium Package for Z
+- Git and internet access available
+- You are able to access www.github.com to retrieve the source code
 - The following extensions installed in Bob:
 
 | Extension                     | Tested version (or latest) |
-| -------------------------------| ----------------------------|
+| ------------------------------| ---------------------------|
 | Zowe Explorer                 | 3.5.1                      |
 | IBM Z Open Editor             | 6.6.1                      |
 | IBM Bob Premium Package for Z | 3.0.11                     |
 | Mermaid                       | 2.7.5                      |
 
 
-### 🔧 Bob Mode to Use
-
-**Mode: 💻 Agent**
-
-Agent mode allows executing system commands and manipulating files.
-
 ### 📝 Context
 
-Before starting the analysis, you need to retrieve the CBSA application source code from the official GitHub repository. We will use Bob to automate this preparation.
-First, create a CBSA directory in your home directory.
-Open Bob IDE, click **File > Open Folder** and select the `~/CBSA` directory.
+Before starting the analysis, you need to retrieve the CBSA application source code from a public GitHub repository.
 
-
-### 💬 Bob Prompt
-
-```text
-Retrieve the sub-directory named "src/base" in the CBSA directory from the GitHub repository https://github.com/ovallod/Bob4z-a-thon.git and place it in the current workspace folder. Then remove any temporary working directory you would have created.
-```
-
-If you prefere to clone the repo manually, In Bob, choose **Terminal → New Terminal**, and type:
-
+1. Create a `CBSA` directory in your home directory.
+2. Open Bob IDE, click **File > Open Folder**, and select the `~/CBSA` directory.  
+(remember to trust the workspace, to avoid IDE go into the **Restricted** mode)
+3. Open a terminal by choosing **Terminal → New Terminal**, then run:
 
 ```bash
-git clone https://github.com/ovallod/Bob4z-a-thon.git
-cp -r Bob4z-a-thon/CBSA/src/base ./base
-rm -rf Bob4z-a-thon
+git clone https://github.com/fbh112/CBSA-base-source.git
 ```
 
+Once cloned, you will find the following subdirectories under your workspace:
 
-### ✅ Sample Result
-
-Bob executes the git commands, the sub-directory copy and the removal of the working directory where the git repository was cloned.
-
-The `base` directory has been placed in your workspace, with following sub-directories:
 ```
-base/
+CBSA-base-source/
 ├── README.md
 ├── bms_src/
 ├── cobol_copy/
 └── cobol_src/
 ```
 
-
-### 🎓 What You Learn
-
-- **Automation**: Bob can execute Git and system commands
-- **Workspace preparation**: Bob can organize files for the lab
-- **Verification**: Bob can validate that everything is in place
-- **Time savings**: 5 minutes instead of 15-20 minutes manually
-
 ### 🎯 You're Ready!
 
-Once the workspace is prepared with Bob, click the **`+` icon** in the Bob panel header to start a new conversation.
+Once your workspace is set up, click the **`+` icon** in the Bob panel header to start a new conversation.
 
 ---
 
@@ -601,14 +574,10 @@ Write your own prompt to request complete technical documentation for the `BANKD
 
 Click the **Start Workflow** button (the ▶ play icon in the Bob panel toolbar), select **"Generate program documentation"**, choose `BANKDATA.cbl` as the target file.
 
-
-### 🔀 Prompt Variants
-
-```text
-/explain @BANKDATA.cbl
-```
-
-With this prompt Bob will adapt the explanation to the current Bob mode (Z Code or Z Architect).
+> ⚠️ **Known platform difference — file selection in the workflow dialog**
+>
+> - **macOS**: You can select a single file directly from the workflow file picker dialog.
+> - **Windows**: The file picker does not support single-file selection. As a workaround, open `BANKDATA.cbl` in the editor first, then start the workflow — the file will be pre-selected automatically.
 
 ### ✅ Sample Result
 
@@ -642,53 +611,7 @@ This documentation is useful for:
 
 ---
 
-## Exercise 5a: Business Rules Analysis
-[↩️](#-table-of-contents)
-
-### 🎯 Objective
-
-Query Bob about the application to discover and analyze in depth the impact of changing a data element. Here, we start by analyzing a program's variables, then analyze in depth the use of SORTCODE (bank branch code) throughout the application.
-
-### 🔧 Bob Mode to Use
-
-**Mode: 🧰 Z Code**
-
-Z Code mode excels at pattern analysis and extracting business rules embedded in COBOL code.
-
-### 📝 Context
-
-SORTCODE is a critical element:
-- 6-digit code identifying the bank branch
-- Used in all tables as a composite key
-- Current fixed value: 987654
-
-### ✍️ Your Task
-
-Start by identifying a program's variables. Then, refine the description of one of these variables' use throughout the application. Finally, analyze the impact of changing this variable across the entire application.
-
-**Expected in your prompt:**
-- request a cross-application search
-- request occurrences and uses
-- request implicit business rules
-- request a summary of architectural impacts
-
-
-### 💬 Bob Prompt
-
-```text
-How is the "sort code" or "sortcode" variable used in the application?
-```
-
-### ✅ Sample Result
-
-- You will see the value is literally hardcoded in `base/cobol_copy/SORTCODE.cpy` with the value `987654`. You will also find a dedicated CICS program, `GETSCODE.cbl`, whose sole job is to return this value to the caller via a COMMAREA. 
-- Bob will also give you a list of programs that use this variable
-- ...
-
-### 
----
-
-## Exercise 5b: Business Rules Analysis and inline code generation
+## Exercise 5: Business Rules Analysis and inline code generation
 [↩️](#-table-of-contents)
 
 ### 🎯 Objective
