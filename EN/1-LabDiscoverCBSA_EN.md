@@ -18,7 +18,7 @@
 7. [Exercise 2: Application Inventory Generation and Coding Standards](#exercise-2-application-inventory-generation-and-coding-standards)
 8. [Exercise 3: Architecture Diagram Creation](#exercise-3-architecture-diagram-creation)
 9. [Exercise 4: BANKDATA Program Documentation](#exercise-4-bankdata-program-documentation)
-10. [Exercise 5: Business Rules Analysis and inline code generation](#exercise-5b-business-rules-analysis-and-inline-code-generation)
+10. [Exercise 5: Business Rules and Code Generation](#exercise-5-business-rules-and-code-generation)
 11. [Exercise 6: Change Impact Analysis](#exercise-6-change-impact-analysis)
 12. [Exercise 7: User Journey Documentation](#exercise-7-user-journey-documentation)
 13. [Exercise 8: Email Search Implementation](#exercise-8-email-search-implementation)
@@ -35,7 +35,7 @@
 
 - 🧠 **Advanced Artificial Intelligence** to understand COBOL, PL/I, Assembler, JCL, and REXX code
 - 📊 **Automatic analysis** of application structure and dependencies
-- 📝 **Documentation generation** technical and functional
+- 📝 **Documentation generation**, both technical and functional
 - 🔍 **Impact analysis** for evolutions and modifications
 - 🎯 **Recommendations** for modernization and optimization
 
@@ -145,12 +145,13 @@ Retrieve the CBSA application source code from GitHub and prepare your workspace
 - The following extensions installed in Bob:
 
 | Extension                     | Tested version (or latest) |
-| ------------------------------| ---------------------------|
+| -------------------------------| ----------------------------|
 | Zowe Explorer                 | 3.5.1                      |
-| IBM Z Open Editor             | 6.6.1                      |
+| IBM Z Open Editor             | 6.7.0                      |
 | IBM Bob Premium Package for Z | 3.0.11                     |
-| Mermaid                       | 2.7.5                      |
+| Mermaid                       | 2.7.6                      |
 
+- **Bob IDE tested version:** 1.126.0+bob2.1.0
 
 ### 📝 Context
 
@@ -353,10 +354,20 @@ Summary of actions:
 - Creation of `bobz/DD.json` file with 15 documented entries
 - Update of `AGENTS.md` with dictionary location
 
-If `AGENTS.md` is not updated by the workflow,  ask the Bob to do so
+If `AGENTS.md` is not updated by the workflow, ask Bob to do so:
+```text
+verify if @AGENTS.md is up to date with data dictionary?
 ```
-verify if @AGENTS.md is up to date with data dictory?
+
+### ✍️ Update AGENTS.md — Set the Documentation Output Folder
+
+Now that the workspace is initialized, tell Bob where all generated documentation should be saved. This ensures that every subsequent exercise stores its output consistently under `docs/`.
+
+```text
+Update @AGENTS.md to specify that all generated documentation, reports, and diagrams must be saved under the docs/ folder.
 ```
+
+Bob will update `AGENTS.md` with a convention that it will follow in all future conversations, so you will not need to repeat the instruction in every prompt.
 
 ### 🎓 What You Learn
 
@@ -493,7 +504,7 @@ You can read more about the **zContext** tool [here](https://www.ibm.com/docs/en
 
 ### 🎯 Objective
 
-Create a visual architecture diagram showing application layers and data flows.
+Create a visual architecture diagram that clearly communicates the **business-level structure** of the CBSA application — helping a new team member understand how the application is organized without getting lost in technical noise.
 
 ### 🔧 Bob Mode to Use
 
@@ -503,41 +514,37 @@ Z Architect mode specializes in creating architecture diagrams and analyzing app
 
 ### 📝 Context
 
-The textual inventory is useful, but a visual representation is essential for communicating the architecture.
+The textual inventory from Exercise 2 is useful, but a visual representation is essential for communicating the architecture to a broader audience — architects, project managers, and new developers alike.
+
+However, a naive diagram of all program dependencies tends to be cluttered: utility programs (e.g. error handlers, date/time routines) and language runtime artifacts appear alongside the core business logic, making the diagram hard to read. The goal here is a **focused, business-relevant diagram** that shows:
+- the functional layers of the application
+- how business programs interact with screens, databases, and external services
+- the major data flows — without utility and runtime noise
 
 ### ✍️ Your Task
 
-Write your own prompt to request a visual architecture diagram of the application.
+Write your own prompt to request a visual architecture diagram of the application, scoped to business-relevant components.
 
 **Expected in your prompt:**
-- request application layers
-- request key flows and dependencies
-- request integration of external resources and data
+- request functional application layers
+- request key flows and dependencies between business programs
+- request integration of screens, databases, and external services
+- explicitly ask to exclude utility programs and language runtime artifacts
 
 ### 💬 Bob Prompt
 
 ```text
-Build an architecture diagram illustrating the program dependencies of the CBSA application.
-```
-
-### 🔀 Prompt Variants
-
-```text
-Produce a CBSA architecture diagram with functional layers, components, and data flows.
-```
-
-```text
-Visually document the CBSA architecture in a Mermaid diagram representing programs, databases, and major dependencies.
+Build an architecture diagram illustrating the CBSA application structure, showing functional layers, business programs, BMS screens, Db2 tables, and external services. Exclude utility programs and language runtime artifacts to keep the diagram focused on business logic.
 ```
 
 ### ✅ Sample Result
 
-
-Mermaid diagram rendered directly in the new created file `docs/cbsa-architecure-Diagram.md`, showing 4 layers:
-- Presentation (3270 terminals)
+Mermaid diagram rendered directly in the newly created file `docs/cbsa-architecture-Diagram.md`, showing 4 clean business layers — free of utility and runtime clutter:
+- Presentation (3270 terminals / BMS screens)
 - Business logic (CICS programs)
-- Data access (Db2)
+- Data access (Db2 tables)
 - External services (credit agencies)
+
 ---
 
 ## Exercise 4: BANKDATA Program Documentation
@@ -583,13 +590,8 @@ Click the **Start Workflow** button (the ▶ play icon in the Bob panel toolbar)
 
 workflow completed, file is created: `docs/program/.../BANKDATA.md`
 
-IBM Bob Premium Package for Z uses a specialized workflow to generate detailed technical documents from COBOL source code (whole-file-explanation). Based on your current mode, Bob will automatically produce either a developer documentation or an architecture documentation.
+IBM Bob Premium Package for Z uses a specialized workflow to generate detailed technical documents from COBOL source code (whole-file explanation). Based on your current mode, Bob will automatically produce either developer documentation or architecture documentation.
 
-If you request an explaination, Bob may not save it to a file. You must then explicitly request it.
-
-```text
-save the BANKDATA explaination in a markdown file under docs/ folder
-```
 
 ### 🎓 What You Learn
 
@@ -611,71 +613,48 @@ This documentation is useful for:
 
 ---
 
-## Exercise 5: Business Rules Analysis and inline code generation
+## Exercise 5: Business Rules and Code Generation
 [↩️](#-table-of-contents)
 
 ### 🎯 Objective
 
-Query Bob about the business rules coded in a module, then ask it to create a new one from the editor
+Add a new input validation rule to `BNK1CAC.cbl` — a customer number must start with `99` — and have Bob update the program documentation to reflect the change, keeping code and docs in sync.
 
 ### 🔧 Bob Mode to Use
 
 **Mode: 🧰 Z Code**
 
-Z Code mode excels at pattern analysis and extracting business rules embedded in COBOL code.
+Z Code mode excels at analyzing COBOL code, implementing new business rules, and keeping documentation consistent with code changes.
 
 ### 📝 Context
 
-BNK1CAC is the create account program. It verifies the input with a list of rules.
+`BNK1CAC.cbl` is the create account program. It already validates customer number input in several ways (length, no underscores, numeric). You will add one more rule: the customer number must start with `99`.
+
+> **💡 Tip:** If you want to first explore the existing validation rules before making changes, you can ask Bob:
+> ```text
+> extract the business rules from @BNK1CAC.cbl and save them to a markdown file
+> ```
+> This will produce a `docs/BNK1CAC-business-rules.md` file listing all current input validation rules, which you can use as a reference. 
 
 ### ✍️ Your Task
 
-Extract the business rules from `BNK1CAC.cbl` and save in a md file, 
-
-**Expected in your prompt:**
-- scope the prompt to the target module
-- request implicit business rules
+Add the new validation rule directly into the program and have Bob update the documentation in one step.
 
 ### 💬 Bob Prompt
 
-```text
-extract the business rule from program @BNK1CAC.cbl
+Open `BNK1CAC.cbl` in the editor. 
 
+In the Bob prompt, type:
+
+```text
+@BNK1CAC.cbl add an input validation rule to verify that a customer number starts with 99, then update the documentation to reflect this change
 ```
 
 ### ✅ Sample Result
 
-Creation of `docs/BNK1CAC-business-rules.md` file.
+**1 — `BNK1CAC.cbl` is updated** with a new validation block inserted after the existing numeric check:
 
-It should contain section **Input Validation Rules**
-- Customer Number Validation
-- Account Type Validation
-- Interest Rate Validation
-- ...
-
-There are three verifications on the customer number (length, not underscore, numeric). We will add a new one: the customer number should start with 99.
-
-> **Note 1:** The file should also contain other sections than "Input Validation Rules". They may be considered to be more technical rules than business rules and could be removed.
-
-> **Note 2:** The **"Generate Documentation"** workflow can also be used to create a file that will contain the list of business rules (per paragraph). This report contains documentation with many other aspects of a program.
-
-### 💬 Prompt to Create the New Rule
-
-Open `BNK1CAC.cbl` in the editor. Place your cursor at the beginning of line 458 (Ctrl G 458; this should be just after the validation that the customer number is numeric) and enter in the editor
-
-In the prompt area of IBM Bob type:
-```text
-base/cobol_src/BNK1CAC.cbl:458-458
-add a test to verify a customer number should start with 99
-```
-or ask:
-```text
-@BNK1CAC.cbl add a test to verify a customer number should start with 99 at line 458
-```
-
-### ✅ Sample Result
-1 - `BNK1CAC.cbl` is updated with a new rule starting at line 459:
-```text
+```cobol
            IF CUSTNOI(1:2) NOT = '99'
               MOVE SPACES TO MESSAGEO
               STRING 'Customer number must start with 99'
@@ -688,11 +667,12 @@ or ask:
            END-IF.
 ```
 
-2 - `BNK1CAC-business-rules.md` is updated with the new rule and its associated error message.
+**2 — Documentation is updated** to include the new rule and its associated error message.
 
-If not, you can remind Bob to verify the md file if it reflects the updates in the code
+If Bob does not update the documentation automatically, prompt it explicitly:
+
 ```text
-verify if file @docs/BNK1CAC-business-rules.md  reflect the code change in program @base/cobol_src/BNK1CAC.cbl
+verify if @BNK1CAC-business-rules.md reflects the code change in @BNK1CAC.cbl
 ```
 
 ### 💬 Fix Missing Copybook
@@ -721,7 +701,7 @@ The report (in `docs/BNK1CAC-enhancement.md`) should find a bug in move to ABND-
 
 ### 🎯 Objective
 
-Evaluate the impact of changing SORTCODE from a fixed value to a variable value to support multiple branches.
+Evaluate the impact of changing `SORTCODE` from a fixed value to a variable value to support multiple bank branches.
 
 ### 🔧 Bob Mode to Use
 
@@ -731,15 +711,41 @@ Z Architect mode is ideal for impact analysis, risk assessment, and architectura
 
 ### 📝 Context
 
-The business wants to deploy the application in multiple branches. You must evaluate the effort and risks.
+The business wants to deploy the application across multiple branches, each identified by its own sort code. Currently, `SORTCODE` is hardcoded throughout the CBSA application. You must evaluate the scope, effort, and risks of making it variable.
+
+What makes this exercise particularly powerful is the role of the **metadata database** built in Exercise 1. Rather than scanning source files line by line, Bob queries the local SQLite metadata database using the `execute_sql_query` tool to instantly identify every program, copybook, and data structure that references `SORTCODE`. This produces:
+
+- **Precise results** — no missed occurrences due to text-search limitations
+- **Richer context** — each hit comes with program type, paragraph, and dependency information already resolved
+- **Speed** — a query that would take a developer hours of manual grep-and-trace work completes in seconds
+
+Without the metadata, Bob would rely on slower file scanning and could miss indirect references (e.g., a copybook that defines `SORTCODE` and is included by multiple programs). With it, the dependency graph is already known.
+
+### 🔍 Step 1 — Explore How SORTCODE Is Used
+
+Before running a full impact analysis, start by asking Bob to locate and explain how `SORTCODE` is defined and used across the application. This gives you a concrete picture of the scope before committing to a change.
+
+#### 💬 Bob Prompt
+
+```text
+How is the "sort code" or "sortcode" variable used in the application?
+```
+
+#### ✅ Sample Result
+
+Bob queries the metadata database and returns a summary of every location where `SORTCODE` appears — which programs reference it, in which paragraphs, and whether it originates from a copybook or is defined locally. This confirms the breadth of the change before any analysis begins.
+
+---
+
+### 🎯 Step 2 — Run the Impact Analysis
 
 ### ✍️ Your Task
 
-Write your own prompt to request an impact analysis of a major design change around `SORTCODE`.
+Write your own prompt to request a full impact analysis of the `SORTCODE` change.
 
 **Expected in your prompt:**
 - clearly describe the target change
-- request impacted components
+- request the list of impacted components
 - request effort and risk estimation
 - request a transition or migration plan
 
@@ -767,9 +773,16 @@ Perform a complete impact analysis to transform the fixed SORTCODE into multi-br
 
 ### ✅ Sample Result
 
-Bob will trigger a built-in skill **impact-analysis** to evaluate the effort and risks and may ask you open questions to help you choose the best design strategy. Select the option that best fits your requirement.
+Bob triggers the built-in **impact-analysis** skill and uses `execute_sql_query` to interrogate the metadata database. It may ask clarifying questions to help you choose the best design strategy — select the option that best fits your requirements.
+
+Because the metadata already captures cross-program dependencies, Bob can immediately report:
+- which programs directly reference `SORTCODE`
+- which copybooks define or propagate it
+- the downstream programs affected through those copybooks
 
 **File created:** `docs/CBSA-archi-impact***.md`
+
+> **💡 Key takeaway:** The quality and completeness of this impact analysis depend directly on the metadata built during workspace initialization. The richer the metadata, the faster and more accurate Bob's dependency traversal becomes — turning what would normally be a multi-day manual audit into a few minutes of conversation.
 
 ---
 
@@ -1005,8 +1018,7 @@ During this lab, you used different Bob modes according to needs:
 | 2. Inventory & Coding Standards | 🧰 Z Code　　　　　　　　　| Exhaustive scan and analysis of COBOL components             |
 | 3. Architecture                 | 📐 Z Architect　　　　　　 | Diagram creation and flow analysis                           |
 | 4. BANKDATA Documentation       | 🧰 Z Code　　　　　　　　　| Detailed technical documentation of a batch program          |
-| 5a. Business Rules Analysis     | 🧰 Z Code　　　　　　　　　| Cross-application variable and rule analysis                 |
-| 5b. Business Rules & Code Gen   | 🧰 Z Code　　　　　　　　　| Pattern extraction and inline code generation                |
+| 5. Business Rules & Code Gen    | 🧰 Z Code　　　　　　　　　| Pattern extraction and inline code generation                |
 | 6. Impact Analysis              | 📐 Z Architect　　　　　　 | Impact assessment and change planning                        |
 | 7. User Journey                 | ❓ Ask　　　　　　　　　　　| Non-technical documentation for end users                    |
 | 8. Email Search Implementation  | 📐 Z Architect → 🧰 Z Code | Planning (Z Architect) + COBOL code generation (Z Code)      |
@@ -1023,7 +1035,7 @@ During this lab, you generated:
 | CBSA-INVENTORY.md                      | 850+            | Complete inventory          |
 | CBSA-ARCHITECTURE.md (Mermaid)         | -               | Visual diagram              |
 | BANKDATA-docu-technique.md             | 450+            | Batch program documentation |
-| CBSA-SORTCODE-BUSINESS-RULES.md        | 682             | Business rules              |
+| BNK1CAC-business-rules.md              | ~100            | Business rules (optional)   |
 | CBSA-SORTCODE-CHANGE-IMPACT.md         | 782             | Impact analysis             |
 | CBSA-USER-JOURNEY-CUSTOMER-ACCOUNTS.md | 485             | User guide                  |
 | CBSA-EMAIL-ENHANCEMENT-GUIDE.md        | 1247            | Evolution guide             |
