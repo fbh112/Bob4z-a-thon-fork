@@ -328,7 +328,7 @@ Bob will:
 ### ✍️ Bob Action - generate the data dictionary
 
 To initiate the workflow, click the **Start Workflow** button (the ▶ play icon in the Bob panel toolbar), select **"Generate data dictionary"**, then click **"Start"**.
-Bob will ask you to select the program from which the data dictionary will be built: choose `cobol_src/BANKDATA.cbl` (you can only select one program at a time).
+Bob will ask you to select the program from which the data dictionary will be built: choose `cobol_src/BANKDATA.cbl` (you can only select one program at a time). After successful creation of the data dictionary, it will be opened in an editor, and you can review and optionally review. When you are done, the click on the "I am done editing" button in the Bob chat, and the dictionary will be saved.
 
 ### ⚙️ What Bob Does Automatically
 
