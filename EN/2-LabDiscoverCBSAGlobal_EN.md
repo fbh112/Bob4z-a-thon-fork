@@ -11,6 +11,7 @@ You will learn to use different Bob modes and formulate effective prompts to obt
 
 ## Prerequisites
 
+- ✅ git client CLI
 - ✅ VSCode with the **IBM Bob Premium Package for Z** extension installed
 - ✅ CBSA project cloned locally (see **LabDiscoverCBSA**)
 - ✅ Access to Bob's **Z Code** mode
@@ -62,7 +63,7 @@ Open Bob, click on the **File>Open Folder** menu and choose the ~/CBSA directory
 ### 💬 Bob Prompt 
 
 ```
-Retrieve the directories named "src/bank-application-frontend", "src/webui", "src/Z-OS-Connect-Customer-Services-Interface", "src/Z-OS-Connect-Payment-Interface", "src/Z-OS-Connect-Payment-Interface", and "src/zosconnect_artefacts" from the GitHub repository https://github.com/cicsdev/cics-banking-sample-application-cbsa.git and place them in this workspace.
+Retrieve the directories named "src/bank-application-frontend", "src/webui", "src/Z-OS-Connect-Customer-Services-Interface", "src/Z-OS-Connect-Payment-Interface", "src/Z-OS-Connect-Payment-Interface" and "src/zosconnect_artefacts" in the CBSA directory from the GitHub repository https://github.com/ovallod/Bob4z-a-thon.git and place them them in this workspace. Then remove any temporary working directory you would have created.
 ```
 
 ### ✅ Sample Result 

@@ -138,6 +138,7 @@ Récupérer le code source de l'application CBSA depuis GitHub et préparer le w
 
 ### 🎯 Prérequis
 
+- avoir installé le client git CLI sur une station de travail (MacOS, Linux ou MSWindows)
 - avoir installé IBM Bob Version 2 sur une station de travail (MacOS, Linux ou MSWindows)
 - avoir installé les extensions suivantes:
     - Zowe Explorer 3.5.0 (ou plus)
@@ -468,6 +469,7 @@ Rédigez votre propre prompt pour demander à Bob d'initialiser et d'analyser co
 ```
 
 **Note :** La commande `/init` est une commande spéciale de IBM Bob Premium Package for Z qui déclenche une analyse complète du workspace.
+La base de données des métadonnées est une fonction spécifique du Premium Package for Z qui permet d'obtenir des analyses de code plus précises et détaillées
 
 ### 🔀 Variantes de Prompt
 
@@ -492,6 +494,16 @@ Bob va :
 ***Afficher la configuration détectée pour confirmation***
 ***Mettre à jour ou créer AGENTS.md avec les informations non-évidentes***
 *** z Open Editor va créer un fichier zapp.yaml, descriptif des resources de l'application***
+
+### ✅ Enrichir le contexte des LLMs avec plus de contenu de référence spécifique z/OS prétraité (langages, middleware...)  (nb: cela sera fait automatiquement dans la prochaine version du produit)
+
+Ajouter à la fin de AGENTS.md:
+
+```text
+# Workspace Configuration
+
+Target Platform: IBM Z
+```
 
 ### ✅ Exemple de résultat
 
@@ -683,6 +695,9 @@ Contient :
 La fin du résumé de la tâche Bob comprend des exemples d'appels à la nouvelle compétence ("skill").
 
 ### ✅ Test de la nouvelle compétence dans une nouvelle tâche 
+Attention: pour être sur que le nouveau skill sera trouvé, vous devez recharger l'espace de travail. Pour cela, fermer le répertoire (Menu : File> Close Folder) puis réouvrez le (Menu: File>Open Folder).
+
+
 Pour un programme complet:
 ```text
 vérifie la conformité de @base/cobol_src/BNK1CAC.cbl aux standards de codage de cbsa
@@ -973,7 +988,9 @@ BNK1CAC est le programme de création de compte. Il vérifie les données d'entr
 
 ### ✍️ Votre Prompt
 
+```text
 Extraire et sauvegarder dans un fichier md, les règles métier de @base/cobol_src/BNK1CAC.cbl
+```
 
 **Attendu dans votre prompt :**
 - cibler le prompt sur le module cible
@@ -1001,13 +1018,13 @@ Commentaire 2: avec le workflow "Generate Documentation" on peut créer une docu
 
 BNK1CAC est le programme de création de compte. Il vérifie les données d'entrée avec une liste de règles.
 Ouvrir BNK1CAC.cbl dans l'éditeur. Placer votre curseur au début de la ligne 458 (Ctrl G 458; cela devrait être juste après la validation que le numéro client est numérique) 
+Cliquer droit, dans le menu contextuel, sélectionner le menu "IBM Bob">"Add to Context" : cela ajoute la référence de la ligne dans la zone de prompt ("BNK1CAC.cbl:458-458")
+
+Dans la zone de prompt, compléter avec "ajouter une nouvelle règle métier: test pour vérifier qu'un numéro client doit commencer par 99":
 
 ### ✅ Prompt pour Créer la nouvelle règle 
 ```text
-base\cobol_src\BNK1CAC.cbl:458-458
-'''
-ajouter une nouvelle règle métier: test pour vérifier qu'un numéro client doit commencer par 99
-'''
+BNK1CAC.cbl:458-458   ajouter une nouvelle règle métier: test pour vérifier qu'un numéro client doit commencer par 99
 ```
 
 ### ✅ Exemple de résultat (vous pourriez avoir à clore l'édition de BNK1CAC.cbr (sans sauvegarde) et le réouvrir)

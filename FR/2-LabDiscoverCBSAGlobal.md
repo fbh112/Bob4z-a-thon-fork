@@ -1,4 +1,5 @@
 # Lab : Analyse Complète de l'Application CBSA avec Bob pour Z
+# Lab : Analyse Complète de l'Application CBSA avec Bob pour Z
 
 ## Vue d'ensemble du Lab
 
@@ -62,7 +63,7 @@ Ouvrir Bob, cliquer sur le menu **File>Open Folder** et choisissez le répertoir
 ### 💬 Prompt Bob 
 
 ```
-Récupère les répertoires nommés "src/bank-application-frontend",  "src/webui", "src/Z-OS-Connect-Customer-Services-Interface", "src/Z-OS-Connect-Payment-Interface", "src/Z-OS-Connect-Payment-Interface", et  "src/zosconnect_artefacts" du repository GitHub https://github.com/cicsdev/cics-banking-sample-application-cbsa.git et place les dans ce workspace.
+Récupère les répertoires nommés "src/bank-application-frontend",  "src/webui", "src/Z-OS-Connect-Customer-Services-Interface", "src/Z-OS-Connect-Payment-Interface", "src/Z-OS-Connect-Payment-Interface", et  "src/zosconnect_artefacts" dans le répertoire CBSA du repository GitHub https://github.com/ovallod/Bob4z-a-thon.git et place le dans ce workspace. Supprime le répertoire de travail qui aurait été créé.
 ```
 
 ### ✅ Exemple de résultat 
