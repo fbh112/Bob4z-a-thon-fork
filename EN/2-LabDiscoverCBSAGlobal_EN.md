@@ -417,7 +417,7 @@ This lab allowed you to discover the power of IBM Bob Premium Package for Z in a
 
 ---
 
-**Lab Version:** 2.1
+**Lab Version:** 2.0
 **Creation date:** 2026-09
 **Author:** IBM Bob Premium Package for Z Team
 

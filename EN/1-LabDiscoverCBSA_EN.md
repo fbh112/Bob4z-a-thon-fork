@@ -1071,7 +1071,7 @@ IBM Bob Premium Package for Z is particularly useful for:
 **Thank you for participating in this lab!**
 
 **Lab Version:** 2.0
-**Creation date:** 2026-08
+**Creation date:** 2026-09
 **Author:** IBM Bob Premium Package for Z Team
 
 ---
