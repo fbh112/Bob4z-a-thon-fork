@@ -1,8 +1,9 @@
-# Lab: Discovering IBM Bob Premium Package for Z
+## Lab: Discovering IBM Bob Premium Package for Z
+
 ## Analysis and Documentation of a CICS Mainframe Application
 
-**Estimated Duration:** 2-3 hours  
-**Level:** Intermediate to Advanced  
+**Estimated Duration:** 2-3 hours
+**Level:** Intermediate to Advanced
 **Prerequisites:** Basic knowledge of COBOL and CICS
 
 ---
@@ -27,6 +28,7 @@
 ---
 
 ## 1. Introduction
+
 [↩️](#-table-of-contents)
 
 ### What is IBM Bob Premium Package for Z?
@@ -52,6 +54,7 @@ This lab will allow you to concretely discover how Bob Premium Package for Z can
 ---
 
 ## 2. IBM Bob Premium Package for Z Modes
+
 [↩️](#-table-of-contents)
 
 Bob Premium for Z offers several specialized modes for different types of tasks.
@@ -59,7 +62,9 @@ Bob Premium for Z offers several specialized modes for different types of tasks.
 > **Note on mode types:** IBM Bob ships with three **built-in modes** available to all users — **Agent**, **Ask**, and **Plan**. The **Z Code** and **Z Architect** modes are **custom modes added by the IBM Bob Premium Package for Z**. They appear alongside the built-in modes once the package is activated.
 
 ### 🧰 Z Code *(Premium custom mode)*
+
 **Specialty:** Mainframe code analysis and documentation
+
 - Analysis of COBOL, PL/I, JCL, Assembler, REXX programs
 - Business rules extraction
 - Application inventory generation
@@ -67,13 +72,16 @@ Bob Premium for Z offers several specialized modes for different types of tasks.
 - Detailed technical documentation
 
 **When to use it:**
+
 - Source code analysis
 - Business logic understanding
 - Program documentation
 - Pattern extraction
 
 ### 📐 Z Architect *(Premium custom mode)*
+
 **Specialty:** Mainframe application architecture and design
+
 - Architecture diagram creation
 - Change impact analysis
 - Feasibility assessment
@@ -82,6 +90,7 @@ Bob Premium for Z offers several specialized modes for different types of tasks.
 - Architectural documentation
 
 **When to use it:**
+
 - Architecture design
 - Impact analysis
 - Feasibility studies
@@ -89,7 +98,9 @@ Bob Premium for Z offers several specialized modes for different types of tasks.
 - Architecture reviews
 
 ### ❓ Ask *(built-in mode)*
+
 **Specialty:** Explanations and user documentation
+
 - Non-technical documentation
 - User guides
 - Educational explanations
@@ -97,40 +108,48 @@ Bob Premium for Z offers several specialized modes for different types of tasks.
 - Training
 
 **When to use it:**
+
 - User documentation
 - Training guides
 - Simplified explanations
 - FAQ and support
 
 ### 💻 Agent *(built-in mode)*
+
 **Specialty:** Executing commands, writing and modifying code
+
 - Running system and Git commands
 - Code writing, refactoring, and bug fixes
 - Feature implementation
 - File creation and manipulation
 
 **When to use it:**
+
 - Workspace and environment setup (Git, file operations)
 - New feature development
 - Code modifications and corrections
 
 ### 📝 Plan *(built-in mode)*
+
 **Specialty:** Planning and strategy
+
 - Project planning
 - Strategy definition
 - Roadmaps
 - Technical specifications
 
 **When to use it:**
+
 - Project planning
 - Strategy definition
 - Specification creation
 
-> **Switching modes:** Use the **dropdown selector** to the left of the chat input field to switch modes. 
+> **Switching modes:** Use the **dropdown selector** to the left of the chat input field to switch modes.
 
 ---
 
 ## 3. Lab Preparation
+
 [↩️](#-table-of-contents)
 
 ### 🎯 Objective
@@ -138,14 +157,16 @@ Bob Premium for Z offers several specialized modes for different types of tasks.
 Retrieve the CBSA application source code from GitHub and prepare your workspace for the lab.
 
 ### ✅ Prerequisites
+
 - IBM Bob Version 2 installed (macOS, Linux, or Windows) — download from https://bob.ibm.com/download
-- An subscription with access to Bob Premium Package for Z
+- A subscription with access to Bob Premium Package for Z
 - Git and internet access available
 - You are able to access www.github.com to retrieve the source code
 - The following extensions installed in Bob:
 
+
 | Extension                     | Tested version (or latest) |
-| -------------------------------| ----------------------------|
+| ----------------------------- | -------------------------- |
 | Zowe Explorer                 | 3.5.1                      |
 | IBM Z Open Editor             | 6.7.0                      |
 | IBM Bob Premium Package for Z | 3.0.11                     |
@@ -158,8 +179,8 @@ Retrieve the CBSA application source code from GitHub and prepare your workspace
 Before starting the analysis, you need to retrieve the CBSA application source code from a public GitHub repository.
 
 1. Create a `CBSA` directory in your home directory.
-2. Open Bob IDE, click **File > Open Folder**, and select the `~/CBSA` directory.  
-(remember to trust the workspace, to avoid IDE go into the **Restricted** mode)
+2. Open Bob IDE, click **File > Open Folder**, and select the `~/CBSA` directory.
+   (remember to trust the workspace, to avoid IDE go into the **Restricted** mode)
 3. Open a terminal by choosing **Terminal → New Terminal**, then run:
 
 ```bash
@@ -183,6 +204,7 @@ Once your workspace is set up, click the **`+` icon** in the Bob panel header to
 ---
 
 ## 4. Lab Context
+
 [↩️](#-table-of-contents)
 
 ### The Application: CICS Banking Sample Application (CBSA)
@@ -190,6 +212,7 @@ Once your workspace is set up, click the **`+` icon** in the Bob panel header to
 You will work on a real banking application that simulates bank teller operations:
 
 **Technical characteristics:**
+
 - **Platform:** IBM z/OS with CICS Transaction Server V5.4+
 - **Language:** IBM Enterprise COBOL for z/OS
 - **Database:** IBM Db2 V12+
@@ -197,6 +220,7 @@ You will work on a real banking application that simulates bank teller operation
 - **Architecture:** Transaction processing with online and batch programs
 
 **Business functionalities:**
+
 - Customer creation and management
 - Bank account creation and management
 - Account inquiry
@@ -205,6 +229,7 @@ You will work on a real banking application that simulates bank teller operation
 - External credit agency simulation
 
 **Complexity:**
+
 - 29 COBOL programs
 - 37 copybooks
 - 9 BMS screens
@@ -226,39 +251,37 @@ You have just joined the maintenance team for this application. You have the sou
 
 ### Preliminary Remarks
 
-
 - Bob relies on AI agentics, which by definition is not deterministic. For some exercises, you may therefore notice slight differences between your result and the one described in this lab. And sometimes, you will have to add additional instructions to Bob to get the result you expect. This is, in general, the approach to have with Bob: it always gets to the result, but sometimes you have to take a different path to get there.
 - Counts made by AI can be inaccurate. Therefore, calculations should be done by engineering rather than by AI.
 - IBM Bob Premium Package for Z relies on existing metadata or metadata it builds in a local database. In the discussion with Bob, it may ask whether to use a centralized metadata repository (e.g., "Do you want to use the Z Understand service for a complete dependency analysis, or analyze only the local workspace?"). **In the context of this lab, we do not use the Z Understand service.**
 - In the various exercises to follow, Bob will be able to propose different options in response to a prompt. It is important to choose the right option to obtain the desired result. In any case, you can always go back and test another option.
 
-
 ---
 
 ## 5. Learning Objectives
+
 [↩️](#-table-of-contents)
 
 At the end of this lab, you will be able to:
 
-✅ **Initialize** a mainframe workspace with IBM Bob Premium Package for Z  
-✅ **Automatically generate** a complete application inventory  
-✅ **Create** visual architecture diagrams  
-✅ **Analyze** business rules buried in code  
-✅ **Assess** the impact of modifications on the application  
-✅ **Document** user journeys  
-✅ **Propose** technical evolutions with feasibility analysis  
-
+✅ **Initialize** a mainframe workspace with IBM Bob Premium Package for Z
+✅ **Automatically generate** a complete application inventory
+✅ **Create** visual architecture diagrams and comprehensive call graphs
+✅ **Analyze** business rules buried in code
+✅ **Assess** the impact of modifications on the application
+✅ **Document** user journeys
+✅ **Propose** technical evolutions with feasibility analysis
 
 ---
 
 ## Exercise 1: Workspace Initialization and Analysis
+
 [↩️](#-table-of-contents)
 
 ### 🎯 Objective
 
 Initialize the workspace and create the `AGENTS.md` file that will serve as a guide for Bob and developers.
 Create metadata from existing programs and resources, and generate the data dictionary.
-
 
 ### 🔧 Bob Mode to Use
 
@@ -269,6 +292,7 @@ Z Code mode is specialized for analyzing and documenting mainframe applications 
 ### 📝 Context
 
 You have a CBSA project that you are discovering. You need to:
+
 - Understand the project structure
 - Identify the languages used
 - Locate important files
@@ -279,12 +303,11 @@ You have a CBSA project that you are discovering. You need to:
 Write your own prompt to ask Bob to initialize and fully analyze the workspace.
 
 **Expected in your prompt:**
+
 - request workspace initialization
 - request a global analysis of the project structure
 - request the creation of framing artifacts (like `AGENTS.md`)
 - specify that you want to quickly understand the application content
-
-
 
 ### 💬 Bob Prompt
 
@@ -323,7 +346,7 @@ Bob will:
 
 ### ✅ Sample Result
 
-`AGENTS.md` file is created under workspace root 
+`AGENTS.md` file is created under workspace root
 
 ### ✍️ Bob Action - generate the data dictionary
 
@@ -333,19 +356,19 @@ Bob will ask you to select the program from which the data dictionary will be bu
 ### ⚙️ What Bob Does Automatically
 
 Bob will use specific ***Skills*** and ***tools*** from the ***IBM Bob Premium Package for Z***. It will:
+
 - Check for `.bobz/local-settings.json` and database existence
 - Scan COBOL programs if necessary
 - Extract variables from programs
 - Create the `bobz/DD.json` data dictionary
 - Update `AGENTS.md` with dictionary location
 
-
-
 ### ✅ Sample Result
 
 Data dictionary successfully created for the CBSA banking application in file `.bobz/DD.json`
 
 Summary of actions:
+
 - Scan of 29 COBOL programs in the source
 - Analysis database created and stored in `.bobz/local-settings.json`
 - Variable extraction from BANKDATA program
@@ -355,6 +378,7 @@ Summary of actions:
 - Update of `AGENTS.md` with dictionary location
 
 If `AGENTS.md` is not updated by the workflow, ask Bob to do so:
+
 ```text
 verify if @AGENTS.md is up to date with data dictionary?
 ```
@@ -379,6 +403,7 @@ Bob will update `AGENTS.md` with a convention that it will follow in all future 
 ---
 
 ## Exercise 2: Application Inventory Generation and Coding Standards
+
 [↩️](#-table-of-contents)
 
 ### Step 1 — 🎯 Objective: Application Inventory
@@ -394,16 +419,18 @@ Z Code mode automatically analyzes mainframe application structure and generates
 ### 📝 Context
 
 Now that the workspace is initialized, you need a detailed inventory to:
+
 - Know all application components
 - Understand program categories
 - Identify dependencies
 - Have an overview of the architecture
 
-### ✍️ Your Task 
+### ✍️ Your Task
 
 Write your own prompt to request a complete CBSA application inventory. Feel free to refine your request with several successive prompts if necessary.
 
 **Expected in your prompt:**
+
 - request a global application inventory
 - cover programs, copybooks, screens, and data
 - request categorization or role per component
@@ -435,6 +462,7 @@ Bob will scan, analyze, and document all application components by creating a st
 Created file: `docs/CBSA-inventory.md`
 
 Contains:
+
 - Executive summary with statistics
 - Inventory of COBOL programs and their dependencies
 
@@ -451,6 +479,7 @@ Z Code mode automatically analyzes mainframe application structure and generates
 ### 📝 Context
 
 Now that the workspace is initialized and you have a detailed inventory, you need to find:
+
 - coding practice
 - naming conventions
 - error handling practice
@@ -461,7 +490,8 @@ Now that the workspace is initialized and you have a detailed inventory, you nee
 ```text
 /z-coding-standards-skill-builder
 ```
-Reply **No** when Bob proposes you to include "ZCodeScan validation" in the skill, for the sake of simplicity in the lab process. 
+
+Reply **No** when Bob proposes you to include "ZCodeScan validation" in the skill, for the sake of simplicity in the lab process.
 
 ### ⚙️ What Bob Does Automatically
 
@@ -475,10 +505,12 @@ At the end of Bob output, you will find examples on how to activate this new ski
 Created file: `.bob/skills/cbsa-coding-standards/SKILL.md` with more details in `references` sub-directory
 
 Contains:
+
 - patterns
 - checklist
 - sample code
 - ...
+
 ### ✅ Testing the new skill
 
 ```text
@@ -500,9 +532,10 @@ You can read more about the **zContext** tool [here](https://www.ibm.com/docs/en
 ---
 
 ## Exercise 3: Architecture Diagram Creation
+
 [↩️](#-table-of-contents)
 
-### 🎯 Objective
+### Step 1 — 🎯 Objective: Architecture Diagram
 
 Create a visual architecture diagram that clearly communicates the **business-level structure** of the CBSA application — helping a new team member understand how the application is organized without getting lost in technical noise.
 
@@ -517,6 +550,7 @@ Z Architect mode specializes in creating architecture diagrams and analyzing app
 The textual inventory from Exercise 2 is useful, but a visual representation is essential for communicating the architecture to a broader audience — architects, project managers, and new developers alike.
 
 However, a naive diagram of all program dependencies tends to be cluttered: utility programs (e.g. error handlers, date/time routines) and language runtime artifacts appear alongside the core business logic, making the diagram hard to read. The goal here is a **focused, business-relevant diagram** that shows:
+
 - the functional layers of the application
 - how business programs interact with screens, databases, and external services
 - the major data flows — without utility and runtime noise
@@ -526,6 +560,7 @@ However, a naive diagram of all program dependencies tends to be cluttered: util
 Write your own prompt to request a visual architecture diagram of the application, scoped to business-relevant components.
 
 **Expected in your prompt:**
+
 - request functional application layers
 - request key flows and dependencies between business programs
 - request integration of screens, databases, and external services
@@ -540,14 +575,63 @@ Build an architecture diagram illustrating the CBSA application structure, showi
 ### ✅ Sample Result
 
 Mermaid diagram rendered directly in the newly created file `docs/cbsa-architecture-Diagram.md`, showing 4 clean business layers — free of utility and runtime clutter:
+
 - Presentation (3270 terminals / BMS screens)
 - Business logic (CICS programs)
 - Data access (Db2 tables)
 - External services (credit agencies)
 
+### Step 2 — 🎯 Objective: Call Graph Generation
+
+Generate comprehensive call graphs for all programs in the workspace and the local database, organized by functional topics.
+
+### 🔧 Bob Mode to Use
+
+**Mode: 📐 Z Architect**
+
+Z Architect mode is ideal for mapping inter-program relationships, tracing call chains, and producing structured documentation that shows how programs collaborate across functional domains.
+
+### 📝 Context
+
+The architecture diagram from Step 1 gives a high-level view of the application layers. Call graphs go one level deeper: they show **exactly which program calls which**, enabling developers and architects to:
+
+- trace execution paths end-to-end
+- identify shared subroutines and reuse patterns
+- understand coupling between functional areas
+- onboard new team members onto specific business flows quickly
+
+Organizing the output by **functional topic** (e.g., account management, customer management, payment processing) makes the documentation immediately useful even for very large workspaces.
+
+### ✍️ Your Task
+
+Write your own prompt to request call graph documentation, covering all programs in the workspace and the local database, grouped by business function.
+
+**Expected in your prompt:**
+
+- request call graphs for all programs in the workspace
+- include the local database in the analysis scope
+- organize the output by functional topics
+- produce the result as structured documentation (e.g., a Markdown file)
+
+### 💬 Bob Prompt
+
+```text
+Create documentation with comprehensive call graphs of all programs in the workspace and the local database, organized by functional topics.
+```
+
+### ✅ Sample Result
+
+Bob produces a Markdown document (e.g., `docs/cbsa-call-graphs.md`) containing:
+
+- One section per functional topic (Account Management, Customer Management, Payment Processing, Utility Services, …)
+- For each topic: a Mermaid call graph showing the full call chain between CICS programs, copybooks, and Db2 stored procedures
+- Cross-references to database tables accessed within each call chain
+- A summary table listing all programs, their callers, and their callees
+
 ---
 
 ## Exercise 4: BANKDATA Program Documentation
+
 [↩️](#-table-of-contents)
 
 ### 🎯 Objective
@@ -563,6 +647,7 @@ Z Code mode specializes in detailed analysis and documentation of COBOL programs
 ### 📝 Context
 
 `BANKDATA.cbl` is the batch data initialization program. It is critical to understand:
+
 - How data is generated
 - Which structures are initialized
 - Test data generation rules
@@ -573,6 +658,7 @@ Z Code mode specializes in detailed analysis and documentation of COBOL programs
 Write your own prompt to request complete technical documentation for the `BANKDATA.cbl` program.
 
 **Expected in your prompt:**
+
 - explicitly name the target program
 - request to explain or document the program
 - you are not required to specify explanation sections, as IBM Bob Premium Package for Z provides a default document structure.
@@ -591,7 +677,6 @@ Click the **Start Workflow** button (the ▶ play icon in the Bob panel toolbar)
 workflow completed, file is created: `docs/program/.../BANKDATA.md`
 
 IBM Bob Premium Package for Z uses a specialized workflow to generate detailed technical documents from COBOL source code (whole-file explanation). Based on your current mode, Bob will automatically produce either developer documentation or architecture documentation.
-
 
 ### 🎓 What You Learn
 
@@ -614,6 +699,7 @@ This documentation is useful for:
 ---
 
 ## Exercise 5: Business Rules and Code Generation
+
 [↩️](#-table-of-contents)
 
 ### 🎯 Objective
@@ -631,10 +717,12 @@ Z Code mode excels at analyzing COBOL code, implementing new business rules, and
 `BNK1CAC.cbl` is the create account program. It already validates customer number input in several ways (length, no underscores, numeric). You will add one more rule: the customer number must start with `99`.
 
 > **💡 Tip:** If you want to first explore the existing validation rules before making changes, you can ask Bob:
+>
 > ```text
 > extract the business rules from @BNK1CAC.cbl and save them to a markdown file
 > ```
-> This will produce a `docs/BNK1CAC-business-rules.md` file listing all current input validation rules, which you can use as a reference. 
+>
+> This will produce a `docs/BNK1CAC-business-rules.md` file listing all current input validation rules, which you can use as a reference.
 
 ### ✍️ Your Task
 
@@ -642,7 +730,7 @@ Add the new validation rule directly into the program and have Bob update the do
 
 ### 💬 Bob Prompt
 
-Open `BNK1CAC.cbl` in the editor. 
+Open `BNK1CAC.cbl` in the editor.
 
 In the Bob prompt, type:
 
@@ -680,7 +768,8 @@ verify if @BNK1CAC-business-rules.md reflects the code change in @BNK1CAC.cbl
 In the list of **PROBLEMS** at the bottom of the IDE you should see a message indicating "Unable to find copybook BNK1CAM", right click on the message and select **Fix with Bob**, then accept the prompt.
 
 ### ✅ Sample Result
-Bob should find the missing copybook should contain BMS field definitions. From the BMS definition, it should recreate the missing copybook:`BNK1CAM.cpy`. 
+
+Bob should find the missing copybook should contain BMS field definitions. From the BMS definition, it should recreate the missing copybook:`BNK1CAM.cpy`.
 
 After Bob IDE has recreated `BNK1CAM.cpy`, there still should be errors about the missing DFAID copybook which is part of CICS system libraries.
 
@@ -692,11 +781,13 @@ Create a markdown formatted report on all of the possible enhancements that coul
 ```
 
 ### ✅ Sample Result
+
 The report (in `docs/BNK1CAC-enhancement.md`) should find a bug in move to ABND-TIME, duplicated lines...
 
 ---
 
 ## Exercise 6: Change Impact Analysis
+
 [↩️](#-table-of-contents)
 
 ### 🎯 Objective
@@ -744,6 +835,7 @@ Bob queries the metadata database and returns a summary of every location where 
 Write your own prompt to request a full impact analysis of the `SORTCODE` change.
 
 **Expected in your prompt:**
+
 - clearly describe the target change
 - request the list of impacted components
 - request effort and risk estimation
@@ -776,6 +868,7 @@ Perform a complete impact analysis to transform the fixed SORTCODE into multi-br
 Bob triggers the built-in **impact-analysis** skill and uses `execute_sql_query` to interrogate the metadata database. It may ask clarifying questions to help you choose the best design strategy — select the option that best fits your requirements.
 
 Because the metadata already captures cross-program dependencies, Bob can immediately report:
+
 - which programs directly reference `SORTCODE`
 - which copybooks define or propagate it
 - the downstream programs affected through those copybooks
@@ -787,6 +880,7 @@ Because the metadata already captures cross-program dependencies, Bob can immedi
 ---
 
 ## Exercise 7: User Journey Documentation
+
 [↩️](#-table-of-contents)
 
 ### 🎯 Objective
@@ -808,6 +902,7 @@ Tellers need a simple, non-technical guide with concrete examples.
 Write your own prompt to request business documentation of the user journey for account consultation.
 
 **Expected in your prompt:**
+
 - specify target audience (tellers)
 - request non-technical language
 - request complete path from main menu
@@ -841,19 +936,23 @@ Document step-by-step the customer account consultation journey in CBSA, with a 
 **File created:** `docs/teller-guide-Account consultation.md`
 
 Document containing:
+
 - Illustrated step-by-step guide
 - 3270 screen examples
 - Practical tips
 - Troubleshooting guide
 - Real use cases
 
-If it does not create a new file , you can ask Bob to 
+If it does not create a new file , you can ask Bob to
+
 ```
 Write the result into a markdown file under /docs folder
 ```
+
 ---
 
 ## Exercise 8: Email Search Implementation
+
 [↩️](#-table-of-contents)
 
 ### 🎯 Objective
@@ -867,10 +966,10 @@ Design and implement a new feature allowing customer identification by email add
 - 📐 Z Architect: To define and plan the complete solution for Z/OS
 - 🧰 Z Code: To generate COBOL code for the new feature
 
-
 ### 📝 Context
 
 The business wants to modernize the application by allowing customers to be identified by email rather than customer number. This evolution requires:
+
 - Adding an email field to data structures
 - Creating an alternate VSAM index for search
 - Developing a new search program
@@ -931,6 +1030,7 @@ Bob creates/modifies files in the `base/cobol_copy/` directory, for example:
 5. `INQEMAIL.cpy` (new — email search COMMAREA) — note: the name could be different during your test
 
 **Design Decisions**:
+
 - **Email length**: 100 characters (covers 99% of real emails per RFC 5321)
 - **Verification flag**: Allows tracking if email has been verified
 - **Storage**: Emails in uppercase for consistent search
@@ -963,7 +1063,6 @@ Create the INQEMAIL program according to the implementation plan
 
 Bob develops **`base/cobol_src/INQEMAIL.cbl`**:
 
-
 #### 🎓 What You Learn
 
 - **COBOL code generation**: Bob creates production-ready code
@@ -985,7 +1084,6 @@ Z Code mode excels at generating COBOL code for Z/OS.
 Verify the syntax of the program @INQEMAIL.cbl
 ```
 
-
 #### ✅ Sample Result
 
 Bob performs a **complete syntax verification** of the generated program, and gives suggestions to fix it.
@@ -993,6 +1091,7 @@ Bob performs a **complete syntax verification** of the generated program, and gi
 ---
 
 ## 6. Conclusion
+
 [↩️](#-table-of-contents)
 
 ### 🎉 Congratulations!
@@ -1001,7 +1100,7 @@ You have completed the IBM Bob Premium Package for Z lab. In a few hours, you ha
 
 - Initialized and analyzed a complex mainframe workspace
 - Generated an exhaustive application inventory
-- Created a professional architecture diagram
+- Created a professional architecture diagram and comprehensive call graphs
 - Documented the BANKDATA batch program
 - Analyzed occurrences of business rules
 - Evaluated the impact of a major change
@@ -1012,16 +1111,17 @@ You have completed the IBM Bob Premium Package for Z lab. In a few hours, you ha
 
 During this lab, you used different Bob modes according to needs:
 
-| Exercise                        | Mode Used　　　　　　　　　| Reason for Choice                                            |
-| ---------------------------------| ----------------------------| --------------------------------------------------------------|
-| 1. Initialization               | 🧰 Z Code　　　　　　　　　| Mainframe code analysis and technical documentation creation |
-| 2. Inventory & Coding Standards | 🧰 Z Code　　　　　　　　　| Exhaustive scan and analysis of COBOL components             |
-| 3. Architecture                 | 📐 Z Architect　　　　　　 | Diagram creation and flow analysis                           |
-| 4. BANKDATA Documentation       | 🧰 Z Code　　　　　　　　　| Detailed technical documentation of a batch program          |
-| 5. Business Rules & Code Gen    | 🧰 Z Code　　　　　　　　　| Pattern extraction and inline code generation                |
-| 6. Impact Analysis              | 📐 Z Architect　　　　　　 | Impact assessment and change planning                        |
-| 7. User Journey                 | ❓ Ask　　　　　　　　　　　| Non-technical documentation for end users                    |
-| 8. Email Search Implementation  | 📐 Z Architect → 🧰 Z Code | Planning (Z Architect) + COBOL code generation (Z Code)      |
+
+| Exercise                        | Mode Used                   | Reason for Choice                                                |
+| ------------------------------- | --------------------------- | ---------------------------------------------------------------- |
+| 1. Initialization               | 🧰 Z Code                   | Mainframe code analysis and technical documentation creation     |
+| 2. Inventory & Coding Standards | 🧰 Z Code                   | Exhaustive scan and analysis of COBOL components                 |
+| 3. Architecture & Call Graphs   | 📐 Z Architect              | Architecture diagram + call graph generation by functional topic |
+| 4. BANKDATA Documentation       | 🧰 Z Code                   | Detailed technical documentation of a batch program              |
+| 5. Business Rules & Code Gen    | 🧰 Z Code                   | Pattern extraction and inline code generation                    |
+| 6. Impact Analysis              | 📐 Z Architect              | Impact assessment and change planning                            |
+| 7. User Journey                 | ❓ Ask                      | Non-technical documentation for end users                        |
+| 8. Email Search Implementation  | 📐 Z Architect → 🧰 Z Code | Planning (Z Architect) + COBOL code generation (Z Code)          |
 
 **Key principle:** Choosing the right mode according to task nature maximizes efficiency and result quality.
 
@@ -1029,26 +1129,29 @@ During this lab, you used different Bob modes according to needs:
 
 During this lab, you generated:
 
-| Document                               | Lines           | Value                       |
-| ----------------------------------------| -----------------| -----------------------------|
-| AGENTS.md                              | 122             | Reference guide             |
-| CBSA-INVENTORY.md                      | 850+            | Complete inventory          |
-| CBSA-ARCHITECTURE.md (Mermaid)         | -               | Visual diagram              |
-| BANKDATA-docu-technique.md             | 450+            | Batch program documentation |
-| BNK1CAC-business-rules.md              | ~100            | Business rules (optional)   |
-| CBSA-SORTCODE-CHANGE-IMPACT.md         | 782             | Impact analysis             |
-| CBSA-USER-JOURNEY-CUSTOMER-ACCOUNTS.md | 485             | User guide                  |
-| CBSA-EMAIL-ENHANCEMENT-GUIDE.md        | 1247            | Evolution guide             |
-| **TOTAL**                              | **4618+ lines** | **Complete documentation**  |
 
+| Document                               | Lines           | Value                           |
+| -------------------------------------- | --------------- | ------------------------------- |
+| AGENTS.md                              | 122             | Reference guide                 |
+| CBSA-INVENTORY.md                      | 850+            | Complete inventory              |
+| cbsa-architecture-Diagram.md (Mermaid) | -               | Visual architecture diagram     |
+| cbsa-call-graphs.md                    | -               | Call graphs by functional topic |
+| BANKDATA-docu-technique.md             | 450+            | Batch program documentation     |
+| BNK1CAC-business-rules.md              | ~100            | Business rules (optional)       |
+| CBSA-SORTCODE-CHANGE-IMPACT.md         | 782             | Impact analysis                 |
+| CBSA-USER-JOURNEY-CUSTOMER-ACCOUNTS.md | 485             | User guide                      |
+| CBSA-EMAIL-ENHANCEMENT-GUIDE.md        | 1247            | Evolution guide                 |
+| **TOTAL**                              | **4618+ lines** | **Complete documentation**      |
 
 ### 📊 Gains Summary
 
+
 | Task                    | Without Bob     | With Bob       | Gain      |
-| -------------------------| -----------------| ----------------| -----------|
+| ----------------------- | --------------- | -------------- | --------- |
 | Initialization          | 2-3 days        | 3 minutes      | 99.8%     |
 | Inventory               | 1-2 weeks       | 10 minutes     | 99.5%     |
-| Architecture            | 2-3 days        | 5 minutes      | 99.7%     |
+| Architecture diagram    | 2-3 days        | 5 minutes      | 99.7%     |
+| Call graphs             | 1-2 days        | 5 minutes      | 99.7%     |
 | BANKDATA Documentation  | 1-2 days        | 5 minutes      | 99.7%     |
 | Business rules          | 1 week          | 10 minutes     | 99.6%     |
 | Impact analysis         | 2 weeks         | 15 minutes     | 99.7%     |
