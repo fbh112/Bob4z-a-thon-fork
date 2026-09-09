@@ -1,5 +1,4 @@
-## Lab: Discovering IBM Bob Premium Package for Z
-
+# Lab: Discovering IBM Bob Premium Package for Z
 ## Analysis and Documentation of a CICS Mainframe Application
 
 **Estimated Duration:** 2-3 hours
@@ -1112,15 +1111,15 @@ You have completed the IBM Bob Premium Package for Z lab. In a few hours, you ha
 During this lab, you used different Bob modes according to needs:
 
 
-| Exercise                        | Mode Used                   | Reason for Choice                                                |
-| ------------------------------- | --------------------------- | ---------------------------------------------------------------- |
-| 1. Initialization               | 🧰 Z Code                   | Mainframe code analysis and technical documentation creation     |
-| 2. Inventory & Coding Standards | 🧰 Z Code                   | Exhaustive scan and analysis of COBOL components                 |
-| 3. Architecture & Call Graphs   | 📐 Z Architect              | Architecture diagram + call graph generation by functional topic |
-| 4. BANKDATA Documentation       | 🧰 Z Code                   | Detailed technical documentation of a batch program              |
-| 5. Business Rules & Code Gen    | 🧰 Z Code                   | Pattern extraction and inline code generation                    |
-| 6. Impact Analysis              | 📐 Z Architect              | Impact assessment and change planning                            |
-| 7. User Journey                 | ❓ Ask                      | Non-technical documentation for end users                        |
+| Exercise                        | Mode Used　　　　　　　　　| Reason for Choice                                                |
+| ---------------------------------| ----------------------------| ------------------------------------------------------------------|
+| 1. Initialization               | 🧰 Z Code　　　　　　　　　| Mainframe code analysis and technical documentation creation     |
+| 2. Inventory & Coding Standards | 🧰 Z Code　　　　　　　　　| Exhaustive scan and analysis of COBOL components                 |
+| 3. Architecture & Call Graphs   | 📐 Z Architect　　　　　　 | Architecture diagram + call graph generation by functional topic |
+| 4. BANKDATA Documentation       | 🧰 Z Code　　　　　　　　　| Detailed technical documentation of a batch program              |
+| 5. Business Rules & Code Gen    | 🧰 Z Code　　　　　　　　　| Pattern extraction and inline code generation                    |
+| 6. Impact Analysis              | 📐 Z Architect　　　　　　 | Impact assessment and change planning                            |
+| 7. User Journey                 | ❓ Ask　　　　　　　　　　　| Non-technical documentation for end users                        |
 | 8. Email Search Implementation  | 📐 Z Architect → 🧰 Z Code | Planning (Z Architect) + COBOL code generation (Z Code)          |
 
 **Key principle:** Choosing the right mode according to task nature maximizes efficiency and result quality.

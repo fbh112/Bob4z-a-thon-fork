@@ -1,66 +1,64 @@
-# Lab: Complete Analysis of the CBSA Application with Bob for Z
+# Lab: Discovering IBM Bob Premium Package for Z
+## Complete Analysis of the CBSA Application with Bob for Z
 
-## Lab Overview
-
-This lab guides you through a complete analysis of the **CICS Banking Sample Application (CBSA)** using **IBM Bob Premium Package for Z**,
-the AI assistant specialized for IBM Z mainframe systems.
-As a complement to **1-LabDiscoverCBSA**, this lab additionally integrates the application front-end (Java, React, REST APIs, and z/OS Connect).
-You will learn to use different Bob modes and formulate effective prompts to obtain detailed analyses, documentation, and architecture diagrams.
+**Estimated Duration:** 1-2 hours
+**Level:** Intermediate to Advanced
+**Prerequisites:** Completion of [Lab 1 — Discovering IBM Bob Premium Package for Z](1-LabDiscoverCBSA_EN.md)
 
 ---
 
-## Prerequisites
+## 📋 Table of Contents
 
-- ✅ Git client CLI
-- ✅ Bob IDE with the **IBM Bob Premium Package for Z** extension installed
-- ✅ Access to Bob's **Z Code** and **Z Architect** modes
-- ✅ Basic knowledge of Java, COBOL, JCL, and mainframe architecture (recommended but not mandatory)
-- ✅ Lab **1-LabDiscoverCBSA** completed or reviewed
-
----
-
-## Estimated Duration
-
-**Total time: 1–2 hours**
+1. [Introduction](#1-introduction)
+2. [Lab Preparation](#2-lab-preparation)
+3. [Exercise 1: Workspace Initialization](#exercise-1-workspace-initialization)
+4. [Exercise 2: Frontend Inventory](#exercise-2-frontend-inventory)
+5. [Exercise 3: Architecture Diagrams](#exercise-3-architecture-diagrams)
+6. [Exercise 4: Functional Analysis — Local Transfer](#exercise-4-functional-analysis--local-transfer)
+7. [Exercise 5: User Guide](#exercise-5-user-guide)
+8. [Exercise 6: Technical Analysis — Credit Score](#exercise-6-technical-analysis--credit-score)
+9. [Conclusion](#3-conclusion)
 
 ---
 
-## Table of Contents
+## 1. Introduction
 
-0. [Preparation: Retrieving the Application Front-end](#preparation-0)
-1. [Exercise 1: Workspace Initialization](#exercise-1)
-2. [Exercise 2: Frontend Inventory](#exercise-2)
-3. [Exercise 3: Architecture Diagrams](#exercise-3)
-4. [Exercise 4: Functional Analysis — Local Transfer](#exercise-4)
-5. [Exercise 5: User Guide](#exercise-5)
-6. [Exercise 6: Technical Analysis — Credit Score](#exercise-6)
+[↩️](#-table-of-contents)
+
+This lab continues from **Lab 1 — Discovering IBM Bob Premium Package for Z** and extends the analysis to the full CBSA application stack. You will reuse the same IBM Bob Premium Package for Z setup from Lab 1, now applied to the CBSA front-end components — Java, React, REST APIs, and z/OS Connect — alongside the mainframe back-end already explored in Lab 1.
+
+This lab guides you through a complete analysis of the **CICS Banking Sample Application (CBSA)** using **IBM Bob Premium Package for Z**, the AI assistant specialized for IBM Z mainframe systems.
+
+At the end of this lab, you will be able to:
+
+✅ **Initialize** a multi-technology workspace (Java, React, COBOL, z/OS Connect)
+✅ **Generate** a complete front-end architecture inventory
+✅ **Create** global architecture diagrams integrating front-end and back-end layers
+✅ **Analyze** complex CICS transactions end-to-end (from REST API to COBOL)
+✅ **Write** user guides for end users from source code alone
+✅ **Understand** the JCICS asynchronous API pattern
+✅ **Use** Bob's different modes effectively (💻 Agent, 🧰 Z Code, 📐 Z Architect)
 
 ---
 
-<a name="preparation-0"></a>
+## 2. Lab Preparation
 
-## Preparation: Retrieving the Application Front-end
+[↩️](#-table-of-contents)
 
-### 🎯 Objective
+### ✅ Prerequisites
 
-Retrieve the source code of the CBSA application's front-end from GitHub and prepare the workspace for the lab.
+| Requirement                                    | Details                                                             |
+| ---------------------------------------------- | ------------------------------------------------------------------- |
+| Lab 1 completed or reviewed                    | Familiar with Bob modes, Z Code and Z Architect                     |
+| Bob IDE with IBM Bob Premium Package for Z     | Same versions as Lab 1                                              |
+| Git client CLI                                 | Available in terminal                                               |
+| Basic knowledge of Java, COBOL, REST APIs      | Recommended but not mandatory                                       |
 
-### 🔧 Bob Mode to Use
-
-**Mode: 💻 Agent**
-
-Agent mode allows executing system commands and manipulating files.
-
-### 📝 Context
-
-Before starting the analysis, you need to retrieve the CBSA frontend source code from a public GitHub repository.
-
-**Steps:**
+### 📝 Setting Up the Workspace
 
 1. Create a `lab2` directory in your home directory.
-2. Open Bob IDE, click **File > Open Folder**, and select the `lab2` directory.
+2. Open Bob IDE, click **File → Open Folder**, and select the `lab2` directory.
    > ⚠️ When prompted, click **Trust the authors** to avoid the IDE entering **Restricted** mode.
-   >
 3. Open a terminal by choosing **Terminal → New Terminal**, then run:
 
 ```bash
@@ -71,27 +69,26 @@ Once cloned, you will find the following subdirectories under your workspace:
 
 ```text
 CBSA-frontend-source/
-├── bank-application-frontend/              # Banking frontend application (React)
-├── webui/                                  # Web user interface
-├── Z-OS-Connect-Customer-Services-Interface/  # z/OS Connect interface for customer services
-├── Z-OS-Connect-Payment-Interface/         # z/OS Connect interface for payments
-└── zosconnect_artefacts/                   # z/OS Connect service artifacts
+├── bank-application-frontend/                   # Banking frontend application (React)
+├── webui/                                       # Web user interface
+├── Z-OS-Connect-Customer-Services-Interface/    # z/OS Connect interface for customer services
+├── Z-OS-Connect-Payment-Interface/              # z/OS Connect interface for payments
+└── zosconnect_artefacts/                        # z/OS Connect service artifacts
 ```
-
-### 🎯 You're Ready!
 
 Once your workspace is set up, click the **`+` icon** in the Bob panel header to start a new conversation.
 
----
+> **Note:** IBM Bob relies on AI agentics, which is non-deterministic. Your results may differ slightly from the samples shown here. If Bob takes a different path, guide it with follow-up prompts — it will reach the correct outcome.
 
-<a name="exercise-1"></a>
+---
 
 ## Exercise 1: Workspace Initialization
 
+[↩️](#-table-of-contents)
+
 ### 🎯 Objective
 
-Initialize the workspace and create the `AGENTS.md` file that will serve as a guide for Bob and developers.
-Create metadata from existing programs and resources, and generate the data dictionary.
+Initialize the workspace and create the `AGENTS.md` file that will serve as a persistent guide for Bob and developers across all future conversations.
 
 ### 🔧 Bob Mode to Use
 
@@ -101,19 +98,18 @@ Z Code mode is specialized for analyzing and documenting mainframe applications 
 
 ### 📝 Context
 
-You have the CBSA frontend project that you are discovering. You need to:
+You have the CBSA frontend project that you are discovering alongside the mainframe back-end. You need to:
 
-- Understand the project structure
-- Identify the languages and frameworks used
+- Understand the project structure across all technologies
+- Identify the languages and frameworks used (Java, React, COBOL, z/OS Connect)
 - Locate important files
-- Build metadata that will facilitate project analysis and generate a data dictionary that will enable more relevant documentation
+- Build metadata that will facilitate project analysis and enable more relevant documentation
 
 ### ✍️ Your Task
 
 Write your own prompt to ask Bob to initialize and fully analyze the workspace.
 
 **Expected in your prompt:**
-
 - Request workspace initialization
 - Request the creation of framing artifacts (like `AGENTS.md`)
 
@@ -175,9 +171,9 @@ Bob will update `AGENTS.md` with a convention that it will follow in all future 
 
 ---
 
-<a name="exercise-2"></a>
-
 ## Exercise 2: Frontend Inventory
+
+[↩️](#-table-of-contents)
 
 ### 🎯 Objective
 
@@ -186,6 +182,12 @@ Document the complete frontend architecture including REST APIs, JSON models, an
 ### 🔧 Bob Mode to Use
 
 **Mode: 🧰 Z Code**
+
+Z Code mode analyzes source code across languages and generates structured inventories.
+
+### 📝 Context
+
+Now that the workspace is initialized, you need a detailed inventory of the frontend components to understand how the browser-side application and the z/OS Connect integration layers interact with the COBOL back-end programs already analyzed in Lab 1.
 
 ### 💬 Bob Prompt
 
@@ -210,9 +212,9 @@ Bob will:
 
 ---
 
-<a name="exercise-3"></a>
-
 ## Exercise 3: Architecture Diagrams
+
+[↩️](#-table-of-contents)
 
 ### 🎯 Objective
 
@@ -224,18 +226,25 @@ Create architecture diagrams visualizing the global application architecture and
 
 Z Architect mode is optimized for design tasks: architecture diagrams, dependency mapping, and system analysis.
 
+### 📝 Context
+
+The frontend inventory from Exercise 2 gives a textual picture of the components. A visual diagram is essential for communicating the full stack to architects, project managers, and new developers — showing how the React UI, REST APIs, z/OS Connect, and COBOL programs connect across layers.
+
 ### 💬 Bob Prompt
 
 ```text
 Generate a global architecture diagram integrating the front-end and backend, distinguishing the different layers of the application.
 ```
 
+### ⚙️ What Bob Does Automatically
+
+Bob will analyze the workspace inventory and generate a Mermaid diagram saved to a Markdown file, showing all application layers and their dependencies.
+
 ### ✅ Sample Result
 
 **File created:** `docs/CBSA_Architecture_Diagram.md`
 
 **Expected content — 5 distinct layers:**
-
 
 | # | Layer                    | Technologies                    |
 | - | ------------------------ | ------------------------------- |
@@ -247,9 +256,9 @@ Generate a global architecture diagram integrating the front-end and backend, di
 
 ---
 
-<a name="exercise-4"></a>
-
 ## Exercise 4: Functional Analysis — Local Transfer
+
+[↩️](#-table-of-contents)
 
 ### 🎯 Objective
 
@@ -258,6 +267,12 @@ Understand in depth how the local funds transfer transaction works, from the fro
 ### 🔧 Bob Mode to Use
 
 **Mode: 🧰 Z Code**
+
+Z Code mode excels at tracing end-to-end flows across source files of different languages and technologies.
+
+### 📝 Context
+
+The local transfer function is one of the core banking operations in CBSA. Understanding it end-to-end — from the REST API call in the Java layer, through z/OS Connect, to the COBOL programs executing the debit and credit — is a representative exercise in full-stack mainframe analysis.
 
 ### 💬 Bob Prompt
 
@@ -269,7 +284,7 @@ What does the Transfer Local transaction consist of?
 
 Bob will:
 
-1. Read source files
+1. Read source files across the frontend and backend
 2. Analyze the end-to-end transaction flow
 3. Identify input validations performed
 4. Document error handling
@@ -282,9 +297,9 @@ Bob produces a structured functional analysis covering the full transaction life
 
 ---
 
-<a name="exercise-5"></a>
-
 ## Exercise 5: User Guide
+
+[↩️](#-table-of-contents)
 
 ### 🎯 Objective
 
@@ -292,7 +307,13 @@ Create a complete user guide for the local transfer function, intended for end u
 
 ### 🔧 Bob Mode to Use
 
-**Mode: 🧰 Z Code**
+**Mode: ❓ Ask**
+
+Ask mode is ideal for producing non-technical documentation intended for end users, written in accessible language.
+
+### 📝 Context
+
+Tellers and end users need a simple, step-by-step guide for performing a local transfer — covering all three available interfaces (BMS terminal, Web UI, REST API), with practical examples and troubleshooting tips.
 
 ### 💬 Bob Prompt
 
@@ -318,9 +339,9 @@ Bob will:
 
 ---
 
-<a name="exercise-6"></a>
-
 ## Exercise 6: Technical Analysis — Credit Score
+
+[↩️](#-table-of-contents)
 
 ### 🎯 Objective
 
@@ -329,6 +350,8 @@ Understand the credit scoring system and its technical implementation using the 
 ### 🔧 Bob Mode to Use
 
 **Mode: 🧰 Z Code**
+
+Z Code mode is well suited for analyzing asynchronous processing patterns in COBOL programs that use the JCICS API.
 
 ---
 
@@ -360,7 +383,6 @@ Bob responds with a structured breakdown including:
 
 **1. Value Range:**
 
-
 | Field   | Value   |
 | ------- | ------- |
 | Minimum | 1       |
@@ -375,50 +397,44 @@ Final Score = (Score1 + Score2 + Score3 + Score4 + Score5) / 5
 
 ---
 
-## Deliverables Summary
+## 3. Conclusion
 
-At the end of this lab, you will have created the following files under `docs/`:
+[↩️](#-table-of-contents)
 
+### 🎉 Congratulations!
 
-| # | File                                | Type                 | Approximate Size |
-| - | ----------------------------------- | -------------------- | ---------------- |
-| 1 | `docs/FRONTEND_INVENTORY.md`        | Inventory            | ~600 lines       |
-| 2 | `docs/CBSA_Architecture_Diagram.md` | Architecture diagram | 5 layers         |
-| 3 | `docs/USER_GUIDE_LOCAL_TRANSFER.md` | User guide           | ~500 lines       |
+You have completed the IBM Bob Premium Package for Z full-stack CBSA lab. Building on the mainframe workspace from Lab 1 and extending to the frontend, you have:
 
-**Total: 3 files documenting the CBSA frontend architecture and key transactions.**
+- Initialized a multi-technology workspace and established the `docs/` output convention
+- Generated a complete **frontend architecture inventory** covering REST APIs, JSON models, and COBOL interfaces
+- Created a **global architecture diagram** showing all 5 application layers from React UI to Db2
+- Analyzed the **local transfer transaction** end-to-end across Java, z/OS Connect, and COBOL
+- Written a **user guide** for the Local Transfer function from source code alone
+- Understood the **JCICS asynchronous credit scoring** pattern
 
----
+### 🔧 Mode Usage Summary
 
-## Skills Acquired
+| Exercise                          | Mode Used      | Reason for Choice                                            |
+| --------------------------------- | -------------- | ------------------------------------------------------------ |
+| 1. Workspace Initialization       | 🧰 Z Code      | Workspace scan and `AGENTS.md` creation                      |
+| 2. Frontend Inventory             | 🧰 Z Code      | Multi-language source analysis and inventory generation      |
+| 3. Architecture Diagrams          | 📐 Z Architect | Full-stack diagram creation across layers                    |
+| 4. Functional Analysis            | 🧰 Z Code      | End-to-end transaction flow tracing                          |
+| 5. User Guide                     | ❓ Ask         | Non-technical documentation for end users                    |
+| 6. Credit Score Analysis          | 🧰 Z Code      | Asynchronous JCICS pattern analysis                          |
 
-At the end of this lab, you will know how to:
+### 📚 Created Resources
 
-✅ Document frontend architectures
-✅ Create professional architecture diagrams
-✅ Analyze complex CICS transactions end-to-end
-✅ Write detailed user guides for end users
-✅ Understand the JCICS asynchronous API
-✅ Effectively use Bob's different modes (Agent, Z Code, Z Architect)
-✅ Formulate precise and effective prompts
-
----
-
-## Conclusion
-
-This lab allowed you to discover the power of IBM Bob Premium Package for Z in analyzing and documenting complex mainframe front-end applications. You learned to:
-
-- Use different Bob modes for targeted tasks (Agent, Z Code, Z Architect)
-- Use different types of prompts to obtain precise results
-- Automatically generate professional documentation
-- Create visual architecture diagrams with layered representations
-- Understand complex CICS transactions end-to-end
-- Document REST APIs and data models
+| Document                            | Content                          | Approximate Size |
+| ----------------------------------- | -------------------------------- | ---------------- |
+| `AGENTS.md`                         | Workspace reference guide        | —                |
+| `docs/FRONTEND_INVENTORY.md`        | Complete frontend inventory      | ~600 lines       |
+| `docs/CBSA_Architecture_Diagram.md` | 5-layer architecture diagram     | —                |
+| `docs/USER_GUIDE_LOCAL_TRANSFER.md` | End-user guide for local transfer | ~500 lines       |
 
 ---
 
 **Lab Version:** 2.0
-**Creation date:** 2026-09
+**Date:** 2026-09
 **Author:** IBM Bob Premium Package for Z Team
-
----
+**Prerequisite:** [Lab 1 — Discovering IBM Bob Premium Package for Z](1-LabDiscoverCBSA_EN.md)

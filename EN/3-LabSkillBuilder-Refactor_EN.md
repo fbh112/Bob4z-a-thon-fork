@@ -38,12 +38,12 @@ Two advanced capabilities of IBM Bob Premium Package for Z are explored here:
 
 
 | Requirement                         | Details                                                             |
-| ----------------------------------- | ------------------------------------------------------------------- |
+| -------------------------------------| ---------------------------------------------------------------------|
 | Lab 1 completed                     | Workspace initialized, `AGENTS.md` created, metadata database built |
 | CBSA source code                    | Cloned at `~/CBSA/CBSA-base-source/`                                |
-| `AGENTS.md` present                 | At the workspace root                                              |
-| `.bobz/local-settings.json` present | Metadata database from Lab 1 Exercise 1                            |
-| Bob extensions                      | Same versions as Lab 1                                             |
+| `AGENTS.md` present                 | At the workspace root                                               |
+| `.bobz/local-settings.json` present | Metadata database from Lab 1 Exercise 1                             |
+| Bob extensions                      | Same versions as Lab 1                                              |
 
 ### 📝 Resuming the Workspace
 
@@ -95,15 +95,13 @@ Bob will:
 5. Document CICS and SQL interaction patterns
 6. Generate three files under `.bob/skills/cbsa-coding-standards/`:
    - `SKILL.md` — skill definition used by Bob
-   - `references/CBSA-standards-reference.md` — full standards documentation
-   - `references/CBSA-example.md` — annotated compliant code examples
+   - `references/....md` — full standards documentation
 
 #### ✅ Sample Result
 
 ```
 Created: .bob/skills/cbsa-coding-standards/SKILL.md
-Created: .bob/skills/cbsa-coding-standards/references/CBSA-standards-reference.md
-Created: .bob/skills/cbsa-coding-standards/references/CBSA-example.md
+Created: .bob/skills/cbsa-coding-standards/references/....md
 ```
 
 The skill captures CBSA patterns such as:
