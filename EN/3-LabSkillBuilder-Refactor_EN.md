@@ -1,9 +1,9 @@
 # Lab: Advanced IBM Bob Premium Package for Z
 ## Skill Builder: Coding Standards & VSAM to DB2 Refactoring on CBSA
 
-**Estimated Duration:** 1-2 hours
-**Level:** Advanced
-**Prerequisites:** Completion of [Lab 1 — Discovering IBM Bob Premium Package for Z](1-LabDiscoverCBSA_EN.md)
+- **Estimated Duration:** 1-2 hours  
+- **Level:** Advanced
+- **Prerequisites:** Completion of [Lab 1 — Discovering IBM Bob Premium Package for Z](1-LabDiscoverCBSA_EN.md)
 
 ---
 
@@ -185,21 +185,6 @@ Bob will:
 2. Apply all CBSA naming and structural standards
 3. Generate a complete, compliant COBOL program (e.g., `CBSA-base-source/cobol_src/INQEMAIL.cbl`)
 4. Add appropriate inline comments following CBSA documentation patterns
-
----
-
-## 💡 Added Value
-
-
-| Aspect                   | Without Skill    | With Skill           |
-| ------------------------ | ---------------- | -------------------- |
-| Standards analysis       | 2–3 days        | 2 minutes            |
-| Documentation            | Incomplete       | Comprehensive        |
-| Code generation          | Variable quality | Guaranteed compliant |
-| Team consistency         | Inconsistent     | 100%                 |
-| New developer onboarding | 2–3 weeks       | 1–2 days            |
-
-**Overall gain: ~95% reduction in time**
 
 ---
 
@@ -405,19 +390,6 @@ Bob generates a structured migration plan in 5 phases:
 5. **Stabilization** — DB2 monitoring, performance baseline comparison
 
 **File created:** `docs/CRECUST-VSAM-DB2-migration-plan.md`
-
----
-
-## 💡 Added Value
-
-| Aspect | Manual Approach | With Bob |
-|--------|-----------------|----------|
-| VSAM operation analysis | 2–3 days | 10 minutes |
-| DB2 data model design | 3–5 days | 15 minutes |
-| Code refactoring | 1–2 weeks | 30 minutes |
-| Migration plan | 3–5 days | 20 minutes |
-
-**Overall gain: ~90–95% reduction in time**
 
 ---
 

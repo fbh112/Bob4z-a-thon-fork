@@ -1,9 +1,9 @@
 # Lab: Configuring MCP Servers in IBM Bob IDE
 ## Connecting IBM Bob to Mainframe via the Model Context Protocol
 
-**Estimated Duration:** 1–1.5 hours  
-**Level:** Intermediate  
-**Prerequisites:** Basic knowledge of z/OS and familiarity with IBM Bob IDE, JSON configuration files
+- **Estimated Duration:** 1–1.5 hours  
+- **Level:** Intermediate  
+- **Prerequisites:** Basic knowledge of z/OS and familiarity with IBM Bob IDE, JSON configuration files
 
 > 📖 **Reference:** [IBM Z Open Editor — Advanced Agent Mode & IBM Bob™ Premium Package for Z](https://ibm.github.io/zopeneditor-about/Docs/advanced_agent_mode.html#ibm-bobtm-premium-package-for-z)
 
@@ -187,7 +187,7 @@ What tools does the Z Open Editor MCP server and Zowe MCP server provide for mai
 
 Bob will draw on its knowledge of the Z Open Editor MCP server and describe the available tool categories.
 
-### ✅ Expected Output — Tool Categories
+### ✅ Expected Result — Tool Categories
 
 | Category                | Example Tools                                                                                                       |
 | -------------------------| ---------------------------------------------------------------------------------------------------------------------|
@@ -558,7 +558,6 @@ You have completed the IBM Bob MCP Configuration lab. You now understand how to:
 
 **Lab Version:** 1.0  
 **Creation date:** 2026-09
-**Reference:** IBM Z Open Editor — Advanced Agent Mode documentation  
 **Author:** IBM Bob Premium Package for Z Team
 
 ---

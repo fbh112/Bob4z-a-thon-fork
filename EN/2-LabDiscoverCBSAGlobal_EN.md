@@ -1,9 +1,9 @@
 # Lab: Discovering IBM Bob Premium Package for Z
 ## Complete Analysis of the CBSA Application with Bob for Z
 
-**Estimated Duration:** 1-2 hours
-**Level:** Intermediate to Advanced
-**Prerequisites:** Completion of [Lab 1 — Discovering IBM Bob Premium Package for Z](1-LabDiscoverCBSA_EN.md)
+- **Estimated Duration:** 1-2 hours
+- **Level:** Intermediate to Advanced
+- **Prerequisites:** Completion of [Lab 1 — Discovering IBM Bob Premium Package for Z](1-LabDiscoverCBSA_EN.md)
 
 ---
 

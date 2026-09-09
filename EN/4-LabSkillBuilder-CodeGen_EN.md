@@ -1,9 +1,9 @@
 # Lab: Advanced IBM Bob Premium Package for Z
 ## Skill Builder: COBOL Code Generation and Validation on CBSA
 
-**Estimated Duration:** 1-2 hours
-**Level:** Advanced
-**Prerequisites:** Completion of [Lab 1 — Discovering CBSA](1-LabDiscoverCBSA_EN.md)
+- **Estimated Duration:** 1-2 hours
+- **Level:** Advanced
+- **Prerequisites:** Completion of [Lab 1 — Discovering CBSA](1-LabDiscoverCBSA_EN.md)
 
 ---
 
@@ -304,19 +304,6 @@ Z Open Editor reports errors in @UPDTACCT.cbl — please review and fix them
 - **BMS generation**: Bob produces both the COBOL program and the BMS map source in one step
 - **Pseudo-conversational pattern**: COMMAREA mode flag, SEND/RECEIVE MAP, and MAPFAIL handling are generated correctly following CBSA conventions
 - **Same quality loop**: Z Open Editor validation and automatic correction apply identically to BMS programs as to VSAM programs
-
----
-
-## 💡 Added Value — Exercises 2 & 3
-
-| Aspect                              | Manual Approach       | With Bob                    |
-| ----------------------------------- | --------------------- | --------------------------- |
-| Standards analysis before coding    | 2–3 days              | Already done (Exercise 1)   |
-| CICS VSAM search program            | 2–3 days              | 10 minutes                  |
-| BMS pseudo-conversational program   | 3–5 days              | 15 minutes                  |
-| Syntax validation & correction      | Manual compiler cycle | Automatic in-conversation   |
-
-**Overall gain: ~90–95% reduction in time**
 
 ---
 

@@ -1,9 +1,9 @@
 # Lab: IBM Bob Shell for Automation
 ## Using Bob Shell to Assist Automation task from the Terminal
 
-**Estimated Duration:** 1-2 hours  
-**Level:** Intermediate  
-**Prerequisites:** Basic knowledge of Linux and familiarity with IBM Bob IDE
+- **Estimated Duration:** 1-2 hours  
+- **Level:** Intermediate  
+- **Prerequisites:** Basic knowledge of Linux and familiarity with IBM Bob IDE
 
 ---
 
@@ -147,8 +147,6 @@ Once Bob Shell is installed, open a terminal, navigate to your project directory
 
 ## 4. Lab Context
 [↩️](#-table-of-contents)
-
-### The Project: CBSA Banking Application
 
 This lab uses the CBSA (CICS Banking Sample Application) project introduced in Lab 1. Bob Shell will be used to:
 
@@ -405,7 +403,7 @@ Bob Shell will:
 
 Bob Shell lists the copybooks used by BANKDATA (e.g., `CUSTOMER.cpy`, `SORTCODE.cpy`) and identifies the other programs that include each one — giving a clear picture of the change impact boundary.
 
-### Step 4 — Switch to Plan mode and design a change:**
+### Step 4 — Switch to Plan mode and design a change:
 
 Type `/mode`, select **Plan** from the list, then enter your prompt:
 ```text
