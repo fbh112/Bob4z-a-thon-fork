@@ -161,17 +161,22 @@ Retrieve the CBSA application source code from GitHub and prepare your workspace
 - A subscription with access to Bob Premium Package for Z
 - Git and internet access available
 - You are able to access www.github.com to retrieve the source code
-- The following extensions installed in Bob:
-
+- The following extensions will be installed automatically in Bob, when you login the first time:
 
 | Extension                     | Tested version (or latest) |
 | ----------------------------- | -------------------------- |
 | Zowe Explorer                 | 3.5.1                      |
 | IBM Z Open Editor             | 6.7.0                      |
-| IBM Bob Premium Package for Z | 3.0.11                     |
-| Mermaid                       | 2.7.6                      |
+| IBM Bob Premium Package for Z | 3.0.21                     |
+| Mermaid                       | 2.7.7                      |
 
 - **Bob IDE tested version:** 1.126.0+bob2.1.0
+
+When you start Bob for the first time, it will ask you some questions about the setup.  For
+the purpose of the workshop you should responds like this:
+1. If asked about a password for the keyring, just press Cancel
+2. IF asked about storing passwords unencrypted, just press Continue
+3. When asked if you want to import settings and extensions from a previous version, just press "Skip For Now". 
 
 ### 📝 Context
 
