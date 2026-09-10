@@ -177,6 +177,7 @@ the purpose of the workshop you should responds like this:
 1. If asked about a password for the keyring, just press Cancel
 2. IF asked about storing passwords unencrypted, just press Continue
 3. When asked if you want to import settings and extensions from a previous version, just press "Skip For Now". 
+4. Use the blue "Login to Bob" button when there are no more popups appearing.
 
 ### 📝 Context
 
