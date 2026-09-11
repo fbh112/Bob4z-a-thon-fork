@@ -174,11 +174,11 @@ Retrieve the CBSA application source code from GitHub and prepare your workspace
 
 When you start Bob for the first time, it will ask you some questions about the setup.  For
 the purpose of the workshop you should responds like this:
-1. If asked about a password for the keyring, just press Cancel
+1. If asked about a password for the keyring, just press Continue without a password
 2. IF asked about storing passwords unencrypted, just press Continue
 3. When asked if you want to import settings and extensions from a previous version, just press "Skip For Now". 
-4. If you at some point get a message box requesting you to create a Mermaid account, just cancel it, and it will continue to function as required without an account. 
-5. Use the blue "Login to Bob" button when there are no more popups appearing.
+4. Use the blue "Login to Bob" button when there are no more popups appearing.
+5. If you at some point get a message box requesting you to create a Mermaid account, just cancel it, and it will continue to function as required without an account. 
 
 ### 📝 Context
 
