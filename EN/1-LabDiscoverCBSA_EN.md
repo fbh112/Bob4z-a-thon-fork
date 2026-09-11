@@ -332,6 +332,8 @@ Write your own prompt to ask Bob to initialize and fully analyze the workspace.
 
 This file give Bob persistent knowledge of your project across all conversations, so it does not need to rediscover the codebase each time. The `scan_program` part of the prompt is specific to the IBM Bob Premium Package for Z and builds the local metadata database for mainframe analysis.
 
+Bob might ask you whether to focus on COBOL or Assembler, and you shoud choose Cobol as that is our focus for today. 
+
 You can find more tools at https://www.ibm.com/docs/en/bobz/3.0.0?topic=commands-using-tools-tool-groups
 
 ### 🔀 Prompt Variants
@@ -469,6 +471,12 @@ Map CBSA components: COBOL programs, copybooks, BMS maps, Db2 tables, and main d
 ### ⚙️ What Bob Does Automatically
 
 Bob will scan, analyze, and document all application components by creating a structured inventory. It will use the Premium for Z tool ***execute_sql_query*** to access the metadata database to extract source information and generate a structured Markdown document.
+
+If Bob only responds in the chat, and does not create a document with the findings, you can then ask Bob to create a document with a followup prompt:
+
+```text
+create an md document with the findings
+```
 
 ### ✅ Sample Result
 
