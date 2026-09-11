@@ -60,7 +60,7 @@ Bob Premium for Z offers several specialized modes for different types of tasks.
 
 > **Note on mode types:** IBM Bob ships with three **built-in modes** available to all users — **Agent**, **Ask**, and **Plan**. The **Z Code** and **Z Architect** modes are **custom modes added by the IBM Bob Premium Package for Z**. They appear alongside the built-in modes once the package is activated.
 
-### 🧰 Z Code *(Premium custom mode)*
+### 🧰 Z Code *(Premium mode)*
 
 **Specialty:** Mainframe code analysis and documentation
 
@@ -77,7 +77,7 @@ Bob Premium for Z offers several specialized modes for different types of tasks.
 - Program documentation
 - Pattern extraction
 
-### 📐 Z Architect *(Premium custom mode)*
+### 📐 Z Architect *(Premium mode)*
 
 **Specialty:** Mainframe application architecture and design
 
@@ -172,13 +172,20 @@ Retrieve the CBSA application source code from GitHub and prepare your workspace
 
 - **Bob IDE tested version:** 1.126.0+bob2.1.0
 
-When you start Bob for the first time, it will ask you some questions about the setup.  For
-the purpose of the workshop you should responds like this:
-1. If asked about a password for the keyring, just press Continue without a password
-2. IF asked about storing passwords unencrypted, just press Continue
-3. When asked if you want to import settings and extensions from a previous version, just press "Skip For Now". 
-4. Use the blue "Login to Bob" button when there are no more popups appearing.
-5. If you at some point get a message box requesting you to create a Mermaid account, just cancel it, and it will continue to function as required without an account. 
+### Starting Bob for the first time
+
+When you start Bob for the first time, you will be asked questions to finalize the setup.  
+
+For the purpose of the workshop you should responds like this:
+1. If you are asked about a password for the keyring, just press Continue without a password
+2. IF you are asked about storing passwords unencrypted, just press Continue
+3. When you are asked if you want to import settings and extensions from a previous version, just press "Skip For Now". 
+4. Use the blue "Login to Bob" button on the right side Bob chat window, when there are no more popups appearing.
+5. When Bob asks for permision to open external website, choose Open
+6. After the login Bob will ask you whether to install the IBM Bob Premium Package for Z, and you should accept to install
+7. You will asked if you trust IBM's and Mermaid's extensions. You do!
+8. If you at some point get a message box requesting you to create a Mermaid account, just cancel it, and it will continue to function as required without an account. 
+9. You should now be able to see the modes in the bottom right of the screen. Most likely Agent mode is pre-selected, and if you try to pick another you should see 5 modes, and Z Code and Z Architect must be there. If not call for help.
 
 ### 📝 Context
 
