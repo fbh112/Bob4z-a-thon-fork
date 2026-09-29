@@ -1,7 +1,7 @@
 # Lab: Discovering IBM Bob Premium Package for Z
 ## Analysis and Documentation of a CICS Mainframe Application
 
-- **Estimated Duration:** 2-3 hours
+- **Estimated Duration:** 3-4 hours
 - **Level:** Intermediate to Advanced
 - **Prerequisites:** Basic knowledge of COBOL and CICS
 

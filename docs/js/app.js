@@ -111,7 +111,7 @@
   }
 
   // ── TRACK PARTIALS LOADER ─────────────────────────────────────────────────
-  var TRACK_SLUGS = ['setup', 'track-1', 'track-2', 'track-3', 'track-4'];
+  var TRACK_SLUGS = ['setup', 'track-discovery', 'track-refactor', 'track-bobshell'];
   var stream = document.getElementById('tracks-stream');
 
   function loadTrackSlug(index) {

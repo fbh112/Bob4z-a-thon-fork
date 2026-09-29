@@ -161,33 +161,6 @@ Improve the following code from CBSA-base-source/cobol_src/BNK1CAC.cbl:239-254
 
 ---
 
-### Step 4 — Generate New Code Using the Skill
-
-Now use the skill to generate a new, standards-compliant COBOL program for the CBSA application.
-
-#### 💬 Bob Prompt
-
-```text
-Create a COBOL program for the CBSA application that:
-- Searches for a customer by email address
-- Validates the email format
-- Returns the customer information via COMMAREA if found
-- Handles all possible errors (not found, invalid input, CICS failures)
-
-Follow the cbsa-coding-standards skill for naming conventions, structure, and error handling.
-```
-
-#### ⚙️ What Bob Does Automatically
-
-Bob will:
-
-1. Load `.bob/skills/cbsa-coding-standards/SKILL.md`
-2. Apply all CBSA naming and structural standards
-3. Generate a complete, compliant COBOL program (e.g., `CBSA-base-source/cobol_src/INQEMAIL.cbl`)
-4. Add appropriate inline comments following CBSA documentation patterns
-
----
-
 ## 🎓 Key Takeaways — Exercise 1
 
 - **Automation**: Bob extracts standards directly from your existing production codebase — no manual survey needed.

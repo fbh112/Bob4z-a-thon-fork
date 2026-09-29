@@ -51,7 +51,6 @@
                       <li><strong style="color:var(--text)">IBM Bob Premium Package for Z</strong> v3.0.0+</li>
                       <li><strong style="color:var(--text)">IBM Z Open Editor</strong> v6.6.0+</li>
                       <li><strong style="color:var(--text)">Zowe Explorer</strong> v3.5.0+</li>
-                      <li><strong style="color:var(--text)">Draw.io Integration</strong> (latest)</li>
                       <li><strong style="color:var(--text)">Mermaid</strong> (latest)</li>
                     </ul>
                   </div>
@@ -75,10 +74,31 @@
             <div class="uc-arrow" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l5 5 5-5"/></svg></div>
           </div>
           <div class="uc-body"><div class="uc-body-inner">
-            <p class="uc-desc">Create a <code>~/CBSA</code> directory, open it in Bob IDE, then use Bob to retrieve the source code automatically.</p>
-            <div class="mode-badge mode-badge-agent">💻 Agent mode</div>
-            <div class="step-prompt"><pre>Retrieve the sub-directory named "src/base" in the CBSA directory from the GitHub repository https://github.com/ovallod/Bob4z-a-thon.git and place it in the current workspace folder. Then remove any temporary working directory you would have created.</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
-            <div class="success-box">Bob clones the repo, copies <code>src/base/</code> into your workspace, and removes the temp directory. You should see: <strong>bms_src/</strong> (CICS screens), <strong>cobol_copy/</strong> (copybooks), <strong>cobol_src/</strong> (29 COBOL programs).</div>
+            <p class="uc-desc">Create a <code>~/CBSA</code> directory, open it in Bob IDE, then clone the source code from a terminal.</p>
+            <div class="mode-steps">
+              <div class="mode-step">
+                <div class="step-num">1</div>
+                <div class="step-body">
+                  <div class="step-title">Create the workspace folder &amp; open it in Bob IDE</div>
+                  <div class="step-desc">Create a <code>CBSA</code> directory in your home directory. In Bob IDE, click <strong>File → Open Folder</strong> and select the <code>~/CBSA</code> directory. Trust the workspace when prompted — without it Bob IDE enters <strong>Restricted</strong> mode.</div>
+                </div>
+              </div>
+              <div class="mode-step">
+                <div class="step-num">2</div>
+                <div class="step-body">
+                  <div class="step-title">Open a terminal &amp; clone the repository</div>
+                  <div class="step-desc">In Bob IDE, open a terminal via <strong>Terminal → New Terminal</strong>, then run:</div>
+                </div>
+              </div>
+            </div>
+            <div class="step-prompt"><pre>git clone https://github.com/fbh112/CBSA-base-source.git</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+            <div class="success-box">Outputs: Once cloned, you will find the following subdirectories under your workspace:
+              <pre style="margin-top:8px;margin-bottom:0"><strong>CBSA-base-source/</strong>
+  ├── README.md
+  ├── <strong>bms_src/</strong>       (CICS BMS screens)
+  ├── <strong>cobol_copy/</strong>    (copybooks)
+  └── <strong>cobol_src/</strong>     (29 COBOL programs)</pre>
+            </div>
           </div></div>
         </div>
 
