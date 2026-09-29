@@ -1,0 +1,205 @@
+<div class="bubble-card track-1" id="card-1">
+  <div class="card-summary">
+    <div class="card-icon" aria-label="Discover CBSA">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--c1)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/>
+      </svg>
+    </div>
+    <div class="card-text">
+      <div class="card-label">Lab 1 · ~3–4 hours</div>
+      <div class="card-title">Discover &amp; Document CBSA</div>
+      <div class="card-desc">Use Z Code and Z Architect modes to initialize the workspace, generate a complete inventory, create architecture diagrams, extract business rules, analyze change impact, and implement new features.</div>
+      <div class="card-meta">
+        <span class="card-tag">~3–4 hours</span>
+        <span class="card-tag">🧰 Z Code</span>
+        <span class="card-tag">📐 Z Architect</span>
+        <span class="card-tag">Intermediate–Advanced</span>
+      </div>
+    </div>
+    <div class="card-chevron" aria-hidden="true">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5l5 5 5-5"/></svg>
+    </div>
+  </div>
+
+  <div class="card-detail">
+    <div class="card-detail-inner">
+      <div class="detail-intro">The main lab. Starting from a codebase with no documentation, you will use IBM Bob Premium Package for Z to build a complete understanding of the CBSA banking application in hours rather than weeks.</div>
+
+      <div class="use-cases">
+
+        <div class="use-case">
+          <div class="use-case-header">
+            <div class="uc-num">0</div>
+            <div class="uc-title">Exercise 0 — Define Naming &amp; Organization Rules</div>
+            <div class="uc-arrow" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l5 5 5-5"/></svg></div>
+          </div>
+          <div class="uc-body"><div class="uc-body-inner">
+            <p class="uc-desc">Before analyzing code, establish clear conventions for organizing Bob-generated resources. Create Bob rules that define where to store documents, tools, and diagrams.</p>
+            <div class="mode-badge mode-badge-agent">💻 Agent mode — new task</div>
+            <div class="step-prompt"><pre>Create the following Bob rules (file in .bob/rules):
+- Documents must be stored in the docs/ directory. Documents specific to a program should be stored in a sub-directory of docs/ using the program name.
+- Tools must be stored in the tools/ directory.
+- Schemas, drawings and graphs must be stored in graph/ directory.
+
+Document, schemas, drawings and graphs file names must follow these conventions:
+-- Prefix: program name (e.g., BNKMENU) or CBSA for the application, or GLOBAL for cross-cutting documents
+-- Document type: analysis, archi, docu, inv, plan, spec
+-- Format: [PREFIX]-[TYPE]-[description].md</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+            <div class="info-box">Bob creates <code>.bob/rules/</code> with naming conventions. If Bob proposes using the create-skill skill, decline it — it is not needed here.</div>
+          </div></div>
+        </div>
+
+        <div class="use-case">
+          <div class="use-case-header">
+            <div class="uc-num">1</div>
+            <div class="uc-title">Exercise 1 — Workspace Initialization &amp; Data Dictionary</div>
+            <div class="uc-arrow" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l5 5 5-5"/></svg></div>
+          </div>
+          <div class="uc-body"><div class="uc-body-inner">
+            <p class="uc-desc">Initialize the workspace and scan all COBOL programs to build the local metadata database. Then generate the data dictionary from the <strong>BANKDATA</strong> program.</p>
+            <div class="mode-badge mode-badge-zcode">🧰 Z Code mode — new task</div>
+            <div class="step-prompt"><pre>/init and create the local metadata database with the scan_program tool.</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+            <p class="uc-desc" style="margin-top:10px">Then generate the data dictionary via the <strong>workflow button (▶)</strong> → <em>Generate data dictionary</em> → select <strong>BANKDATA</strong>.</p>
+            <div class="success-box">Bob scans 29 COBOL programs, creates <code>.bobz/local-settings.json</code>, extracts top variables from BANKDATA, and writes <strong><code>bobz/DD.json</code></strong> with 15 documented business entries.</div>
+            <div class="warn-box">⚠️ Add <code># Workspace Configuration\nTarget Platform: IBM Z</code> to the end of <code>AGENTS.md</code> after init — this improves analysis quality in the current version.</div>
+          </div></div>
+        </div>
+
+        <div class="use-case">
+          <div class="use-case-header">
+            <div class="uc-num">2</div>
+            <div class="uc-title">Exercise 2 — Application Inventory &amp; Coding Standards</div>
+            <div class="uc-arrow" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l5 5 5-5"/></svg></div>
+          </div>
+          <div class="uc-body"><div class="uc-body-inner">
+            <p class="uc-desc">Generate a full inventory of all COBOL programs, copybooks, BMS screens, Db2 tables, and VSAM files. Then extract coding standards from existing code.</p>
+            <div class="mode-badge mode-badge-zcode">🧰 Z Code mode — new task</div>
+            <div class="step-prompt"><pre>Generate a complete inventory of the CBSA application, with for each program, their type, role, and dependencies (used copybooks, BMS screens, DB2 tables and files used - with access mode -, queues, and called programs).</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+            <p class="uc-desc" style="margin-top:10px">Then in a new task, generate a coding standards skill:</p>
+            <div class="step-prompt"><pre>/z-coding-standards-skill-builder</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+            <div class="info-box">Reply <strong>Yes</strong> when Bob proposes to include ZCodeScan in the skill. After creation, reload the workspace (File → Close Folder → Reopen) for the skill to be active.</div>
+            <div class="success-box">Outputs: <strong><code>docs/CBSA-INV*.md</code></strong> (full inventory) and <strong><code>.bob/skills/cbsa-coding-standards/SKILL.md</code></strong> with patterns, checklist, and sample code.</div>
+          </div></div>
+        </div>
+
+        <div class="use-case">
+          <div class="use-case-header">
+            <div class="uc-num">3</div>
+            <div class="uc-title">Exercise 3 — Architecture Diagrams &amp; Call Graphs</div>
+            <div class="uc-arrow" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l5 5 5-5"/></svg></div>
+          </div>
+          <div class="uc-body"><div class="uc-body-inner">
+            <p class="uc-desc">Create a visual architecture diagram in Draw.io format, then generate comprehensive Mermaid call graphs organized by functional topic.</p>
+            <div class="mode-badge mode-badge-zarch">📐 Z Architect mode — new task</div>
+            <div class="step-prompt"><pre>Build an architecture diagram (in draw.io) illustrating the program dependencies of the CBSA application.</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+            <p class="uc-desc" style="margin-top:10px">You can refine with follow-up prompts such as:</p>
+            <div class="step-prompt"><pre>Modify the diagram with straight links (non-orthogonal).</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+            <p class="uc-desc" style="margin-top:10px">Then generate call graphs in a new task:</p>
+            <div class="step-prompt"><pre>Create documentation with comprehensive call graphs of all programs in the workspace and the local database, organized by functional topics.</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+            <div class="success-box">Outputs: <strong><code>docs/CBSA-ARCHITECTURE.drawio</code></strong> (4-layer diagram) and <strong><code>docs/cbsa-call-graphs.md</code></strong> with Mermaid call graphs per functional topic.</div>
+          </div></div>
+        </div>
+
+        <div class="use-case">
+          <div class="use-case-header">
+            <div class="uc-num">4</div>
+            <div class="uc-title">Exercise 4 — BANKDATA Program Documentation</div>
+            <div class="uc-arrow" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l5 5 5-5"/></svg></div>
+          </div>
+          <div class="uc-body"><div class="uc-body-inner">
+            <p class="uc-desc">Generate complete technical documentation for the BANKDATA program using the <strong>Explain Code</strong> workflow. Choose your perspective: Architect, Developer, or Business.</p>
+            <div class="mode-badge mode-badge-zcode">🧰 Z Code mode</div>
+            <p class="uc-desc">Click the <strong>▶ (workflow) button</strong> in Bob → select <em>Explain code</em> → choose <code>BANKDATA.cbl</code> → select a perspective.</p>
+            <div class="info-box">Alternatively use the slash command: <code>/explain @base/cobol_src/BANKDATA.cbl</code>. If Bob doesn't save automatically, ask: <code>save the BANKDATA explanation</code>.</div>
+            <div class="success-box">Output: <strong><code>docs/explain/BANKDATA.md</code></strong> — structured documentation with batch logic, VSAM/DB2 dependencies, error handling, and data generation rules. <strong>99.7% time reduction vs. manual documentation.</strong></div>
+          </div></div>
+        </div>
+
+        <div class="use-case">
+          <div class="use-case-header">
+            <div class="uc-num">5</div>
+            <div class="uc-title">Exercise 5a — Business Rules Analysis (SORTCODE)</div>
+            <div class="uc-arrow" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l5 5 5-5"/></svg></div>
+          </div>
+          <div class="uc-body"><div class="uc-body-inner">
+            <p class="uc-desc">Query Bob about variables and their cross-application use. Start with the INQACCCU program, then deep-dive on the SORTCODE variable (the 6-digit bank branch code hardcoded as 987654).</p>
+            <div class="mode-badge mode-badge-zcode">🧰 Z Code mode — new task</div>
+            <div class="step-prompt"><pre>What variables are used in INQACCCU?</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+            <div class="step-prompt" style="margin-top:8px"><pre>How is the SORTCODE variable used in the application?</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+            <div class="step-prompt" style="margin-top:8px"><pre>what is the architectural importance of SORTCODE?</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+            <div class="success-box">Bob documents 13 new variables in the data dictionary, maps SORTCODE usage across all 28 programs, and explains its role as a composite DB2 key. <strong><code>bobz/DD.json</code></strong> now has 28 entries.</div>
+          </div></div>
+        </div>
+
+        <div class="use-case">
+          <div class="use-case-header">
+            <div class="uc-num">5b</div>
+            <div class="uc-title">Exercise 5b — Business Rules &amp; Inline Code Generation</div>
+            <div class="uc-arrow" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l5 5 5-5"/></svg></div>
+          </div>
+          <div class="uc-body"><div class="uc-body-inner">
+            <p class="uc-desc">Extract the business rules from <strong>BNK1CAC</strong> (the create account program), then add a new validation rule inline using the code editor context.</p>
+            <div class="mode-badge mode-badge-zcode">🧰 Z Code mode — new task</div>
+            <div class="step-prompt"><pre>Extract and save in a md file, the business rules from @base/cobol_src/BNK1CAC.cbl</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+            <p class="uc-desc" style="margin-top:10px">Open <code>BNK1CAC.cbl</code>, place cursor at line 458 (<code>Ctrl+G 458</code>), right-click → <em>IBM Bob → Add to Context</em>, then:</p>
+            <div class="step-prompt"><pre>BNK1CAC.cbl:458-458 add a test to verify a customer number should start with 99</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+            <div class="success-box">Bob creates <strong><code>docs/BNK1CAC/BNK1CAC-business-rules.md</code></strong> and adds a new COBOL validation block at line 459. The business rules doc is updated automatically with the new rule.</div>
+          </div></div>
+        </div>
+
+        <div class="use-case">
+          <div class="use-case-header">
+            <div class="uc-num">6</div>
+            <div class="uc-title">Exercise 6 — Change Impact Analysis (Multi-Branch SORTCODE)</div>
+            <div class="uc-arrow" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l5 5 5-5"/></svg></div>
+          </div>
+          <div class="uc-body"><div class="uc-body-inner">
+            <p class="uc-desc">The business wants to deploy CBSA in multiple branches. Evaluate the full impact and risks of transforming SORTCODE from a fixed value to a variable one.</p>
+            <div class="mode-badge mode-badge-zarch">📐 Z Architect mode — new task</div>
+            <div class="step-prompt"><pre>Analyze the impact of changing SORTCODE to support multiple bank branches.</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+            <div class="success-box">Output: <strong><code>docs/CBSA-archi-impact*.md</code></strong> — a 13-section impact report covering: 21/28 programs affected, 4–6 weeks estimated effort, HIGH risk rating, DB2 migration plan, and mitigation strategies.</div>
+          </div></div>
+        </div>
+
+        <div class="use-case">
+          <div class="use-case-header">
+            <div class="uc-num">7</div>
+            <div class="uc-title">Exercise 7 — User Journey Documentation</div>
+            <div class="uc-arrow" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l5 5 5-5"/></svg></div>
+          </div>
+          <div class="uc-body"><div class="uc-body-inner">
+            <p class="uc-desc">Create business-oriented user journey documentation for bank tellers — non-technical, with screen examples and practical tips.</p>
+            <div class="mode-badge mode-badge-zcode">🧰 Z Code mode — new task</div>
+            <div class="step-prompt"><pre>Create user journey documentation for consulting a customer's accounts in the CBSA application.
+
+The documentation must:
+- Be intended for tellers (non-technical)
+- Show the path from the main menu
+- Include screen examples
+- Provide practical tips</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+            <div class="success-box">Output: <strong><code>docs/CBSA-guide-Account-consultation.md</code></strong> — step-by-step guide with 3270 screen examples, practical tips, and troubleshooting in business language. Generated in 10 minutes vs. 3–4 days manually.</div>
+          </div></div>
+        </div>
+
+        <div class="use-case">
+          <div class="use-case-header">
+            <div class="uc-num">8</div>
+            <div class="uc-title">Exercise 8 — Email Search Feature Implementation</div>
+            <div class="uc-arrow" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l5 5 5-5"/></svg></div>
+          </div>
+          <div class="uc-body"><div class="uc-body-inner">
+            <p class="uc-desc">Design and implement a new feature: customer search by email address. Use Z Architect for planning, then Z Code for COBOL code generation.</p>
+            <div class="mode-badge mode-badge-zarch">📐 Z Architect mode — Part A: Planning</div>
+            <div class="step-prompt"><pre>What is the plan to implement customer search by email?</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+            <div class="mode-badge mode-badge-zcode" style="margin-top:12px">🧰 Z Code mode — Part B: Data Structures</div>
+            <div class="step-prompt"><pre>According to the implementation plan, update the CUSTOMER data structures</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+            <div class="mode-badge mode-badge-zcode" style="margin-top:12px">🧰 Z Code mode — Part C: New COBOL Program</div>
+            <div class="step-prompt"><pre>Implement the INQEMAIL program for customer search by email following the plan and data structures.</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+            <div class="success-box">Outputs: <strong><code>docs/CBSA-plan-email-search.md</code></strong>, updated copybooks (CUSTOMER.cpy, CRECUST.cpy, INQCUST.cpy, UPDCUST.cpy), new INQEMAIL.cpy, EMAILVAL.cpy, and INQEMAIL.cbl.</div>
+          </div></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

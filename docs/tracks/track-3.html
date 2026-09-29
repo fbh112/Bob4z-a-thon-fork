@@ -1,0 +1,141 @@
+<div class="bubble-card track-3" id="card-3">
+  <div class="card-summary">
+    <div class="card-icon" aria-label="Skill Builder and Refactor">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--c3)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+      </svg>
+    </div>
+    <div class="card-text">
+      <div class="card-label">Lab 3 · ~1–2 hours</div>
+      <div class="card-title">Skill Builder &amp; VSAM→DB2 Refactoring</div>
+      <div class="card-desc">Auto-generate a reusable COBOL coding standards skill from existing code patterns. Then use the interactive refactoring workflow to migrate a VSAM-based program to DB2.</div>
+      <div class="card-meta">
+        <span class="card-tag">~1–2 hours</span>
+        <span class="card-tag">🧰 Z Code</span>
+        <span class="card-tag">📐 Z Architect</span>
+        <span class="card-tag">Advanced</span>
+      </div>
+    </div>
+    <div class="card-chevron" aria-hidden="true">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5l5 5 5-5"/></svg>
+    </div>
+  </div>
+
+  <div class="card-detail">
+    <div class="card-detail-inner">
+      <div class="detail-intro">Two independent advanced exercises. Exercise 1 creates a reusable coding standards skill. Exercise 2 uses the built-in refactoring workflow to modernize a VSAM program to use DB2 — a 90–95% time reduction vs. manual refactoring.</div>
+
+      <div class="use-cases">
+
+        <!-- Exercise 1 -->
+        <div class="use-case">
+          <div class="use-case-header">
+            <div class="uc-num">1</div>
+            <div class="uc-title">Exercise 1 — Generate a Coding Standards Skill</div>
+            <div class="uc-arrow" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l5 5 5-5"/></svg></div>
+          </div>
+          <div class="uc-body"><div class="uc-body-inner">
+            <p class="uc-desc">Bob analyzes all existing COBOL programs to extract recurring patterns (naming, structures, error handling) and packages them as a reusable <strong>Bob skill</strong> — a permanent, shareable coding standard your whole team can apply.</p>
+
+            <p class="uc-desc" style="margin-top:4px"><strong>Step 1 — Generate the skill</strong></p>
+            <div class="mode-badge mode-badge-zcode">🧰 Z Code mode — new task</div>
+            <div class="step-prompt"><pre>/z-coding-standards-skill-builder</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+            <div class="info-box">Reply <strong>Yes</strong> when Bob asks to include ZCodeScan. After generation, <strong>reload the workspace</strong> (File → Close Folder → Reopen) so the new skill is discovered.</div>
+
+            <p class="uc-desc" style="margin-top:12px"><strong>Step 2 — Customize rules (optional)</strong></p>
+            <div class="mode-badge mode-badge-agent">💻 Agent mode</div>
+            <div class="step-prompt"><pre>Modify the file CBSA-standards-reference.md to add the following rules:
+- Counter variables must start with CTR-
+- Validation paragraphs must end with -VALIDATION
+- Add a section on logging standards</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+
+            <p class="uc-desc" style="margin-top:12px"><strong>Step 3 — Apply standards to new code</strong></p>
+            <div class="mode-badge mode-badge-zcode">🧰 Z Code mode — new task</div>
+            <div class="step-prompt"><pre>Create a COBOL program that:
+- Searches for a customer by email
+- Validates the email format
+- Returns the customer information if found
+- Handles all possible errors
+
+Follow CBSA-standards-reference.md for the structure and conventions</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+
+            <p class="uc-desc" style="margin-top:12px"><strong>Step 4 — Verify existing code against standards</strong></p>
+            <div class="step-prompt"><pre>verify @base/cobol_src/BNK1CAC.cbl is respecting cbsa coding standards</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+
+            <div class="success-box">Outputs: <strong><code>.bob/skills/cbsa-coding-standards/SKILL.md</code></strong>, <code>CBSA-standards-reference.md</code>, and <code>CBSA-example.md</code>. Any future code generation in this workspace automatically respects these standards.
+              <table class="value-table" style="margin-top:10px">
+                <thead><tr><th>Task</th><th>Without Bob</th><th>With Bob</th></tr></thead>
+                <tbody>
+                  <tr><td>Standards analysis</td><td>2–3 days</td><td><strong>2 minutes</strong></td></tr>
+                  <tr><td>Code generation consistency</td><td>Variable</td><td><strong>100%</strong></td></tr>
+                  <tr><td>New developer onboarding</td><td>2–3 weeks</td><td><strong>1–2 days</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- Exercise 2 -->
+        <div class="use-case">
+          <div class="use-case-header">
+            <div class="uc-num">2</div>
+            <div class="uc-title">Exercise 2 — VSAM → DB2 Refactoring</div>
+            <div class="uc-arrow" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l5 5 5-5"/></svg></div>
+          </div>
+          <div class="uc-body"><div class="uc-body-inner">
+            <p class="uc-desc">Modernize the <strong>INQCUST</strong> COBOL program by migrating its VSAM file I/O to DB2 SQL, while preserving the existing COMMAREA interface and functional behavior.</p>
+
+            <p class="uc-desc" style="margin-top:4px"><strong>Step 0 — Define refactoring principles</strong></p>
+            <div class="mode-badge mode-badge-plan">📝 Plan mode — new task</div>
+            <div class="step-prompt"><pre>Create a document extractionGoal.md that defines the refactoring principles for migrating from VSAM to DB2, including:
+1. Functionality Preservation
+2. Mapping VSAM Operations to SQL
+3. Transaction Management
+4. Sequential Access Optimization
+5. Robust Error Handling
+6. Use of Host Variables
+7. Performance Optimization
+8. Structure and Modularity
+9. Compatibility and Progressive Migration
+10. Documentation and Traceability
+
+Also include a refactoring checklist and success criteria.</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+
+            <p class="uc-desc" style="margin-top:12px"><strong>Step 1 — Analyze the VSAM program</strong></p>
+            <div class="mode-badge mode-badge-zcode">🧰 Z Code mode — new task</div>
+            <div class="step-prompt"><pre>Analyze the INQCUST program that uses VSAM files and identify:
+- The VSAM operations used (READ, WRITE, REWRITE, DELETE, STARTBR, READNEXT)
+- The data structures being manipulated
+- The access keys and indexes
+- The data access patterns
+- The complexity points for migration</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+
+            <p class="uc-desc" style="margin-top:12px"><strong>Step 2 — Design the DB2 data model</strong></p>
+            <div class="step-prompt"><pre>Propose a DB2 data model to replace the CUSTOMER VSAM file, including the table DDL, indexes, integrity constraints, and performance considerations.</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+
+            <p class="uc-desc" style="margin-top:12px"><strong>Step 3 — Interactive refactoring with the /refactor command</strong></p>
+            <div class="mode-badge mode-badge-zcode">🧰 Z Code mode — new task</div>
+            <div class="step-prompt"><pre>/refactor INQCUST.cbl extractionGoal.md</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+            <div class="info-box">Bob launches a 4-phase interactive workflow: <strong>Analysis → Validation → Generation → Report</strong>. Each VSAM→SQL transformation is presented for your confirmation before being applied.</div>
+
+            <p class="uc-desc" style="margin-top:12px"><strong>Step 4 — Generate a migration plan</strong></p>
+            <div class="step-prompt"><pre>Create a complete migration plan to move from VSAM to DB2, including the migration steps, testing strategy, rollback plan, performance considerations, and validation checklist.</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+
+            <div class="success-box">Outputs: Refactored <strong>INQCUST.cbl</strong> (all VSAM ops replaced by DB2 SQL cursors), DDL scripts, and a 5-phase migration plan with rollback scenarios.
+              <table class="value-table" style="margin-top:10px">
+                <thead><tr><th>Task</th><th>Manual</th><th>With Bob</th></tr></thead>
+                <tbody>
+                  <tr><td>VSAM analysis</td><td>2–3 days</td><td><strong>10 min</strong></td></tr>
+                  <tr><td>DB2 schema design</td><td>3–5 days</td><td><strong>15 min</strong></td></tr>
+                  <tr><td>Code refactoring</td><td>1–2 weeks</td><td><strong>30 min</strong></td></tr>
+                  <tr><td>Migration plan</td><td>3–5 days</td><td><strong>20 min</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
